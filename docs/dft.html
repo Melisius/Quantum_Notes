@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Density Functional Theory &mdash; Quantum Notes  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
+        <link rel="next" title="One-index Transformation" href="oneindextransformation.html"/>
+        <link rel="prev" title="short-ranged Density Functional Theory" href="srdft.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Quantum Notes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="srdft.html">short-ranged Density Functional Theory</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Density Functional Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#density-matrix-expansion">Density matrix expansion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="oneindextransformation.html">One-index Transformation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Quantum Notes</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Density Functional Theory</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/dft.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="density-functional-theory">
+<h1>Density Functional Theory<a class="headerlink" href="#density-functional-theory" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="density-matrix-expansion">
+<h2>Density matrix expansion<a class="headerlink" href="#density-matrix-expansion" title="Permalink to this headline">¶</a></h2>
+<p>The density matrix is given as:</p>
+<div class="math">
+<p><img src="_images/math/7a1dc3f80f9f3a417ccdf613801e63f2ab85ad7e.png" alt="\tilde{D}_{pq}\left(\kappa\right)=\left\langle \tilde{0}\left|p^{\dagger}q\right|\tilde{0}\right\rangle =\left\langle 0\left|\exp\left(\hat{\kappa}\right)p^{\dagger}q\exp\left(-\hat{\kappa}\right)\right|0\right\rangle"/></p>
+</div><p>The BCH expansion is given as:</p>
+<div class="math">
+<p><img src="_images/math/ffe97ad7a1bfea8128f44f4eec5e98fe10bc6f02.png" alt="\exp\left(A\right)B\exp\left(-A\right)=B+\left[A,B\right]+\frac{1}{2!}\left[A,\left[A,B\right]\right]+..."/></p>
+</div><p>If <img class="math" src="_images/math/739e4d82c865c5050a3910c69627426c2eb9e11d.png" alt="A=\hat{\kappa}"/> and <img class="math" src="_images/math/ce4c1a374ec4ff77010494cd1ed85177bef7dfc9.png" alt="B=p^{\dagger}q"/>, it can be written that:</p>
+<div class="math">
+<p><img src="_images/math/ce6d9f900d1237f3a482efe2215232531a17ee87.png" alt="\tilde{D}_{pq}\left(A\right)=\left\langle 0\left|B\right|0\right\rangle +\left\langle 0\left|\left[A,B\right]\right|0\right\rangle +O\left(A^{2}\right)"/></p>
+</div><div class="math">
+<p><img src="_images/math/c86ab3d0c3e325f39ab41c62bdb541e00ba0b809.png" alt="\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\left\langle 0\left|\left[\hat{\kappa},p^{\dagger}q\right]\right|0\right\rangle +O\left(\kappa^{2}\right)"/></p>
+</div><p>It can now be used that:</p>
+<div class="math">
+<p><img src="_images/math/973a4dbb462c4d3fdf41c04503c6a3f391256008.png" alt="\hat{\kappa}=\sum_{pq}\kappa_{pq}p^{\dagger}q"/></p>
+</div><p>Thus giving:</p>
+<div class="math">
+<p><img src="_images/math/75d493e9ded4e0e0e9d6905f6dd044a1ada5492c.png" alt="\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\left\langle 0\left|\left[\sum_{rs}\kappa_{rs}r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle +O\left(\kappa^{2}\right)"/></p>
+</div><p>Since <img class="math" src="_images/math/924839414805fe46465659ac1e9bc8e82d66b148.png" alt="\kappa_{rs}"/> is just a matrix element, the above equation can rewritten as:</p>
+<div class="math">
+<p><img src="_images/math/88a2b94255a2cb4369616b4d6e19426a45753279.png" alt="\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\sum_{rs}\left\langle 0\left|\left[r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle \kappa_{rs}+O\left(\kappa^{2}\right)"/></p>
+</div></div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="oneindextransformation.html" class="btn btn-neutral float-right" title="One-index Transformation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="srdft.html" class="btn btn-neutral" title="short-ranged Density Functional Theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Erik Kjellgren.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

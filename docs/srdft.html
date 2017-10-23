@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>short-ranged Density Functional Theory &mdash; Quantum Notes  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
+        <link rel="next" title="Density Functional Theory" href="dft.html"/>
+        <link rel="prev" title="Quantum Notes" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Quantum Notes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">short-ranged Density Functional Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#electronic-gradient">Electronic Gradient</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneindextransformation.html">One-index Transformation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Quantum Notes</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>short-ranged Density Functional Theory</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/srdft.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="short-ranged-density-functional-theory">
+<h1>short-ranged Density Functional Theory<a class="headerlink" href="#short-ranged-density-functional-theory" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="electronic-gradient">
+<h2>Electronic Gradient<a class="headerlink" href="#electronic-gradient" title="Permalink to this headline">¶</a></h2>
+<p>The short-range exchange-correlation to the gradient is found as:</p>
+<div class="math">
+<p><img src="_images/math/287e903ead846a36d542a16af4c21095c89e2250.png" alt="g_{\mathrm{sr-xc},i}=\frac{\partial E_{\mathrm{sr-xc}}\left[\rho_{C},\rho_{S}\right]}{\partial\lambda_{i}}=\int\frac{\partial e_{\mathrm{sr-xc}}\left(\rho_{C}\left(r\right),\rho_{S}\left(r\right)\right)}{\partial\lambda_{i}}dr"/></p>
+</div><p>Now the part inside the integral can be written out using the chain-rule:</p>
+<div class="math">
+<p><img src="_images/math/2f8c161ab7e88ffb13ec71a96ab32c7011e23100.png" alt="\frac{\partial h\left(g\left(x\right),f\left(x\right)\right)}{\partial\lambda}=\frac{\partial h}{\partial g}\frac{\partial g}{\partial\lambda}+\frac{\partial h}{\partial f}\frac{\partial f}{\partial\lambda}"/></p>
+</div><p>Using the notation <img class="math" src="_images/math/90779f72cc2fda8eff064459d75d026f05c23f15.png" alt="\rho_{X}=\sum_{pq}\Omega_{pq}D_{pq}^{x}\left(\lambda\right)"/>, the derivative of <img class="math" src="_images/math/bfa3f8243c54c63efbd419660c7e395a62112937.png" alt="\rho_{X}"/> is:</p>
+<div class="math">
+<p><img src="_images/math/29eb3b788950409c79c22bbe49f0946b01503ce5.png" alt="\frac{\partial\rho_{X}}{\partial\lambda}=\sum_{pq}\Omega_{pq}\frac{\partial D_{pq}^{X}}{\partial\lambda}"/></p>
+</div><p>Now by identifying that <img class="math" src="_images/math/f1ac19ba9b715a368114883f5787030ddc1d98a3.png" alt="h=e_{\mathrm{sr-xc}}"/>, <img class="math" src="_images/math/e2d918ee6f92a51268a191a807c2a00ecd8ae111.png" alt="g=\rho_{C}"/> and <img class="math" src="_images/math/0b2e0526183db7617c8c4daa6474954a06da2162.png" alt="f=\rho_{S}"/> it can be written that:</p>
+<div class="math">
+<p><img src="_images/math/dcdf42d8796aebe87b51d01baecce477e4aa7495.png" alt="\frac{\partial e_{\mathrm{sr-xc}}\left(\rho_{C}\left(r\right),\rho_{S}\left(r\right)\right)}{\partial\lambda_{i}}=\frac{\partial e_{\mathrm{sr-xc}}}{\partial\rho_{C}}\sum_{pq}\Omega_{pq}\frac{\partial D_{pq}^{C}}{\partial\lambda}+\frac{\partial e_{\mathrm{sr-xc}}}{\partial\rho_{S}}\sum_{pq}\Omega_{pq}\frac{\partial D_{pq}^{S}}{\partial\lambda}"/></p>
+</div><p>Now it can be defined that:</p>
+<div class="math">
+<p><img src="_images/math/440d5509efe30a9fdb229a424d9d933a962f09c2.png" alt="g_{\mathrm{sr-xc},pq}^{C}=\int\frac{\partial e_{\mathrm{sr-xc}}}{\partial\rho_{C}}\sum_{pq}\Omega_{pq}\frac{\partial D_{pq}^{C}}{\partial\lambda}dr"/></p>
+</div><div class="math">
+<p><img src="_images/math/3ded08edba4c1752689ed64150f38d4ddde9a53d.png" alt="g_{\mathrm{sr-xc},pq}^{S}=\int\frac{\partial e_{\mathrm{sr-xc}}}{\partial\rho_{S}}\sum_{pq}\Omega_{pq}\frac{\partial D_{pq}^{S}}{\partial\lambda}dr"/></p>
+</div><p>Leading to the total gradient of the orbital rotation parameters being:</p>
+<div class="math">
+<p><img src="_images/math/ee227c1474b53640202c2e1dde94c0994453306c.png" alt="\frac{\partial E_{\mathrm{sr-xc}}\left[\rho_{C},\rho_{S}\right]}{\partial\kappa_{rs}}=g_{\mathrm{sr-xc},rs}^{C}+g_{\mathrm{sr-xc},rs}^{S}"/></p>
+</div><p>An effective operator can be defined:</p>
+<div class="math">
+<p><img src="_images/math/9b8dae068eb4634cf145ff55c8ad7d0284e93a4d.png" alt="\hat{V}_{\mathrm{sr-xc}}^{X,g}=\sum_{pq}\int\frac{\partial e_{\mathrm{sr-xc}}}{\partial\rho_{X}}\Omega_{pq}dr\hat{O}_{pq}^{X}"/></p>
+</div><p>With <img class="math" src="_images/math/93f81e24c40533127bb3f41b8777c4c551a52b37.png" alt="\hat{O}_{pq}^{X}"/> being singlet and triplet excitation operator for <img class="math" src="_images/math/afce44aa7c55836ca9345404c22fc7b599d2ed84.png" alt="C"/> and <img class="math" src="_images/math/1dbc400fcc213305415872f9f625cd2828f97a00.png" alt="S"/>. Now leading to:</p>
+<div class="math">
+<p><img src="_images/math/6b3c0ada5c5006fceaa3a8ea2aed144bcda54e5c.png" alt="g_{\mathrm{sr-xc},rs}^{C}=\left\langle 0\left|\left[E_{rs}^{-},\hat{V}_{\mathrm{sr-xc}}^{C,g}\right]\right|0\right\rangle"/></p>
+</div><div class="math">
+<p><img src="_images/math/3c2ae3a84786bb6c8e7894d48b97de3c8e8c2d52.png" alt="g_{\mathrm{sr-xc},rs}^{C}=\left\langle 0\left|E_{rs}^{-}\hat{V}_{\mathrm{sr-xc}}^{C,g}\right|0\right\rangle -\left\langle 0\left|\hat{V}_{\mathrm{sr-xc}}^{C,g}E_{rs}^{-}\right|0\right\rangle"/></p>
+</div><p>If <img class="math" src="_images/math/fae0e7a73748991e5540d874416000583f64f58e.png" alt="V"/> is Hermitian i.e. <img class="math" src="_images/math/c04ba0c439fe767cf4c7b122fab57f0232666a33.png" alt="V=V^{\dagger}"/>, it can be written that:</p>
+<div class="math">
+<p><img src="_images/math/f7d08035a9528b719d4a896013822b2e2239344e.png" alt="g_{\mathrm{sr-xc},rs}^{C}=\left\langle 0\left|E_{rs}^{-}\hat{V}_{\mathrm{sr-xc}}^{C,g}\right|0\right\rangle -\left\langle 0\left|E_{rs}^{-\dagger}\hat{V}_{\mathrm{sr-xc}}^{C,g}\right|0\right\rangle"/></p>
+</div><p>Now <img class="math" src="_images/math/7a38b9589025d6f7138c602b794e2b52f93669ef.png" alt="E_{rs}^{-\dagger}"/> can be expanded as:</p>
+<div class="math">
+<p><img src="_images/math/34692c86f57298c66537f9cc9994d5eb9342d2b9.png" alt="E_{rs}^{-\dagger}=\left(E_{rs}-E_{sr}\right)^{\dagger}=E_{rs}-E_{sr}=E_{sr}^{-}=-E_{rs}^{-}"/></p>
+</div><p>Now giving:</p>
+<div class="math">
+<p><img src="_images/math/f17e9da1cf4affeb981cd49c982de1b6828a637d.png" alt="g_{\mathrm{sr-xc},rs}^{C}=\left\langle 0\left|E_{rs}^{-}\hat{V}_{\mathrm{sr-xc}}^{C,g}\right|0\right\rangle +\left\langle 0\left|E_{rs}^{-}\hat{V}_{\mathrm{sr-xc}}^{C,g}\right|0\right\rangle"/></p>
+</div><div class="math">
+<p><img src="_images/math/7c8382c9bd5d54378c4d00432b3b03fc4e1843b1.png" alt="g_{\mathrm{sr-xc},rs}^{C}=2\left\langle 0\left|E_{rs}^{-}\hat{V}_{\mathrm{sr-xc}}^{C,g}\right|0\right\rangle"/></p>
+</div><p>To be continued</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dft.html" class="btn btn-neutral float-right" title="Density Functional Theory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Quantum Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Erik Kjellgren.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
