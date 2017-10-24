@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dalton Surgery &mdash; Quantum Notes  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
+        <link rel="next" title="Density Functional Theory" href="dft.html"/>
+        <link rel="prev" title="short-ranged Density Functional Theory" href="srdft.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Quantum Notes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="srdft.html">short-ranged Density Functional Theory</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dalton Surgery</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#triplet-response">Triplet Response</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rspdrv">RSPDRV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rspdm">RSPDM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneindextransformation.html">One-index Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hartreefock.html">Hartree-Fock</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Quantum Notes</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Dalton Surgery</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/daltonsurgery.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dalton-surgery">
+<h1>Dalton Surgery<a class="headerlink" href="#dalton-surgery" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="triplet-response">
+<h2>Triplet Response<a class="headerlink" href="#triplet-response" title="Permalink to this headline">¶</a></h2>
+<p><strong>Flags</strong></p>
+<ul class="simple">
+<li>TRPFLG :: Global flag for triplet calculation</li>
+<li>TRPLET :: local flag for triplet calculation</li>
+</ul>
+<p><strong>Routines</strong></p>
+<ul class="simple">
+<li>RSPDRV() :: rspmai.F :: Driver for RESPONSE.</li>
+<li>RSPDM() :: rspdm.F :: CONSTRUCT ONE (RHO1) AND  TWO (RHO2) PARTICLE DENSITY MATRICES TO BE USED IN RESPONSE CALCULATION.</li>
+</ul>
+<p><strong>References</strong></p>
+<ul class="simple">
+<li>[1] :: Triplet excitation properties in large scale multiconfiguration linear response calculations, Jeppe Olsen, Danny L. Yeager, and Poul Jo/rgensen</li>
+</ul>
+<div class="section" id="rspdrv">
+<h3>RSPDRV<a class="headerlink" href="#rspdrv" title="Permalink to this headline">¶</a></h3>
+<p><strong>Inputs</strong></p>
+<ul class="simple">
+<li>WRK</li>
+<li>LWRK</li>
+</ul>
+<p><strong>Functionality</strong></p>
+<p>Is the main control of the response modules, what calculations to be done is controlled by this script.</p>
+<div class="highlight-fortran"><div class="highlight"><pre><span></span>    <span class="n">ISPIN1</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ISPIN2</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">CALL </span><span class="n">RSPDM</span><span class="p">(</span><span class="n">IREFSY</span><span class="p">,</span><span class="n">IREFSY</span><span class="p">,</span><span class="n">NCREF</span><span class="p">,</span><span class="n">NCREF</span><span class="p">,</span><span class="n">WRK</span><span class="p">(</span><span class="n">KCREF</span><span class="p">),</span><span class="n">WRK</span><span class="p">(</span><span class="n">KCREF</span><span class="p">),</span>
+<span class="o">*</span>              <span class="n">WRK</span><span class="p">(</span><span class="n">KUDV</span><span class="p">),</span><span class="n">WRK</span><span class="p">(</span><span class="n">KPVX</span><span class="p">),</span>
+<span class="o">*</span>              <span class="n">ISPIN1</span><span class="p">,</span><span class="n">ISPIN2</span><span class="p">,.</span><span class="n">FALSE</span><span class="p">.,.</span><span class="n">FALSE</span><span class="p">.,</span>
+<span class="o">*</span>              <span class="n">WRK</span><span class="p">(</span><span class="n">KINDX</span><span class="p">),</span><span class="n">WRK</span><span class="p">(</span><span class="n">KTOT</span><span class="p">),</span><span class="n">KFREE_KTOT</span><span class="p">,</span><span class="n">LFREE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above code calls the construction of the required density matricies for singlet.</p>
+<div class="highlight-fortran"><div class="highlight"><pre><span></span>      <span class="k">IF</span> <span class="p">(</span><span class="n">TRPFLG</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">         </span><span class="n">ISPIN1</span> <span class="o">=</span> <span class="mi">1</span>
+         <span class="n">ISPIN2</span> <span class="o">=</span> <span class="mi">1</span>
+         <span class="k">CALL </span><span class="n">RSPDM</span><span class="p">(</span><span class="n">IREFSY</span><span class="p">,</span><span class="n">IREFSY</span><span class="p">,</span><span class="n">NCREF</span><span class="p">,</span><span class="n">NCREF</span><span class="p">,</span><span class="n">WRK</span><span class="p">(</span><span class="n">KCREF</span><span class="p">),</span><span class="n">WRK</span><span class="p">(</span><span class="n">KCREF</span><span class="p">),</span>
+  <span class="o">*</span>                 <span class="n">WRK</span><span class="p">(</span><span class="n">KUDV</span><span class="p">),</span><span class="n">WRK</span><span class="p">(</span><span class="n">KPVX</span><span class="o">+</span><span class="n">LPVMAT</span><span class="p">),</span>
+  <span class="o">*</span>                 <span class="n">ISPIN1</span><span class="p">,</span><span class="n">ISPIN2</span><span class="p">,.</span><span class="n">FALSE</span><span class="p">.,.</span><span class="n">FALSE</span><span class="p">.,</span>
+  <span class="o">*</span>                 <span class="n">WRK</span><span class="p">(</span><span class="n">KINDX</span><span class="p">),</span><span class="n">WRK</span><span class="p">(</span><span class="n">KTOT</span><span class="p">),</span><span class="n">KFREE_KTOT</span><span class="p">,</span><span class="n">LFREE</span><span class="p">)</span>
+<span class="n">C</span>
+      <span class="k">END IF</span>
+</pre></div>
+</div>
+<p>The above code calls the contruction of the two-body densitry matrix, for triplet, i.e. ISPIN1 = ISPIN2 = 1.</p>
+<div class="highlight-fortran"><div class="highlight"><pre><span></span>       <span class="k">CALL </span><span class="n">RSPDM</span><span class="p">(</span><span class="n">IREFSY</span><span class="p">,</span><span class="n">IREFSY</span><span class="p">,</span><span class="n">NCREF</span><span class="p">,</span><span class="n">NCREF</span><span class="p">,</span><span class="n">WRK</span><span class="p">(</span><span class="n">KCREF</span><span class="p">),</span><span class="n">WRK</span><span class="p">(</span><span class="n">KCREF</span><span class="p">),</span>
+<span class="o">*</span>                 <span class="n">WRK</span><span class="p">(</span><span class="n">KUDV</span><span class="o">+</span><span class="n">N2ASHX</span><span class="p">),</span><span class="n">WRK</span><span class="p">(</span><span class="n">KFREE</span><span class="p">),</span>
+<span class="o">*</span>                 <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,.</span><span class="n">FALSE</span><span class="p">.,.</span><span class="n">TRUE</span><span class="p">.,</span>
+<span class="o">*</span>                 <span class="n">WRK</span><span class="p">(</span><span class="n">KINDX</span><span class="p">),</span><span class="n">WRK</span><span class="p">(</span><span class="n">KTOT</span><span class="p">),</span><span class="n">KFREE</span><span class="p">,</span><span class="n">LFREE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above code is executed right after the contruction of the two-body densitry matrix, for triplet. And calls the construction of triplet one-electron density. ISPIN1=1 and ISPIN2=0 in the subroutine call.</p>
+</div>
+<div class="section" id="rspdm">
+<h3>RSPDM<a class="headerlink" href="#rspdm" title="Permalink to this headline">¶</a></h3>
+<p><strong>Inputs</strong></p>
+<ul class="simple">
+<li>ILSYM</li>
+<li>IRSYM</li>
+<li>NCLDIM</li>
+<li>NCRDIM</li>
+<li>CL</li>
+<li>CR</li>
+<li>RHO1 :: One-body density matrix, called D in [1]</li>
+<li>RHO2 :: Two-body density matrix, called d in [1]</li>
+<li>ISPIN1 :: Specify triplet or singlet, 0=+ and 1=- in [1]</li>
+<li>ISPIN2 :: Specify triplet or singlet, 0=+ and 1=- in [1]</li>
+<li>TDM</li>
+<li>NORHO2</li>
+<li>XINDX</li>
+<li>WORK</li>
+<li>KFREE</li>
+<li>LFREE</li>
+</ul>
+<p><strong>Functionality</strong></p>
+<p>Calculates equation (72) and (73) in [1]:</p>
+<div class="math">
+<p><img src="_images/math/10f7b8654dd42322ee3856372dd122008829b6f6.png" alt="D\left(S_{1}\right)_{rs}=\left\langle L\left|E\left(S_{1}\right)_{rs}\right|R\right\rangle"/></p>
+</div><div class="math">
+<p><img src="_images/math/f23de76534b18fa9497e9eab31874ac781e30036.png" alt="d\left(S_{1},S_{2}\right)_{rstu}=\left\langle L\left|E\left(S_{1}\right)_{rs}E\left(S_{2}\right)_{tu}-\delta_{st}E\left(S_{1}S_{2}\right)_{ru}\right|R\right\rangle"/></p>
+</div></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dft.html" class="btn btn-neutral float-right" title="Density Functional Theory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="srdft.html" class="btn btn-neutral" title="short-ranged Density Functional Theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Erik Kjellgren.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

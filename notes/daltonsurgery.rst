@@ -1,0 +1,103 @@
+
+Dalton Surgery
+==============
+
+Triplet Response
+----------------
+
+**Flags**
+
+- TRPFLG :: Global flag for triplet calculation
+- TRPLET :: local flag for triplet calculation
+
+**Routines**
+
+- RSPDRV( ) :: rspmai.F :: Driver for RESPONSE.
+- RSPDM( ) :: rspdm.F :: CONSTRUCT ONE (RHO1) AND  TWO (RHO2) PARTICLE DENSITY MATRICES TO BE USED IN RESPONSE CALCULATION.
+
+**References**
+
+- [1] :: Triplet excitation properties in large scale multiconfiguration linear response calculations, Jeppe Olsen, Danny L. Yeager, and Poul Jo/rgensen
+
+RSPDRV
+~~~~~~
+
+**Inputs**
+
+- WRK
+- LWRK
+
+**Functionality**
+
+Is the main control of the response modules, what calculations to be done is controlled by this script.
+
+.. code-block:: fortran
+
+         ISPIN1 = 0
+         ISPIN2 = 0
+         CALL RSPDM(IREFSY,IREFSY,NCREF,NCREF,WRK(KCREF),WRK(KCREF),
+     *              WRK(KUDV),WRK(KPVX),
+     *              ISPIN1,ISPIN2,.FALSE.,.FALSE.,
+     *              WRK(KINDX),WRK(KTOT),KFREE_KTOT,LFREE)
+
+The above code calls the construction of the required density matricies for singlet.
+
+.. code-block:: fortran
+   
+         IF (TRPFLG) THEN
+            ISPIN1 = 1
+            ISPIN2 = 1
+            CALL RSPDM(IREFSY,IREFSY,NCREF,NCREF,WRK(KCREF),WRK(KCREF),
+     *                 WRK(KUDV),WRK(KPVX+LPVMAT),
+     *                 ISPIN1,ISPIN2,.FALSE.,.FALSE.,
+     *                 WRK(KINDX),WRK(KTOT),KFREE_KTOT,LFREE)
+   C
+         END IF
+
+The above code calls the contruction of the two-body densitry matrix, for triplet, i.e. ISPIN1 = ISPIN2 = 1.
+
+.. code-block:: fortran
+
+            CALL RSPDM(IREFSY,IREFSY,NCREF,NCREF,WRK(KCREF),WRK(KCREF),
+     *                 WRK(KUDV+N2ASHX),WRK(KFREE),
+     *                 1,0,.FALSE.,.TRUE.,
+     *                 WRK(KINDX),WRK(KTOT),KFREE,LFREE)
+
+The above code is executed right after the contruction of the two-body densitry matrix, for triplet. And calls the construction of triplet one-electron density. ISPIN1=1 and ISPIN2=0 in the subroutine call.
+   
+
+
+RSPDM
+~~~~~
+
+**Inputs**
+
+- ILSYM
+- IRSYM
+- NCLDIM
+- NCRDIM
+- CL
+- CR
+- RHO1 :: One-body density matrix, called D in [1]
+- RHO2 :: Two-body density matrix, called d in [1]
+- ISPIN1 :: Specify triplet or singlet, 0=+ and 1=- in [1]
+- ISPIN2 :: Specify triplet or singlet, 0=+ and 1=- in [1]
+- TDM
+- NORHO2
+- XINDX
+- WORK
+- KFREE
+- LFREE
+
+**Functionality**
+
+Calculates equation (72) and (73) in [1]:
+
+.. math::
+   D\left(S_{1}\right)_{rs}=\left\langle L\left|E\left(S_{1}\right)_{rs}\right|R\right\rangle 
+   
+.. math::
+   d\left(S_{1},S_{2}\right)_{rstu}=\left\langle L\left|E\left(S_{1}\right)_{rs}E\left(S_{2}\right)_{tu}-\delta_{st}E\left(S_{1}S_{2}\right)_{ru}\right|R\right\rangle 
+   
+
+
