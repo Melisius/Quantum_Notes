@@ -89,3 +89,6 @@ Now giving the total one-index transformed Hamiltonian as:
 
 .. math::
    H\left(\kappa\right)=\sum_{pq}\tilde{h}_{pq}E_{pq}+\frac{1}{2}\sum_{rspq}\left(\left(rs|\tilde{pq}\right)e_{pqrs}+\left(pq|\tilde{rs}\right)e_{pqrs}\right)
+   
+- Molecular Electronic-Structure Theory, Trygve Helgaker, Poul Jorgensen, Jeppe Olsen
+- Triplet excitation properties in large scale multiconfiguration linear response calculations, Jeppe Olsen, Danny L. Yeager, and Poul Jo/rgensen

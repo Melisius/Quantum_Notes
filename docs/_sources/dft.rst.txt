@@ -37,3 +37,5 @@ Since :math:`\kappa_{rs}` is just a matrix element, the above equation can rewri
 
 .. math::
    \tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\sum_{rs}\left\langle 0\left|\left[r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle \kappa_{rs}+O\left(\kappa^{2}\right)
+   
+- Four-Component Relativistic Kohn-Sham Theory, Trond Saue, Trygve Helgaker

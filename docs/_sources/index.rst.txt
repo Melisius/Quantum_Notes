@@ -12,4 +12,5 @@ Notes about Quantum Chemistry
    srdft.rst
    dft.rst
    oneindextransformation.rst
+   hartreefock.rst
    
