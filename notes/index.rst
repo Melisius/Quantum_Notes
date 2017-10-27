@@ -9,8 +9,10 @@ Notes about Quantum Chemistry
    :maxdepth: 3
    :caption: Content
    
+   mcscfsrdft.rst
    srdft.rst
    daltonsurgery.rst
+   justmath.rst
    dft.rst
    oneindextransformation.rst
    hartreefock.rst
