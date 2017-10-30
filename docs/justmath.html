@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Just Maths &mdash; Quantum Notes  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
+        <link rel="next" title="Density Functional Theory" href="dft.html"/>
+        <link rel="prev" title="Response" href="response.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Quantum Notes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srdft.html">short-ranged Density Functional Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="daltonsurgery.html">Dalton Surgery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Just Maths</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#matrices">Matrices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#real-anti-symmetric-matrix">Real (anti)-symmetric matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baker-campbell-hausdorf-expansion">Baker-Campbell-Hausdorf expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unitary-matrix">Unitary matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#real-orthogoanl-matrix">Real orthogoanl matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#operators">Operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#projection-operator">Projection operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anti-commutator">(anti)-Commutator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneindextransformation.html">One-index Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hartreefock.html">Hartree-Fock</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Quantum Notes</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Just Maths</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/justmath.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="just-maths">
+<h1>Just Maths<a class="headerlink" href="#just-maths" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="matrices">
+<h2>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="real-anti-symmetric-matrix">
+<h3>Real (anti)-symmetric matrix<a class="headerlink" href="#real-anti-symmetric-matrix" title="Permalink to this headline">¶</a></h3>
+<p>A real symmetric matrix is defined as:</p>
+<div class="math">
+<p><img src="_images/math/7f496bcfdf9f9e40fcaca2256a97b41b0b2c2501.png" alt="A_{i,j}=A_{j,i}"/></p>
+</div><p>A real anti-symmetric matrix is defined as:</p>
+<div class="math">
+<p><img src="_images/math/ba529d4d9229ca73ff07d717c6e4770a412b9c6e.png" alt="A_{i,j}=-A_{j,i}"/></p>
+</div></div>
+<div class="section" id="baker-campbell-hausdorf-expansion">
+<h3>Baker-Campbell-Hausdorf expansion<a class="headerlink" href="#baker-campbell-hausdorf-expansion" title="Permalink to this headline">¶</a></h3>
+<p>The BCH expansion is given as:</p>
+<div class="math">
+<p><img src="_images/math/aacadef852d565b5f16c1ba595814f181b89dd8e.png" alt="\exp\left(A\right)B\exp\left(-A\right)=B+\left[A,B\right]+\frac{1}{2!}\left[A,\left[A,B\right]\right]+\frac{1}{3!}\left[A,\left[A,\left[A,B\right]\right]\right]+..."/></p>
+</div></div>
+<div class="section" id="unitary-matrix">
+<h3>Unitary matrix<a class="headerlink" href="#unitary-matrix" title="Permalink to this headline">¶</a></h3>
+<p>A unitary matrix is defined as:</p>
+<div class="math">
+<p><img src="_images/math/6995c0a80a09a5b71b9a09027475f12117ea9a64.png" alt="U^{\dagger}U=UU^{\dagger}=1"/></p>
+</div></div>
+<div class="section" id="real-orthogoanl-matrix">
+<h3>Real orthogoanl matrix<a class="headerlink" href="#real-orthogoanl-matrix" title="Permalink to this headline">¶</a></h3>
+<p>A real orthogonal matrix must satisfy:</p>
+<div class="math">
+<p><img src="_images/math/97e419477d7e5b2d5c273d510ace6813f9ebfdad.png" alt="Q^{T}Q=QQ^{T}=1"/></p>
+</div></div>
+</div>
+<div class="section" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="projection-operator">
+<h3>Projection operator<a class="headerlink" href="#projection-operator" title="Permalink to this headline">¶</a></h3>
+<p>A projection operator is defined as:</p>
+<div class="math">
+<p><img src="_images/math/c6c6ed66f2c331c4ef735dafbb7c9b85b723dceb.png" alt="\hat{P}^{2}=\hat{P}"/></p>
+</div><p>As an example lets consider:</p>
+<div class="math">
+<p><img src="_images/math/092a2da459b7f407fd66f7df0e529b7567eb3f97.png" alt="\hat{P}=1-\left|0\right\rangle \left\langle 0\right|"/></p>
+</div><p>Now:</p>
+<div class="math">
+<p><img src="_images/math/fbfe29dc8d874e7daf006fbe72bad4efbef9eb7d.png" alt="\hat{P}^{2}=\left(1-\left|0\right\rangle \left\langle 0\right|\right)^{2}=1+\left|0\right\rangle \left\langle 0\right|\left|0\right\rangle \left\langle 0\right|-2\left|0\right\rangle \left\langle 0\right|"/></p>
+</div><p>It can now be used that <img class="math" src="_images/math/7b4f108f6e489a5456fb8c2815b65f805b214920.png" alt="\left\langle 0\right|\left|0\right\rangle =1"/>:</p>
+<div class="math">
+<p><img src="_images/math/f63ba7efea6896b8feee89713141d69549fc3f23.png" alt="\hat{P}^{2}=1+\left|0\right\rangle \left\langle 0\right|-2\left|0\right\rangle \left\langle 0\right|=1-\left|0\right\rangle \left\langle 0\right|=\hat{P}"/></p>
+</div></div>
+<div class="section" id="anti-commutator">
+<h3>(anti)-Commutator<a class="headerlink" href="#anti-commutator" title="Permalink to this headline">¶</a></h3>
+<p>The commutator is defined as:</p>
+<div class="math">
+<p><img src="_images/math/1a325fcb7edf387058b0b87d2b1fdb17cb28aaff.png" alt="\left[\hat{A},\hat{B}\right]=\hat{A}\hat{B}-\hat{B}\hat{A}"/></p>
+</div><p>The anti-commutator is defined as:</p>
+<div class="math">
+<p><img src="_images/math/a76dc23a85268f12f55c6a64823764a349d7d54f.png" alt="\left[\hat{A},\hat{B}\right]_{+}=\hat{A}\hat{B}+\hat{B}\hat{A}"/></p>
+</div></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dft.html" class="btn btn-neutral float-right" title="Density Functional Theory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="response.html" class="btn btn-neutral" title="Response" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Erik Kjellgren.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -12,6 +12,7 @@ Notes about Quantum Chemistry
    mcscfsrdft.rst
    srdft.rst
    daltonsurgery.rst
+   response.rst
    justmath.rst
    dft.rst
    oneindextransformation.rst

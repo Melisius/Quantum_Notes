@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Response &mdash; Quantum Notes  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
+        <link rel="next" title="Just Maths" href="justmath.html"/>
+        <link rel="prev" title="Dalton Surgery" href="daltonsurgery.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Quantum Notes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srdft.html">short-ranged Density Functional Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="daltonsurgery.html">Dalton Surgery</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Response</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#linear-transformation">Linear-Transformation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="justmath.html">Just Maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneindextransformation.html">One-index Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hartreefock.html">Hartree-Fock</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Quantum Notes</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Response</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/response.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="response">
+<h1>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="linear-transformation">
+<h2>Linear-Transformation<a class="headerlink" href="#linear-transformation" title="Permalink to this headline">¶</a></h2>
+<p>The combined triplet and singlet one-body operator:</p>
+<div class="math">
+<p><img src="_images/math/a49ac4eaaf6720876db7610f1f44421dbded9dcf.png" alt="E\left(S\right)_{rs}=E_{rs}^{\alpha}+SE_{rs}^{\beta}"/></p>
+</div><p>With <img class="math" src="_images/math/1dbc400fcc213305415872f9f625cd2828f97a00.png" alt="S"/> being <img class="math" src="_images/math/eaa2ad04009ecd6e5e171f5bc829e5e423f59118.png" alt="+"/> for singlet and <img class="math" src="_images/math/6d68fde6e749096dd6cd962b4ddb7e9bf29b31aa.png" alt="-"/> for triplet. The general two-body operator can be written as:</p>
+<div class="math">
+<p><img src="_images/math/faba75a08d4e1b02c108e156a8f02b65d34fb5de.png" alt="e_{rstu}\left(S_{1},S_{2}\right)=E\left(S_{1}\right)_{rs}E\left(S_{2}\right)_{tu}-\delta_{st}E\left(S_{1}S_{2}\right)_{ru}"/></p>
+</div><p>Now some matrices can be defined:</p>
+<div class="math">
+<p><img src="_images/math/41af3255530620b5bede7f8535ec274655aaab1c.png" alt="E^{(2)}=\left(\begin{array}{cc}
+A &amp; B\\
+A^{*} &amp; B^{*}
+\end{array}\right)"/></p>
+</div><div class="math">
+<p><img src="_images/math/9b7081546c39e0f38a6ed8f1a98c6acafe1c7b51.png" alt="S^{(2)}=\left(\begin{array}{cc}
+\Sigma &amp; \Delta\\
+-\Delta^{*} &amp; -\Sigma^{*}
+\end{array}\right)"/></p>
+</div><p>Here the submatricies are given as:</p>
+<div class="math">
+<p><img src="_images/math/21e067c9c7da25771fd335a67e810b2d1444676f.png" alt="A=\left(\begin{array}{cc}
+\left\langle 0\left|\left[q_{i},\left[H_{0},q_{j}^{+}\right]\right]\right|0\right\rangle  &amp; \left\langle 0\left|\left[\left[q_{i},H_{0}\right],R_{j}^{+}\right]\right|0\right\rangle \\
+\left\langle 0\left|\left[R_{i},\left[H_{0},q_{j}^{+}\right]\right]\right|0\right\rangle  &amp; \left\langle 0\left|\left[R_{i},\left[H_{0},R_{j}^{+}\right]\right]\right|0\right\rangle
+\end{array}\right)"/></p>
+</div><div class="math">
+<p><img src="_images/math/38d7b3bc5429bb3747030c3a07760087de4a494f.png" alt="B=\left(\begin{array}{cc}
+\left\langle 0\left|\left[q_{i},\left[H_{0},q_{j}\right]\right]\right|0\right\rangle  &amp; \left\langle 0\left|\left[\left[q_{i},H_{0}\right],R_{j}\right]\right|0\right\rangle \\
+\left\langle 0\left|\left[R_{i},\left[H_{0},q_{j}\right]\right]\right|0\right\rangle  &amp; \left\langle 0\left|\left[R_{i},\left[H_{0},R_{j}\right]\right]\right|0\right\rangle
+\end{array}\right)"/></p>
+</div><div class="math">
+<p><img src="_images/math/637fe32050c679feb3827303871595a493011920.png" alt="\Sigma=\left(\begin{array}{cc}
+\left\langle 0\left|\left[q_{i},q_{j}^{+}\right]\right|0\right\rangle  &amp; \left\langle 0\left|\left[q_{i},R_{j}^{+}\right]\right|0\right\rangle \\
+\left\langle 0\left|\left[R_{i},q_{j}^{+}\right]\right|0\right\rangle  &amp; \left\langle 0\left|\left[R_{i},R_{j}^{+}\right]\right|0\right\rangle
+\end{array}\right)"/></p>
+</div><div class="math">
+<p><img src="_images/math/34a2498f308eb9cf6255ac96b84c291e1e395890.png" alt="\Delta=\left(\begin{array}{cc}
+\left\langle 0\left|\left[q_{i},q_{j}\right]\right|0\right\rangle  &amp; \left\langle 0\left|\left[q_{i},R_{j}\right]\right|0\right\rangle \\
+\left\langle 0\left|\left[R_{i},q_{j}\right]\right|0\right\rangle  &amp; \left\langle 0\left|\left[R_{i},R_{j}\right]\right|0\right\rangle
+\end{array}\right)"/></p>
+</div><p>The Hamiltonian is given as:</p>
+<div class="math">
+<p><img src="_images/math/a5b927739ad06e613226bef4229d045b8b21a680.png" alt="H_{0}=\sum_{rs}h_{rs}E\left(+\right)_{rs}+\frac{1}{2}\sum_{rstu}\left(rs|tu\right)e\left(+,+\right)_{rstu}"/></p>
+</div><p><img class="math" src="_images/math/a00254b18ffa992f0ef19f6e6e095b83c8f85e94.png" alt="R"/> is the state transfer oprators that takes <img class="math" src="_images/math/532f3248d6552e7ac6b785bd935f404ad593e6a9.png" alt="0"/> to <img class="math" src="_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/>:</p>
+<div class="math">
+<p><img src="_images/math/72ade075c5e618f57f8d4127aac52bd4030fc0d1.png" alt="R_{n}^{+}=\left|n\right\rangle \left\langle 0\right|"/></p>
+</div><div class="math">
+<p><img src="_images/math/e01f8762d6e7253131a4b4aa92954ad536e9a16f.png" alt="R_{n}=\left|0\right\rangle \left\langle n\right|"/></p>
+</div><p>Here <img class="math" src="_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/> have to be different from <img class="math" src="_images/math/532f3248d6552e7ac6b785bd935f404ad593e6a9.png" alt="0"/>. Atlast the orbital operators <img class="math" src="_images/math/620a3ce6403ec82f1347af9985bc03f7a9382f4a.png" alt="q"/> are given as:</p>
+<div class="math">
+<p><img src="_images/math/90e411d2ec52b1c03c9a2ed6230f116a26824da5.png" alt="q_{j}^{+}=\left(\begin{array}{c}
+E\left(+\right)_{rs}\\
+E\left(-\right)_{rs}
+\end{array}\right)=a_{r\alpha}^{+}a_{s\alpha}\pm a_{r\beta}^{+}a_{s\beta}"/></p>
+</div><div class="math">
+<p><img src="_images/math/b4ba4027eac65e085d4103e16f1deb3985e6eb74.png" alt="q_{j}=\left(\begin{array}{c}
+E\left(+\right)_{sr}\\
+E\left(-\right)_{sr}
+\end{array}\right)=a_{s\alpha}^{+}a_{r\alpha}\pm a_{s\beta}^{+}a_{r\beta}"/></p>
+</div><p>Here <img class="math" src="_images/math/00b446b06ab911073a84a7cab1e67d7f28ca60b3.png" alt="r&gt;s"/>. Now for the triplet response the goal is to solve the response equations:</p>
+<div class="math">
+<p><img src="_images/math/049be1e96f940f136b0c8df7a324326409ebf25b.png" alt="\left(E^{(2)}-\lambda_{j}S^{(2)}\right)X_{j}=0"/></p>
+</div><p>Here the matricies <img class="math" src="_images/math/4b6222b865b812d2a59368cd1629eed6b54454d5.png" alt="E"/> and <img class="math" src="_images/math/1dbc400fcc213305415872f9f625cd2828f97a00.png" alt="S"/> are given above. <img class="math" src="_images/math/fadf4cea6a11119da9c72195b3221c31ed294ffc.png" alt="\lambda_{j}"/> is the eigenvalues corrosponding to the singlet-triplet excitation energies. <img class="math" src="_images/math/de0b6ec1f528444fe77a2e71819bf70c7ec85d06.png" alt="X_{j}"/> is the corrosponding eigenvectors. And:</p>
+<div class="math">
+<p><img src="_images/math/442d2f770a661b573e9d31348a7d886ad18e3843.png" alt="\left(E^{(2)}-\lambda_{j}S^{(2)}\right)X_{j}=V^{(1)}"/></p>
+</div><p>Here <img class="math" src="_images/math/fadf4cea6a11119da9c72195b3221c31ed294ffc.png" alt="\lambda_{j}"/> will corrospond to the frequency of an external perturbation. These equation can be solved by an iterative procedure, by making a linear transformation:</p>
+<div class="math">
+<p><img src="_images/math/414fc821025724febd10c7c4635f25aa0ebea8f1.png" alt="u=E^{(2)}N"/></p>
+</div><div class="math">
+<p><img src="_images/math/ca686e788dd870a57a4b13f8d106f8d999c84c57.png" alt="m=S^{(2)}N"/></p>
+</div><p>Here <img class="math" src="_images/math/f4170ed8938b79490d8923857962695514a8e4cb.png" alt="N"/> is a trailvector. Now to solve the equations the trailvectors is needed. The trail vector can be considered as two vectors:</p>
+<div class="math">
+<p><img src="_images/math/d4e46af1843623723e9ef964d712d20084efc5fe.png" alt="N^{c}=\left(\begin{array}{c}
+0\\
+S\\
+0\\
+S'
+\end{array}\right)"/></p>
+</div><p>and,</p>
+<div class="math">
+<p><img src="_images/math/2db74118943e28bc72940164ec2dc1a7f9e16b94.png" alt="N^{o}=\left(\begin{array}{c}
+\kappa\\
+0\\
+\kappa'\\
+0
+\end{array}\right)"/></p>
+</div><p>The orbital vector can be considered as a matrix constructed as:</p>
+<div class="math">
+<p><img src="_images/math/89f88431427f3ebea62e85c7df371452a93c5d2b.png" alt="K_{rs}=\begin{cases}
+\kappa_{rs} &amp; r&gt;s\\
+\kappa_{sr} &amp; r&lt;s\\
+0 &amp; else
+\end{cases}"/></p>
+</div><p>Now lets consider, the linear transformation of <img class="math" src="_images/math/8118d00e5e7798cd4a05f3d6428122b23c47e3b9.png" alt="u_{(pq)}^{o}=\sum_{(rs)}E_{(pq)(rs)}^{(2)}N_{(rs)}^{o}"/>. <img class="math" src="_images/math/042ddd39ce2a8c69bea3d1c4a0fd3bd0066aa59c.png" alt="E^{(2)}"/> can be thought of as a 4x4 matrix, <img class="math" src="_images/math/b706b11b78c575f736480447b477ff50cadbef3e.png" alt="N^{o}"/> as a four long vector. Now the first element from this linear transformation is found to be:</p>
+<div class="math">
+<p><img src="_images/math/4dd2fb1c02caeb90f4d7a1294952b43ee6d24e2d.png" alt="u_{1}^{o}=\sum_{j}\left(\left\langle 0\left|\left[q_{i},\left[H_{0},q_{j}^{+}\right]\right]\right|0\right\rangle \kappa_{j}+\left\langle 0\left|\left[q_{i},\left[H_{0},q_{j}\right]\right]\right|0\right\rangle \kappa_{j}'\right)"/></p>
+</div><p>Here <img class="math" src="_images/math/b7ed7f9bccff1b7d11c7371cf998fb3fe1c36da9.png" alt="(pq)=i"/> and <img class="math" src="_images/math/903f4f08c4acf10d2a4f3769af34c36623ced03d.png" alt="(rs)=j"/>. Now this can be rewritten as:</p>
+<div class="math">
+<p><img src="_images/math/cb100c8ebc77de3bcf877dd177adcbb1a97c6478.png" alt="u_{1}^{o}=\left\langle 0\left|\left[q_{i},\left[H_{0},\sum_{j}q_{j}^{+}\kappa_{j}\right]\right]\right|0\right\rangle +\left\langle 0\left|\left[q_{i},\left[H_{0},\sum_{j}q_{j}\kappa_{j}'\right]\right]\right|0\right\rangle"/></p>
+</div><p>Here it is used that <img class="math" src="_images/math/e18d839a0e889a07a4e7a17bed70fe453966c6df.png" alt="\kappa"/> is just a number, and only one of the terms depends on <img class="math" src="_images/math/6b21e0b0899a0d2879d3b8019087fa630bab4ea2.png" alt="j"/>. Now:</p>
+<div class="math">
+<p><img src="_images/math/fe27deae10f351171e3c5bc6e445aba70c6bf6d5.png" alt="u_{1}^{o}=\left\langle 0\left|\left[q_{i},\left[H_{0},\sum_{j}\left(q_{j}^{+}\kappa_{j}+q_{j}\kappa_{j}'\right)\right]\right]\right|0\right\rangle"/></p>
+</div><p>Now by using the definition of the one-index transformed Hamiltonian:</p>
+<div class="math">
+<p><img src="_images/math/4c8c549922b728c2bf8d165c5e88f750dc7f0565.png" alt="u_{1}^{o}=-\left\langle 0\left|\left[q_{i},H\left(\kappa\right)\right]\right|0\right\rangle"/></p>
+</div><p>The minus is from <img class="math" src="_images/math/32f141dfdd60edea5b3e07cc5f8fe22c2aaf09aa.png" alt="\left[H_{0},\sum_{j}\left(q_{j}^{+}\kappa_{j}+q_{j}\kappa_{j}'\right)\right]=-\left[\sum_{j}\left(q_{j}^{+}\kappa_{j}+q_{j}\kappa_{j}'\right),H_{0}\right]"/>. Now the second element:</p>
+<div class="math">
+<p><img src="_images/math/13546c225c2b66d0dbbf90f215f932f1321efc60.png" alt="u_{2}^{o}=\sum_{j}\left(\left\langle 0\left|\left[R_{i},\left[H_{0},q_{j}^{+}\right]\right]\right|0\right\rangle \kappa_{j}+\left\langle 0\left|\left[R_{i},\left[H_{0},q_{j}\right]\right]\right|0\right\rangle \kappa_{j}'\right)"/></p>
+</div><p>Following the same procedure:</p>
+<div class="math">
+<p><img src="_images/math/cc2762aaba25b00034d5cda4f22bb01e1fafec22.png" alt="u_{2}^{o}=-\left\langle 0\left|\left[R_{i},H\left(\kappa\right)\right]\right|0\right\rangle"/></p>
+</div><p>Having <img class="math" src="_images/math/c3da99d51198497ff50681a7baad26015c1f4a46.png" alt="R_{i}=\left|0\right\rangle \left\langle n\right|"/>, now gives:</p>
+<div class="math">
+<p><img src="_images/math/84dd5226204b299bccc908a6afe7182880d17ab2.png" alt="u_{2}^{o}=-\left\langle i\left|H\left(\kappa\right)\right|0\right\rangle"/></p>
+</div><p>The third term:</p>
+<div class="math">
+<p><img src="_images/math/eeb1140d6032590e84961ed806806250c66c6d32.png" alt="u_{3}^{o}=\sum_{j}\left(\left(\left\langle 0\left|\left[q_{i},\left[H_{0},q_{j}\right]\right]\right|0\right\rangle \right)^{*}\kappa_{j}+\left(\left\langle 0\left|\left[q_{i},\left[H_{0},q_{j}^{+}\right]\right]\right|0\right\rangle \right)^{*}\kappa_{j}'\right)"/></p>
+</div><p>Following the same procedure and using <img class="math" src="_images/math/f4c350071f4294ff11fbdf6eb99b8026ba403138.png" alt="q_{i}^{*}=q_{i}^{\dagger}"/>:</p>
+<div class="math">
+<p><img src="_images/math/509c8e4e378a67bc7381a3940722d60e6d69bc32.png" alt="u_{3}^{o}=-\left\langle 0\left|\left[q_{i}^{\dagger},H\left(\kappa\right)\right]\right|0\right\rangle"/></p>
+</div><p>Now the fourth term:</p>
+<div class="math">
+<p><img src="_images/math/69a8fcda29d302aa1c156944f167f4eaefbf6072.png" alt="u_{4}^{o}=\sum_{j}\left(\left(\left\langle 0\left|\left[R_{i},\left[H_{0},q_{j}^{+}\right]\right]\right|0\right\rangle \right)^{*}\kappa_{j}+\left(\left\langle 0\left|\left[R_{i},\left[H_{0},q_{j}\right]\right]\right|0\right\rangle \right)^{*}\kappa_{j}'\right)"/></p>
+</div><p>Gives:</p>
+<div class="math">
+<p><img src="_images/math/7853a6276a282926be3d319bf720a9e0f005ce7f.png" alt="u_{4}^{o}=\left\langle 0\left|H\left(\kappa\right)\right|i\right\rangle"/></p>
+</div><p>Here it is used that, <img class="math" src="_images/math/429cf502e694cfcb42b8c7c2f3f9ad3642be3976.png" alt="\left[R_{i}^{\dagger},H\left(\kappa\right)\right]=-\left[H\left(\kappa\right),R_{i}^{\dagger}\right]"/>. Now in summary giving:</p>
+<div class="math">
+<p><img src="_images/math/228812611f23c73834738aa31fa83477745c9476.png" alt="u^{o}=-\left(\begin{array}{c}
+\left\langle 0\left|\left[q_{i},H\left(\kappa\right)\right]\right|0\right\rangle \\
+\left\langle i\left|H\left(\kappa\right)\right|0\right\rangle \\
+\left\langle 0\left|\left[q_{i}^{\dagger},H\left(\kappa\right)\right]\right|0\right\rangle \\
+-\left\langle 0\left|H\left(\kappa\right)\right|i\right\rangle
+\end{array}\right)"/></p>
+</div><p>Now consider the linear transformation of <img class="math" src="_images/math/7b60fc4d9722f21289eeb71f16249f9fd15dccdf.png" alt="u_{(pq)}^{c}=\sum_{(rs)}E_{(pq)(rs)}^{(2)}N_{(rs)}^{c}"/>. First:</p>
+<div class="math">
+<p><img src="_images/math/18c66e64bf1cbd2fb390aa37a32f14b4fb701a4f.png" alt="u_{1}^{c}=\sum_{j}\left(\left\langle 0\left|\left[\left[q_{i},H_{0}\right],R_{j}^{+}\right]\right|0\right\rangle S_{j}+\left\langle 0\left|\left[\left[q_{i},H_{0}\right],R_{j}\right]\right|0\right\rangle S'_{j}\right)"/></p>
+</div><p>It can now be introduced that:</p>
+<div class="math">
+<p><img src="_images/math/db3db9b5e4cb08ba0fd0851cc1e1cd5fb48fff98.png" alt="\left|0^{R}\right\rangle =-\sum_{n}S_{n}R_{n}^{+}\left|0\right\rangle =-\sum_{n}S_{n}\left|n\right\rangle"/></p>
+</div><div class="math">
+<p><img src="_images/math/e9cb805ff53b0b2f11978fc5ad890867bcebb7f7.png" alt="\left\langle 0^{L}\right|=\sum_{n}\left\langle 0\right|S_{n}^{'}R_{n}=\sum_{n}\left\langle n\right|S_{n}^{'}"/></p>
+</div><p>Using the above:</p>
+<div class="math">
+<p><img src="_images/math/e0341f4544989259640e124c51bccd8dd4b56b3f.png" alt="u_{1}^{c}=-\left\langle 0\left|\left[q_{i},H_{0}\right]\right|0^{R}\right\rangle -\left\langle 0^{L}\left|\left[q_{i},H_{0}\right]\right|0\right\rangle"/></p>
+</div><p>Following the same method it can be found that:</p>
+<div class="math">
+<p><img src="_images/math/fdd6ff63f5ac7df7f06c2448bd382ddc3eff90ef.png" alt="u^{c}=-\left(\begin{array}{c}
+\left\langle 0^{L}\left|\left[q_{i},H_{0}\right]\right|0\right\rangle +\left\langle 0\left|\left[q_{i},H_{0}\right]\right|0^{R}\right\rangle \\
+\left\langle i\left|H_{0}\right|0^{R}\right\rangle +\left\langle 0\left|H_{0}\right|0\right\rangle S\\
+\left\langle 0^{L}\left|\left[q_{i}^{\dagger},H_{0}\right]\right|0\right\rangle +\left\langle 0\left|\left[q_{i}^{\dagger},H_{0}\right]\right|0^{R}\right\rangle \\
+-\left\langle 0^{L}\left|H_{0}\right|i\right\rangle +\left\langle 0\left|H_{0}\right|0\right\rangle S'
+\end{array}\right)"/></p>
+</div><p>In a similar way the linear transformation of <img class="math" src="_images/math/1dbc400fcc213305415872f9f625cd2828f97a00.png" alt="S"/> can be made to find:</p>
+<div class="math">
+<p><img src="_images/math/1cce5cf3c97229116f77bbe3bc031f2aea97dc0c.png" alt="m^{o}=\left(\begin{array}{c}
+\left\langle 0\left|\left[q_{i},\hat{\kappa}\right]\right|0\right\rangle \\
+\left\langle i\left|\hat{\kappa}\right|0\right\rangle \\
+\left\langle 0\left|\left[q_{i}^{\dagger},\hat{\kappa}\right]\right|0\right\rangle \\
+\left\langle 0\left|\hat{\kappa}\right|i\right\rangle
+\end{array}\right)"/></p>
+</div><p>and,</p>
+<div class="math">
+<p><img src="_images/math/fef088cc896a7f937f185f0c0223bb9f1e713c5f.png" alt="m^{c}=\left(\begin{array}{c}
+-\left\langle 0\left|q_{i}\right|0^{R}\right\rangle -\left\langle 0^{L}\left|q_{i}\right|0\right\rangle \\
+S_{i}\\
+-\left\langle 0\left|q_{i}^{\dagger}\right|0^{R}\right\rangle -\left\langle 0^{L}\left|q_{i}^{\dagger}\right|0\right\rangle \\
+-S_{i}'
+\end{array}\right)"/></p>
+</div></div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="justmath.html" class="btn btn-neutral float-right" title="Just Maths" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="daltonsurgery.html" class="btn btn-neutral" title="Dalton Surgery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Erik Kjellgren.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
