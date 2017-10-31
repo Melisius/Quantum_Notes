@@ -80,3 +80,8 @@ The anti-commutator is defined as:
 
 .. math::
    \left[\hat{A},\hat{B}\right]_{+}=\hat{A}\hat{B}+\hat{B}\hat{A}
+   
+From the commutator relation it can be noted that:
+
+.. math::
+   \left[\hat{A},\hat{B}\right]=\hat{A}\hat{B}-\hat{B}\hat{A}=-\left(\hat{B}\hat{A}-\hat{A}\hat{B}\right)=-\left[\hat{B},\hat{A}\right]

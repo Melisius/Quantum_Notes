@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">One-index Transformation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#singlet-case">Singlet Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#triplet-case">Triplet Case</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="hartreefock.html">Hartree-Fock</a></li>
@@ -168,57 +169,94 @@
 <h2>Singlet Case<a class="headerlink" href="#singlet-case" title="Permalink to this headline">¶</a></h2>
 <p>It is given that:</p>
 <div class="math">
-<p><img src="_images/math/a7a34d18e643530989a421bebe3a97e6bf78a42c.png" alt="\hat{\kappa}=\sum_{mn}\kappa_{mn}E_{mn}"/></p>
-</div><p>and</p>
+\[\hat{\kappa}=\sum_{mn}\kappa_{mn}E_{mn}\]</div>
+<p>and</p>
 <div class="math">
-<p><img src="_images/math/6294ffc79715af17c07d3420c62df29c1f0670b5.png" alt="\hat{H}=\sum_{pq}h_{pq}E_{pq}+\frac{1}{2}\sum_{pqrs}g_{pqrs}e_{pqrs}"/></p>
-</div><p>Now lets consider <img class="math" src="_images/math/7c45535ed4ea6ca99beb0c72190512c625181b7d.png" alt="\left[\hat{\kappa},\hat{H}\right]"/>, which can be split up as:</p>
+\[\hat{H}=\sum_{pq}h_{pq}E_{pq}+\frac{1}{2}\sum_{pqrs}g_{pqrs}e_{pqrs}\]</div>
+<p>Now lets consider <span class="math">\(\left[\hat{\kappa},\hat{H}\right]\)</span>, which can be split up as:</p>
 <div class="math">
-<p><img src="_images/math/356d9a3920369c7ebb87a65811ce509096295273.png" alt="\left[\hat{\kappa},\hat{H}\right]=\left[\hat{\kappa},\hat{h}\right]+\left[\hat{\kappa},\hat{g}\right]"/></p>
-</div><p>Now lets consider the one-electron part first:</p>
+\[\left[\hat{\kappa},\hat{H}\right]=\left[\hat{\kappa},\hat{h}\right]+\left[\hat{\kappa},\hat{g}\right]\]</div>
+<p>Now lets consider the one-electron part first:</p>
 <div class="math">
-<p><img src="_images/math/8664619e76648a7fe220bb30adeb823cb3e1bd8c.png" alt="\left[\hat{\kappa},\hat{h}\right]=\sum_{pq}\left[\hat{\kappa},h_{pq}E_{pq}\right]=\sum_{pqmn}\left[\kappa_{mn}E_{mn},h_{pq}E_{pq}\right]"/></p>
-</div><p><img class="math" src="_images/math/c6b48fb3c121aa910a1bbed16f061cc48b615f27.png" alt="\kappa_{mn}"/> and <img class="math" src="_images/math/7f25a5c344de48181ef461abaa1ba3ad7c9b105c.png" alt="h_{pq}"/> are just matrix elements and can therefore be taken out, giving:</p>
+\[\left[\hat{\kappa},\hat{h}\right]=\sum_{pq}\left[\hat{\kappa},h_{pq}E_{pq}\right]=\sum_{pqmn}\left[\kappa_{mn}E_{mn},h_{pq}E_{pq}\right]\]</div>
+<p><span class="math">\(\kappa_{mn}\)</span> and <span class="math">\(h_{pq}\)</span> are just matrix elements and can therefore be taken out, giving:</p>
 <div class="math">
-<p><img src="_images/math/5741b18db1109c6bb51cbe651955131ae3f6ef8d.png" alt="\left[\hat{\kappa},\hat{h}\right]=\sum_{pqmn}\kappa_{mn}h_{pq}\left[E_{mn},E_{pq}\right]"/></p>
-</div><p>Now it can be used that <img class="math" src="_images/math/70420534e0ce80d6481ec911b78d7d4fdf821c00.png" alt="\left[E_{mn},E_{pq}\right]=E_{mq}\delta_{pn}-E_{pn}\delta_{mq}"/>:</p>
+\[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqmn}\kappa_{mn}h_{pq}\left[E_{mn},E_{pq}\right]\]</div>
+<p>Now it can be used that <span class="math">\(\left[E_{mn},E_{pq}\right]=E_{mq}\delta_{pn}-E_{pn}\delta_{mq}\)</span>:</p>
 <div class="math">
-<p><img src="_images/math/017268072b7db1e9536a276c66d4d4bd1219e883.png" alt="\left[\hat{\kappa},\hat{h}\right]=\sum_{pqmn}\kappa_{mn}h_{pq}\left(E_{mq}\delta_{pn}-E_{pn}\delta_{mq}\right)"/></p>
-</div><p>Now the parenteses can be expanded:</p>
+\[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqmn}\kappa_{mn}h_{pq}\left(E_{mq}\delta_{pn}-E_{pn}\delta_{mq}\right)\]</div>
+<p>Now the parenteses can be expanded:</p>
 <div class="math">
-<p><img src="_images/math/22ab0d3f1ee0d2476ca120be6fb581b40896c488.png" alt="\left[\hat{\kappa},\hat{h}\right]=\sum_{pqmn}\kappa_{mn}h_{pq}E_{mq}\delta_{pn}-\sum_{pqmn}\kappa_{mn}h_{pq}E_{pn}\delta_{mq}"/></p>
-</div><p>For the first sum it can be required that <img class="math" src="_images/math/f3c24c39fd7e827cdf2bce4fe84aa336142d0163.png" alt="n=p"/>, and for the second sum it can be required that <img class="math" src="_images/math/901fd54f94c06917d2a9b33bd2079348b3974374.png" alt="m=q"/>, giving:</p>
+\[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqmn}\kappa_{mn}h_{pq}E_{mq}\delta_{pn}-\sum_{pqmn}\kappa_{mn}h_{pq}E_{pn}\delta_{mq}\]</div>
+<p>For the first sum it can be required that <span class="math">\(n=p\)</span>, and for the second sum it can be required that <span class="math">\(m=q\)</span>, giving:</p>
 <div class="math">
-<p><img src="_images/math/b92cde1e43cb7ae7876c4e5ca95233dc89dcd14d.png" alt="\left[\hat{\kappa},\hat{h}\right]=\sum_{pqm}\kappa_{mp}h_{pq}E_{mq}\delta_{pp}-\sum_{pqn}\kappa_{qn}h_{pq}E_{pn}\delta_{qq}"/></p>
-</div><p>Now exchanging indecies can be done, for the first sum <img class="math" src="_images/math/edba97b4c0d864d26e92ea7ea73767fa38eef3f7.png" alt="m"/> and <img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/>, and for the second sum <img class="math" src="_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/> and <img class="math" src="_images/math/620a3ce6403ec82f1347af9985bc03f7a9382f4a.png" alt="q"/>, giving:</p>
+\[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqm}\kappa_{mp}h_{pq}E_{mq}\delta_{pp}-\sum_{pqn}\kappa_{qn}h_{pq}E_{pn}\delta_{qq}\]</div>
+<p>Now exchanging indecies can be done, for the first sum <span class="math">\(m\)</span> and <span class="math">\(p\)</span>, and for the second sum <span class="math">\(n\)</span> and <span class="math">\(q\)</span>, giving:</p>
 <div class="math">
-<p><img src="_images/math/30d0bff7add1ef715fce3de329b28e87efe5b528.png" alt="\left[\hat{\kappa},\hat{h}\right]=\sum_{pqm}\kappa_{pm}h_{mq}E_{pq}-\sum_{pqn}\kappa_{nq}h_{pn}E_{pq}"/></p>
-</div><p>Atlast for the second sum redindexing such <img class="math" src="_images/math/d92d4cf68169ff96aa27b54d8044cc189e6788af.png" alt="n=p`n\rightarrow m"/>:</p>
+\[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqm}\kappa_{pm}h_{mq}E_{pq}-\sum_{pqn}\kappa_{nq}h_{pn}E_{pq}\]</div>
+<p>Atlast for the second sum redindexing such <span class="math">\(n=p`n\rightarrow m\)</span>:</p>
 <div class="math">
-<p><img src="_images/math/7ef84a9c5c6626d651954bade54b66aa3ade93db.png" alt="\left[\hat{\kappa},\hat{h}\right]=\sum_{pqm}\kappa_{pm}h_{mq}E_{pq}-\sum_{pqm}\kappa_{mq}h_{pm}E_{pq}=\sum_{pqm}\left(\kappa_{pm}h_{mq}-\kappa_{mq}h_{pm}\right)E_{pq}"/></p>
-</div><p>Now the two-electron part can be considered:</p>
+\[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqm}\kappa_{pm}h_{mq}E_{pq}-\sum_{pqm}\kappa_{mq}h_{pm}E_{pq}=\sum_{pqm}\left(\kappa_{pm}h_{mq}-\kappa_{mq}h_{pm}\right)E_{pq}\]</div>
+<p>Now the two-electron part can be considered:</p>
 <div class="math">
-<p><img src="_images/math/4108f9d10fb3729af157715f8f8c96db9670104a.png" alt="\left[\hat{\kappa},\hat{g}\right]=\frac{1}{2}\sum_{pqrsmn}\kappa_{mn}g_{pqrs}\left[E_{mn},e_{pqrs}\right]"/></p>
-</div><p>Here it can be used that, <img class="math" src="_images/math/6bc2ebb3f700e42b2c70f723a974b3d9f1b53b39.png" alt="\left[E_{mn},e_{pqrs}\right]=\delta_{pn}e_{mqrs}-\delta_{mq}e_{pnrs}+\delta_{rn}e_{pqms}-\delta_{ms}e_{pqrn}"/>. Giving:</p>
+\[\left[\hat{\kappa},\hat{g}\right]=\frac{1}{2}\sum_{pqrsmn}\kappa_{mn}g_{pqrs}\left[E_{mn},e_{pqrs}\right]\]</div>
+<p>Here it can be used that, <span class="math">\(\left[E_{mn},e_{pqrs}\right]=\delta_{pn}e_{mqrs}-\delta_{mq}e_{pnrs}+\delta_{rn}e_{pqms}-\delta_{ms}e_{pqrn}\)</span>. Giving:</p>
 <div class="math">
-<p><img src="_images/math/f171d814d0134ec8c5a5ffe224f7304039b5681d.png" alt="\left[\hat{\kappa},\hat{g}\right]=\frac{1}{2}\sum_{pqrsmn}\kappa_{mn}g_{pqrs}\left(\delta_{pn}e_{mqrs}-\delta_{mq}e_{pnrs}+\delta_{rn}e_{pqms}-\delta_{ms}e_{pqrn}\right)"/></p>
-</div><p>Now by a similar approach of elimination indicies as for the one-electron part, it can be shown that:</p>
+\[\left[\hat{\kappa},\hat{g}\right]=\frac{1}{2}\sum_{pqrsmn}\kappa_{mn}g_{pqrs}\left(\delta_{pn}e_{mqrs}-\delta_{mq}e_{pnrs}+\delta_{rn}e_{pqms}-\delta_{ms}e_{pqrn}\right)\]</div>
+<p>Now by a similar approach of elimination indicies as for the one-electron part, it can be shown that:</p>
 <div class="math">
-<p><img src="_images/math/afe0f85d4b4bb58ed1d51bfab5f5bf318c7a619c.png" alt="\left[\hat{\kappa},\hat{g}\right]=\frac{1}{2}\sum_{pqrsm}\left(\kappa_{pm}g_{mqrs}-\kappa_{mq}g_{pmrs}+\kappa_{rm}g_{pqms}-k_{ms}g_{pqrm}\right)e_{pqrs}"/></p>
-</div><p>If it is defined that <img class="math" src="_images/math/22e57ccf8bb89bdef04eb2fd0e9e08e20a5412d7.png" alt="g_{pqrs}^{k}=\sum_{m}\left(\kappa_{pm}g_{mqrs}-\kappa_{mq}g_{pmrs}+\kappa_{rm}g_{pqms}-k_{ms}g_{pqrm}\right)"/>, it can be seen from symmetry that:</p>
+\[\left[\hat{\kappa},\hat{g}\right]=\frac{1}{2}\sum_{pqrsm}\left(\kappa_{pm}g_{mqrs}-\kappa_{mq}g_{pmrs}+\kappa_{rm}g_{pqms}-k_{ms}g_{pqrm}\right)e_{pqrs}\]</div>
+<p>If it is defined that <span class="math">\(g_{pqrs}^{k}=\sum_{m}\left(\kappa_{pm}g_{mqrs}-\kappa_{mq}g_{pmrs}+\kappa_{rm}g_{pqms}-k_{ms}g_{pqrm}\right)\)</span>, it can be seen from symmetry that:</p>
 <div class="math">
-<p><img src="_images/math/89cbcdca9c4fb8d274b5501f63466fc0517ce4f1.png" alt="g_{pqrs}^{k}=\sum_{m}\left(\kappa_{pm}g_{rsqm}-\kappa_{mq}g_{rspm}+\kappa_{rm}g_{mspq}-k_{ms}g_{rmpq}\right)=g_{rspq}^{k}"/></p>
-</div><p>The notation can be eased by introducing the following:</p>
+\[g_{pqrs}^{k}=\sum_{m}\left(\kappa_{pm}g_{rsqm}-\kappa_{mq}g_{rspm}+\kappa_{rm}g_{mspq}-k_{ms}g_{rmpq}\right)=g_{rspq}^{k}\]</div>
+<p>The notation can be eased by introducing the following:</p>
 <div class="math">
-<p><img src="_images/math/71cb93ed4c9879bea212db76741b0d60a3b57cd8.png" alt="\left(rs|\tilde{pq}\right)=\sum_{m}\left(\kappa_{pm}g_{rsqm}-\kappa_{mq}g_{rspm}\right)"/></p>
-</div><p>and,</p>
+\[\left(rs|\tilde{pq}\right)=\sum_{m}\left(\kappa_{pm}g_{rsqm}-\kappa_{mq}g_{rspm}\right)\]</div>
+<p>and,</p>
 <div class="math">
-<p><img src="_images/math/c61de3929b56b185b44fb2f2e81dfcfed12fd254.png" alt="\tilde{h}_{pq}=\sum_{m}\left(\kappa_{pm}h_{mq}-\kappa_{mq}h_{pm}\right)"/></p>
-</div><p>Now giving the total one-index transformed Hamiltonian as:</p>
+\[\tilde{h}_{pq}=\sum_{m}\left(\kappa_{pm}h_{mq}-\kappa_{mq}h_{pm}\right)\]</div>
+<p>Now giving the total one-index transformed Hamiltonian as:</p>
 <div class="math">
-<p><img src="_images/math/41507e747c3be926139eb8dcabd956d886763c0e.png" alt="H\left(\kappa\right)=\sum_{pq}\tilde{h}_{pq}E_{pq}+\frac{1}{2}\sum_{rspq}\left(\left(rs|\tilde{pq}\right)e_{pqrs}+\left(pq|\tilde{rs}\right)e_{pqrs}\right)"/></p>
-</div><ul class="simple">
+\[H\left(\kappa\right)=\sum_{pq}\tilde{h}_{pq}E_{pq}+\frac{1}{2}\sum_{rspq}\left(\left(rs|\tilde{pq}\right)e_{pqrs}+\left(pq|\tilde{rs}\right)e_{pqrs}\right)\]</div>
+<ul class="simple">
 <li>Molecular Electronic-Structure Theory, Trygve Helgaker, Poul Jorgensen, Jeppe Olsen</li>
+</ul>
+</div>
+<div class="section" id="triplet-case">
+<h2>Triplet Case<a class="headerlink" href="#triplet-case" title="Permalink to this headline">¶</a></h2>
+<p>Lets consider the commutators that makes the difference between triplet and singlet. First for the one electron operator:</p>
+<div class="math">
+\[\left[E_{mn},E_{pq}\left(S\right)\right]=\sum_{\sigma\tau}\left[a_{m\sigma}^{\dagger}a_{n\tau},S_{\tau}a_{p\tau}^{\dagger}a_{q\tau}\right]\]</div>
+<p>Now it can be used that <span class="math">\(\left[a_{P}^{\dagger}a_{Q},a_{R}^{\dagger}a_{S}\right]=\left[a_{P}^{\dagger},a_{R}^{\dagger}a_{S}\right]a_{Q}+a_{P}^{\dagger}\left[a_{Q},a_{R}^{\dagger}a_{S}\right]\)</span>:</p>
+<div class="math">
+\[\left[E_{mn},E_{pq}\left(S\right)\right]=\sum_{\sigma\tau}\left(\left[a_{m\sigma}^{\dagger}a_{n\sigma},S_{\tau}a_{p\tau}^{\dagger}\right]a_{q\tau}+a_{p\tau}^{\dagger}\left[S_{\sigma}a_{m\sigma}^{\dagger}a_{n\tau},S_{\tau}a_{q\tau}\right]\right)\]</div>
+<p>It can now be used that <span class="math">\(\left[a_{P}^{\dagger},a_{Q}^{\dagger}a_{R}\right]=-\delta_{PR}a_{Q}^{\dagger}\)</span> and <span class="math">\(\left[a_{P},a_{Q}^{\dagger}a_{R}\right]=\delta_{PQ}a_{R}\)</span>:</p>
+<div class="math">
+\[\left[E_{mn},E_{pq}\left(S\right)\right]=\sum_{\sigma\tau}\left(S_{\tau}\delta_{\sigma\tau}\delta_{np}a_{m\sigma}^{\dagger}a_{q\tau}-\delta_{\sigma\tau}\delta_{qm}a_{p\tau}^{\dagger}a_{n\sigma}\right)\]</div>
+<p>Now it can be identified that:</p>
+<div class="math">
+\[\left[E_{mn},E_{pq}\left(S\right)\right]=\delta_{np}E_{mq}\left(S\right)-\delta_{qm}E_{pn}\left(S\right)\]</div>
+<p>Thus it can be seen that for the one-electron one index transformation, if <span class="math">\(S=-\)</span>:</p>
+<div class="math">
+\[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqm}\left(\kappa_{pm}h_{mq}-\kappa_{mq}h_{pm}\right)E_{pq}\left(-\right)\]</div>
+<p>Now the same analysis can be done for the two electron operator:</p>
+<div class="math">
+\[\left[E_{mn}\left(S\right),e_{pqrs}\right]=\left[E_{mn}\left(S\right),E_{pq}E_{rs}-\delta_{qr}E_{ps}\right]\]</div>
+<p>Using <span class="math">\(\left[A,BC\right]=\left[A,B\right]C+B\left[A,C\right]\)</span>:</p>
+<div class="math">
+\[\left[E_{mn}\left(S\right),e_{pqrs}\right]=E_{pq}\left[E_{mn}\left(S\right),E_{rs}\right]+E_{rs}\left[E_{mn}\left(S\right),E_{pq}\right]-\delta_{qr}\left[E_{mn}\left(S\right),E_{ps}\right]\]</div>
+<div class="math">
+\[\begin{split}\begin{array}{ccc}
+\left[E_{mn}\left(S\right),e_{pqrs}\right] &amp; = &amp; \delta_{nr}E_{pq}E_{ms}\left(S\right)-\delta_{ms}E_{pq}E_{rn}\left(S\right)+\delta_{np}E_{mq}\left(S\right)E_{rs}\\
+ &amp;  &amp; -\delta_{mq}E_{pn}\left(S\right)E_{rs}-\delta_{qr}\delta_{np}E_{ms}\left(S\right)+\delta_{qr}\delta_{ms}E_{pn}\left(S\right)
+\end{array}\end{split}\]</div>
+<p>Now using <span class="math">\(e_{pqrs}=E_{pq}E_{rs}-\delta_{qr}E_{ps}\)</span>:</p>
+<div class="math">
+\[\left[E_{mn}\left(S\right),e_{pqrs}\right]=\delta_{pn}e_{mqrs}\left(-,+\right)-\delta_{mq}e_{pnrs}\left(-,+\right)+\delta_{rn}e_{pqms}\left(+,-\right)-\delta_{ms}e_{pqrn}\left(+,-\right)\]</div>
+<p>Here <span class="math">\(+\)</span> indicates no <span class="math">\(S\)</span> and <span class="math">\(-\)</span> indicates <span class="math">\(S\)</span>. This can now be used to find the one index transformed Hamiltonian for the triplet state, in steps similar to that of the singlet state to get the total Hamilonian:</p>
+<div class="math">
+\[H\left(\kappa\right)=\sum_{pq}\tilde{h}_{pq}E_{pq}\left(-\right)+\frac{1}{2}\sum_{rspq}\left(\left(rs|\tilde{pq}\right)e_{pqrs}\left(+,-\right)+\left(pq\tilde{rs}\right)e_{pqrs}\left(-,+\right)\right)\]</div>
+<ul class="simple">
 <li>Triplet excitation properties in large scale multiconfiguration linear response calculations, Jeppe Olsen, Danny L. Yeager, and Poul Jo/rgensen</li>
 </ul>
 </div>
@@ -278,6 +316,7 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

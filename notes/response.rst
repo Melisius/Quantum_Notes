@@ -242,3 +242,4 @@ and,
    -S_{i}'
    \end{array}\right)
    
+- Triplet excitation properties in large scale multiconfiguration linear response calculations, Jeppe Olsen, Danny L. Yeager, and Poul Jo/rgensen
