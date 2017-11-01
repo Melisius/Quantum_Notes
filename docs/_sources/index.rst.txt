@@ -10,7 +10,6 @@ Notes about Quantum Chemistry
    :caption: Content
    
    mcscfsrdft.rst
-   srdft.rst
    daltonsurgery.rst
    response.rst
    justmath.rst
