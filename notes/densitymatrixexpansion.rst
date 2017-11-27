@@ -1,10 +1,7 @@
 
-Density Functional Theory
-=========================
-
 Density matrix expansion
-------------------------
- 
+========================
+
 The density matrix is given as:
 
 .. math::

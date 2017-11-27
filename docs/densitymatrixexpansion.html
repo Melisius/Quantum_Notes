@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Quantum Notes  documentation</title>
+  <title>Density matrix expansion &mdash; Quantum Notes  documentation</title>
   
 
   
@@ -34,9 +33,11 @@
 
   
         <link rel="index" title="Index"
-              href="#"/>
+              href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Quantum Notes  documentation" href="index.html"/> 
+    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
+        <link rel="next" title="One-index Transformation" href="oneindextransformation.html"/>
+        <link rel="prev" title="Just Maths" href="justmath.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -86,12 +87,12 @@
             
             
               <p class="caption"><span class="caption-text">Content</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="daltonsurgery.html">Dalton Surgery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="justmath.html">Just Maths</a></li>
-<li class="toctree-l1"><a class="reference internal" href="densitymatrixexpansion.html">Density matrix expansion</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Density matrix expansion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="oneindextransformation.html">One-index Transformation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hartreefock.html">Hartree-Fock</a></li>
 </ul>
@@ -138,12 +139,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Density matrix expansion</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/densitymatrixexpansion.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -155,11 +158,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="density-matrix-expansion">
+<h1>Density matrix expansion<a class="headerlink" href="#density-matrix-expansion" title="Permalink to this headline">¶</a></h1>
+<p>The density matrix is given as:</p>
+<div class="math">
+\[\tilde{D}_{pq}\left(\kappa\right)=\left\langle \tilde{0}\left|p^{\dagger}q\right|\tilde{0}\right\rangle =\left\langle 0\left|\exp\left(\hat{\kappa}\right)p^{\dagger}q\exp\left(-\hat{\kappa}\right)\right|0\right\rangle\]</div>
+<p>The BCH expansion is given as:</p>
+<div class="math">
+\[\exp\left(A\right)B\exp\left(-A\right)=B+\left[A,B\right]+\frac{1}{2!}\left[A,\left[A,B\right]\right]+...\]</div>
+<p>If <span class="math">\(A=\hat{\kappa}\)</span> and <span class="math">\(B=p^{\dagger}q\)</span>, it can be written that:</p>
+<div class="math">
+\[\tilde{D}_{pq}\left(A\right)=\left\langle 0\left|B\right|0\right\rangle +\left\langle 0\left|\left[A,B\right]\right|0\right\rangle +O\left(A^{2}\right)\]</div>
+<div class="math">
+\[\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\left\langle 0\left|\left[\hat{\kappa},p^{\dagger}q\right]\right|0\right\rangle +O\left(\kappa^{2}\right)\]</div>
+<p>It can now be used that:</p>
+<div class="math">
+\[\hat{\kappa}=\sum_{pq}\kappa_{pq}p^{\dagger}q\]</div>
+<p>Thus giving:</p>
+<div class="math">
+\[\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\left\langle 0\left|\left[\sum_{rs}\kappa_{rs}r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle +O\left(\kappa^{2}\right)\]</div>
+<p>Since <span class="math">\(\kappa_{rs}\)</span> is just a matrix element, the above equation can rewritten as:</p>
+<div class="math">
+\[\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\sum_{rs}\left\langle 0\left|\left[r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle \kappa_{rs}+O\left(\kappa^{2}\right)\]</div>
+<ul class="simple">
+<li>Four-Component Relativistic Kohn-Sham Theory, Trond Saue, Trygve Helgaker</li>
+</ul>
 </div>
 
 
@@ -169,6 +192,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="oneindextransformation.html" class="btn btn-neutral float-right" title="One-index Transformation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="justmath.html" class="btn btn-neutral" title="Just Maths" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

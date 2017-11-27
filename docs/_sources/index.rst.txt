@@ -10,10 +10,10 @@ Notes about Quantum Chemistry
    :caption: Content
    
    mcscfsrdft.rst
-   daltonsurgery.rst
    response.rst
+   daltonsurgery.rst
    justmath.rst
-   dft.rst
+   densitymatrixexpansion.rst
    oneindextransformation.rst
    hartreefock.rst
    
