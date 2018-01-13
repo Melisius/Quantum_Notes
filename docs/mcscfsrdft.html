@@ -89,7 +89,8 @@
               <p class="caption"><span class="caption-text">Content</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MCSCF-srDFT</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#range-seperation">Range seperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#range-separation-parameter">Range separation parameter</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
@@ -163,17 +164,77 @@
             
   <div class="section" id="mcscf-srdft">
 <h1>MCSCF-srDFT<a class="headerlink" href="#mcscf-srdft" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="range-seperation">
-<h2>Range seperation<a class="headerlink" href="#range-seperation" title="Permalink to this headline">¶</a></h2>
-<p>In WTF-srDFT a range seperation is employed on the two-electron operator such that:</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The method of MCSCF-srDFT is based on the separation of two electron integrals into a longe-range part and a short-range part. Now the regular two electron operator is given as:</p>
 <div class="math">
-\[\hat{g}\left(1,2\right)=\hat{g}^{\mathrm{lr}}\left(1,2\right)+\hat{g}^{\mathrm{sr}}\left(1,2\right)\]</div>
-<p>Here lr is short for long-range and sr is short for short-range. The long-range and short-range part can be defined as:</p>
+\[w_{ee}\left(r_{12}\right)=r_{12}^{-1}\]</div>
+<p>Now breaking it up into two parts gives:</p>
 <div class="math">
-\[\hat{g}^{\mathrm{lr}}\left(1,2\right)=\frac{f\left(\mu r_{12}\right)}{r_{12}}\]</div>
+\[w_{ee}\left(r_{12}\right)=w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)+w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)\]</div>
+<p>Here lr is long-range, sr is short-range and <span class="math">\(\mu\)</span> is a paramter that controls where the longe-range and short-range interactions are separated. From Hohnenberg-Kohn it is known that the universal functional is defined as:</p>
 <div class="math">
-\[\hat{g}^{\mathrm{sr}}\left(1,2\right)=\frac{1-f\left(\mu r_{12}\right)}{r_{12}}\]</div>
-<p>This way makes <span class="math">\(\hat{g}\left(1,2\right)=r_{12}^{-1}\)</span> for all <span class="math">\(f\)</span>. <span class="math">\(\mu\)</span> is a parameter that describes the distance of seperation of the ranges.</p>
+\[F\left[n\right]=\min_{\Psi\rightarrow n}\left\langle \Psi\left|\hat{T}+\hat{W}_{ee}\right|\Psi\right\rangle\]</div>
+<p>for,</p>
+<div class="math">
+\[\hat{W}_{ee}=\frac{1}{2}\sum_{i\neq j}w_{ee}\left(r_{ij}\right)\]</div>
+<p>This gives rise to:</p>
+<div class="math">
+\[\hat{W}_{ee}=\hat{W}_{ee}^{\mathrm{lr},\mu}+\hat{W}_{ee}^{\mathrm{sr},\mu}=\frac{1}{2}\sum_{i\neq j}w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)+\frac{1}{2}\sum_{i\neq j}w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)\]</div>
+<p>A separation of the universal functional into a long-range and a short-range part should also be possible:</p>
+<div class="math">
+\[F\left[n\right]=F^{\mathrm{lr},\mu}\left[n\right]+F^{\mathrm{sr},\mu}\left[n\right]\]</div>
+<p>Here:</p>
+<div class="math">
+\[F^{\mathrm{lr},\mu}\left[n\right]=\min_{\Psi\rightarrow n}\left\langle \Psi\left|\hat{T}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi\right\rangle\]</div>
+<p>and,</p>
+<div class="math">
+\[F^{\mathrm{sr},\mu}\left[n\right]=E_{H}^{\mathrm{sr},\mu}\left[n\right]+E_{xc}^{\mathrm{sr},\mu}\left[n\right]\]</div>
+<p>Here <span class="math">\(E_{H}^{\mathrm{sr},\mu}\)</span> is the Hartree term and <span class="math">\(E_{xc}^{\mathrm{sr},\mu}\)</span> is the exchange-correlation term, both given as short-range. Now the ground state energy can be expresesd accourding to the variational principle:</p>
+<div class="math">
+\[E_{0}=\min_{n}\left\{ F\left[n\right]+\int v_{Ne}\left(r\right)n\left(r\right)dr\right\}\]</div>
+<p>Giving:</p>
+<div class="math">
+\[E_{0}=\min_{\Psi}\left\{ \left\langle \Psi\left|\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi\right\rangle +E_{H}^{\mathrm{sr},\mu}\left[n_{\Psi}\right]+E_{xc}^{\mathrm{sr},\mu}\left[n_{\Psi}\right]\right\}\]</div>
+<div class="math">
+\[E_{0}=\left\langle \Psi^{\mu}\left|\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi^{\mu}\right\rangle +E_{H}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]+E_{xc}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\]</div>
+<p>Similarly as Kohn-Sham DFT this leads to a self-consistent equation:</p>
+<div class="math">
+\[\left(\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}+\hat{V}_{\mathrm{Hxc}}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\right)\left|\Psi^{\mu}\right\rangle =\epsilon^{\mu}\left|\Psi^{\mu}\right\rangle\]</div>
+<p>Here <span class="math">\(\hat{V}_{\mathrm{Hxc}}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\)</span> is the potential energy functional, defined as:</p>
+<div class="math">
+\[\hat{V}_{\mathrm{Hxc}}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]=\int v_{\mathrm{Hxc}}\left[n_{\Psi^{\mu}}\right]\left(r\right)dr\]</div>
+<p>with,</p>
+<div class="math">
+\[v_{\mathrm{Hxc}}\left[n_{\Psi^{\mu}}\right]\left(r\right)=\frac{\delta\left(E_{H}^{\mathrm{sr},\mu}+E_{xc}^{\mathrm{sr},\mu}\right)}{\delta n\left(r\right)}\left[n_{\Psi^{\mu}}\right]\]</div>
+<ul class="simple">
+<li>On the universality of the long-/short-range separation in multiconfigurational densityfunctional theory, Emmanuel Fromager, Julien Toulouse, and Hans Jørgen Aa. Jensen</li>
+<li>On the universality of the long-/short-range separation in multiconfigurational densityfunctional theory. II. Investigating <span class="math">\(f^{0}\)</span> actinide species, Emmanuel Fromager, Florent Réal, Pernilla Wåhlin, Ulf Wahlgren, and Hans Jørgen Aa. Jensen</li>
+</ul>
+</div>
+<div class="section" id="range-separation-parameter">
+<h2>Range separation parameter<a class="headerlink" href="#range-separation-parameter" title="Permalink to this headline">¶</a></h2>
+<p>In MCSCF-srDFT, the two-electron integrals was separated into a long-range and a short-range part, defined by a parameter <span class="math">\(\mu\)</span>. A method of separation is by the error function, thus giving:</p>
+<div class="math">
+\[w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)=\frac{\mathrm{erf}\left(r_{12}\mu\right)}{r_{12}}\]</div>
+<p>and,</p>
+<div class="math">
+\[w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)=\frac{1-\mathrm{erf}\left(r_{12}\mu\right)}{r_{12}}\]</div>
+<p>It can be seen that for the long-range part and the short-range part being treated exact, that this reduces to the usual <span class="math">\(r_{12}^{-1}\)</span> behavior. Further it can be seen that for the limiting cases of <span class="math">\(\mu\)</span> gives:</p>
+<div class="math">
+\[\lim_{\mu\rightarrow0}w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)=0\,\,\,\,\,\,\lim_{\mu\rightarrow\infty}w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)=r_{12}^{-1}\]</div>
+<div class="math">
+\[\lim_{\mu\rightarrow0}w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)=r_{12}^{-1}\,\,\,\,\,\,\lim_{\mu\rightarrow\infty}w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)=0\]</div>
+<p>The ground state energy was found as:</p>
+<div class="math">
+\[E_{0}=\left\langle \Psi^{\mu}\left|\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi^{\mu}\right\rangle +E_{H}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]+E_{xc}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\]</div>
+<p>Now if the limiting case of <span class="math">\(\mu\)</span>, it can be seen the above reduces to:</p>
+<div class="math">
+\[\lim_{\mu\rightarrow0}E_{0}=\left\langle \Psi^{\mu}\left|\hat{T}+\hat{V}_{Ne}+0\right|\Psi^{\mu}\right\rangle +E_{H}^{\mathrm{sr},0}\left[n_{\Psi^{0}}\right]+E_{xc}^{\mathrm{sr},\mu}\left[n_{\Psi^{0}}\right]\]</div>
+<p>Which is Kohn-Sham DFT. And:</p>
+<div class="math">
+\[\lim_{\mu\rightarrow\infty}E_{0}=\left\langle \Psi^{\mu}\left|\hat{T}+\hat{V}_{Ne}+r_{12}^{-1}\right|\Psi^{\mu}\right\rangle +0+0\]</div>
+<p>Which is WFT.</p>
 </div>
 </div>
 
