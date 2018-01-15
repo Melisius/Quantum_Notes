@@ -96,12 +96,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#real-anti-symmetric-matrix">Real (anti)-symmetric matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#baker-campbell-hausdorf-expansion">Baker-Campbell-Hausdorf expansion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#unitary-matrix">Unitary matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#real-orthogoanl-matrix">Real orthogoanl matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#real-orthogonal-matrix">Real orthogonal matrix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#operators">Operators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#projection-operator">Projection operator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#anti-commutator">(anti)-Commutator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jacobi-identity">Jacobi identity</a></li>
 </ul>
 </li>
 </ul>
@@ -197,8 +198,8 @@
 <div class="math">
 \[U^{\dagger}U=UU^{\dagger}=1\]</div>
 </div>
-<div class="section" id="real-orthogoanl-matrix">
-<h3>Real orthogoanl matrix<a class="headerlink" href="#real-orthogoanl-matrix" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="real-orthogonal-matrix">
+<h3>Real orthogonal matrix<a class="headerlink" href="#real-orthogonal-matrix" title="Permalink to this headline">¶</a></h3>
 <p>A real orthogonal matrix must satisfy:</p>
 <div class="math">
 \[Q^{T}Q=QQ^{T}=1\]</div>
@@ -232,6 +233,26 @@
 <p>From the commutator relation it can be noted that:</p>
 <div class="math">
 \[\left[\hat{A},\hat{B}\right]=\hat{A}\hat{B}-\hat{B}\hat{A}=-\left(\hat{B}\hat{A}-\hat{A}\hat{B}\right)=-\left[\hat{B},\hat{A}\right]\]</div>
+</div>
+<div class="section" id="jacobi-identity">
+<h3>Jacobi identity<a class="headerlink" href="#jacobi-identity" title="Permalink to this headline">¶</a></h3>
+<p>Lets consider:</p>
+<div class="math">
+\[\left[A,\left[B,C\right]\right]+\left[B,\left[C,A\right]\right]+\left[C,\left[A,B\right]\right]\]</div>
+<p>Now by expansion:</p>
+<div class="math">
+\[\left[A,BC-CB\right]+\left[B,CA-AC\right]+\left[C,AB-BA\right]\]</div>
+<div class="math">
+\[A\left(BC-CB\right)-\left(BC-CB\right)A+B\left(CA-AC\right)-\left(CA-AC\right)B+C\left(AB-BA\right)-\left(AB-BA\right)C\]</div>
+<div class="math">
+\[ABC-ACB-BCA+CBA+BCA-BAC-CAB+ACB+CAB-CBA-ABC+BAC\]</div>
+<p>Now by rearranging:</p>
+<div class="math">
+\[ABC-ABC+ACB-ACB+BAC-BAC+BCA-BCA+CAB-CAB+CBA-CBA=0\]</div>
+<p>Now giving:</p>
+<div class="math">
+\[\left[A,\left[B,C\right]\right]+\left[B,\left[C,A\right]\right]+\left[C,\left[A,B\right]\right]=0\]</div>
+<p>Which is known as Jacobi identity.</p>
 </div>
 </div>
 </div>

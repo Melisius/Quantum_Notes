@@ -91,6 +91,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MCSCF-srDFT</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#range-separation-parameter">Range separation parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#td-mc-srdft-two-state-analysis">TD-MC-srDFT two-state analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
@@ -200,13 +201,13 @@
 \[E_{0}=\left\langle \Psi^{\mu}\left|\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi^{\mu}\right\rangle +E_{H}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]+E_{xc}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\]</div>
 <p>Similarly as Kohn-Sham DFT this leads to a self-consistent equation:</p>
 <div class="math">
-\[\left(\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}+\hat{V}_{\mathrm{Hxc}}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\right)\left|\Psi^{\mu}\right\rangle =\epsilon^{\mu}\left|\Psi^{\mu}\right\rangle\]</div>
+\[\left(\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}+\hat{V}_{Hxc}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\right)\left|\Psi^{\mu}\right\rangle =\epsilon^{\mu}\left|\Psi^{\mu}\right\rangle\]</div>
 <p>Here <span class="math">\(\hat{V}_{\mathrm{Hxc}}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\)</span> is the potential energy functional, defined as:</p>
 <div class="math">
-\[\hat{V}_{\mathrm{Hxc}}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]=\int v_{\mathrm{Hxc}}\left[n_{\Psi^{\mu}}\right]\left(r\right)dr\]</div>
+\[\hat{V}_{Hxc}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]=\int v_{Hxc}\left[n_{\Psi^{\mu}}\right]\left(r\right)dr\]</div>
 <p>with,</p>
 <div class="math">
-\[v_{\mathrm{Hxc}}\left[n_{\Psi^{\mu}}\right]\left(r\right)=\frac{\delta\left(E_{H}^{\mathrm{sr},\mu}+E_{xc}^{\mathrm{sr},\mu}\right)}{\delta n\left(r\right)}\left[n_{\Psi^{\mu}}\right]\]</div>
+\[v_{Hxc}\left[n_{\Psi^{\mu}}\right]\left(r\right)=\frac{\delta\left(E_{H}^{\mathrm{sr},\mu}+E_{xc}^{\mathrm{sr},\mu}\right)}{\delta n\left(r\right)}\left[n_{\Psi^{\mu}}\right]\]</div>
 <ul class="simple">
 <li>On the universality of the long-/short-range separation in multiconfigurational densityfunctional theory, Emmanuel Fromager, Julien Toulouse, and Hans Jørgen Aa. Jensen</li>
 <li>On the universality of the long-/short-range separation in multiconfigurational densityfunctional theory. II. Investigating <span class="math">\(f^{0}\)</span> actinide species, Emmanuel Fromager, Florent Réal, Pernilla Wåhlin, Ulf Wahlgren, and Hans Jørgen Aa. Jensen</li>
@@ -230,11 +231,128 @@
 \[E_{0}=\left\langle \Psi^{\mu}\left|\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi^{\mu}\right\rangle +E_{H}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]+E_{xc}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\]</div>
 <p>Now if the limiting case of <span class="math">\(\mu\)</span>, it can be seen the above reduces to:</p>
 <div class="math">
-\[\lim_{\mu\rightarrow0}E_{0}=\left\langle \Psi^{\mu}\left|\hat{T}+\hat{V}_{Ne}+0\right|\Psi^{\mu}\right\rangle +E_{H}^{\mathrm{sr},0}\left[n_{\Psi^{0}}\right]+E_{xc}^{\mathrm{sr},\mu}\left[n_{\Psi^{0}}\right]\]</div>
+\[\lim_{\mu\rightarrow0}E_{0}=\left\langle \Psi^{0}\left|\hat{T}+\hat{V}_{Ne}+0\right|\Psi^{0}\right\rangle +E_{H}^{\mathrm{sr},0}\left[n_{\Psi^{0}}\right]+E_{xc}^{\mathrm{sr},0}\left[n_{\Psi^{0}}\right]\]</div>
 <p>Which is Kohn-Sham DFT. And:</p>
 <div class="math">
-\[\lim_{\mu\rightarrow\infty}E_{0}=\left\langle \Psi^{\mu}\left|\hat{T}+\hat{V}_{Ne}+r_{12}^{-1}\right|\Psi^{\mu}\right\rangle +0+0\]</div>
+\[\lim_{\mu\rightarrow\infty}E_{0}=\left\langle \Psi^{\infty}\left|\hat{T}+\hat{V}_{Ne}+r_{12}^{-1}\right|\Psi^{\infty}\right\rangle +0+0\]</div>
 <p>Which is WFT.</p>
+</div>
+<div class="section" id="td-mc-srdft-two-state-analysis">
+<h2>TD-MC-srDFT two-state analysis<a class="headerlink" href="#td-mc-srdft-two-state-analysis" title="Permalink to this headline">¶</a></h2>
+<p>For now it is given that the linear response matrix elements, in the limit of <span class="math">\(\mu\rightarrow0\)</span> and with the disregarding of orbit rotations are constructed as:</p>
+<div class="math">
+\[\begin{split}A=\left(\begin{array}{cc} \left\langle 0\left|\left[R_{i},\left[\hat{H}^{\mathrm{KS}},R_{j}^{+}\right]\right]\right|0\right\rangle &amp; \left\langle 0\left|\left[\left[R_{i},\hat{H}^{\mathrm{KS}}\right],R_{j}^{+}\right]\right|0\right\rangle \\ \left\langle 0\left|\left[R_{i},\left[H^{\mathrm{KS}},q_{j}^{+}\right]\right]\right|0\right\rangle &amp; \left\langle 0\left|\left[R_{i},\left[\hat{H}^{\mathrm{KS}},R_{j}^{+}\right]\right]\right|0\right\rangle \end{array}\right)\end{split}\]</div>
+<div class="math">
+\[\begin{split}B=\left(\begin{array}{cc} \left\langle 0\left|\left[R_{i},\left[\hat{H}^{\mathrm{KS}},R_{j}\right]\right]\right|0\right\rangle &amp; \left\langle 0\left|\left[\left[R_{i},\hat{H}^{\mathrm{KS}}\right],R_{j}\right]\right|0\right\rangle \\ \left\langle 0\left|\left[R_{i},\left[\hat{H}^{\mathrm{KS}},R_{j}\right]\right]\right|0\right\rangle &amp; \left\langle 0\left|\left[R_{i},\left[\hat{H}^{\mathrm{KS}},R_{j}\right]\right]\right|0\right\rangle \end{array}\right)\end{split}\]</div>
+<div class="math">
+\[\begin{split}\Sigma=\left(\begin{array}{cc} \left\langle 0\left|\left[R_{i},R_{j}^{+}\right]\right|0\right\rangle &amp; \left\langle 0\left|\left[R_{i},R_{j}^{+}\right]\right|0\right\rangle \\ \left\langle 0\left|\left[R_{i},R_{j}^{+}\right]\right|0\right\rangle &amp; \left\langle 0\left|\left[R_{i},R_{j}^{+}\right]\right|0\right\rangle \end{array}\right)\end{split}\]</div>
+<div class="math">
+\[\begin{split}\Delta=\left(\begin{array}{cc} \left\langle 0\left|\left[R_{i},R_{j}\right]\right|0\right\rangle &amp; \left\langle 0\left|\left[R_{i},R_{j}\right]\right|0\right\rangle \\ \left\langle 0\left|\left[R_{i},R_{j}\right]\right|0\right\rangle &amp; \left\langle 0\left|\left[R_{i},R_{j}\right]\right|0\right\rangle \end{array}\right)\end{split}\]</div>
+<p>Now lets consider an active space consisting of <span class="math">\(\left|a^{2}\right\rangle\)</span>  and <span class="math">\(\left|b^{2}\right\rangle\)</span> , where <span class="math">\(a^{2}\)</span> is being the double occupied orbital <span class="math">\(\phi_{a}\)</span>, and <span class="math">\(a^{2}\)</span> being the reference wavefunction. It is also known that <span class="math">\(R_{n}=\left|0\right\rangle \left\langle n\right|\)</span>. Now the matrix elements takes the form:</p>
+<div class="math">
+\[\begin{split}A=\left(\begin{array}{cc} \left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}^{+}\right]\right]\right|a^{2}\right\rangle &amp; \left\langle a^{2}\left|\left[\left[R_{a^{2}},\hat{H}^{\mathrm{KS}}\right],R_{b^{2}}^{+}\right]\right|a^{2}\right\rangle \\ \left\langle 0\left|\left[R_{b^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}^{+}\right]\right]\right|0\right\rangle &amp; \left\langle a^{2}\left|\left[R_{b^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}^{+}\right]\right]\right|a^{2}\right\rangle \end{array}\right)\end{split}\]</div>
+<div class="math">
+\[\begin{split}B=\left(\begin{array}{cc} \left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}\right]\right]\right|a^{2}\right\rangle &amp; \left\langle a^{2}\left|\left[\left[R_{a^{2}},\hat{H}^{\mathrm{KS}}\right],R_{b^{2}}\right]\right|a^{2}\right\rangle \\ \left\langle a^{2}\left|\left[R_{b^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}\right]\right]\right|a^{2}\right\rangle &amp; \left\langle a^{2}\left|\left[R_{b^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}\right]\right]\right|a^{2}\right\rangle \end{array}\right)\end{split}\]</div>
+<div class="math">
+\[\begin{split}\Sigma=\left(\begin{array}{cc} \left\langle a^{2}\left|\left[R_{a^{2}},R_{a^{2}}^{+}\right]\right|a^{2}\right\rangle &amp; \left\langle a^{2}\left|\left[R_{a^{2}},R_{b^{2}}^{+}\right]\right|a^{2}\right\rangle \\ \left\langle a^{2}\left|\left[R_{b^{2}},R_{a^{2}}^{+}\right]\right|a^{2}\right\rangle &amp; \left\langle a^{2}\left|\left[R_{b^{2}},R_{b^{2}}^{+}\right]\right|a^{2}\right\rangle \end{array}\right)\end{split}\]</div>
+<div class="math">
+\[\begin{split}\Delta=\left(\begin{array}{cc} \left\langle a^{2}\left|\left[R_{a^{2}},R_{a^{2}}\right]\right|a^{2}\right\rangle &amp; \left\langle a^{2}\left|\left[R_{a^{2}},R_{b^{2}}\right]\right|a^{2}\right\rangle \\ \left\langle a^{2}\left|\left[R_{b^{2}},R_{a^{2}}\right]\right|a^{2}\right\rangle &amp; \left\langle a^{2}\left|\left[R_{b^{2}},R_{b^{2}}\right]\right|a^{2}\right\rangle \end{array}\right)\end{split}\]</div>
+<p>Now lets evaluate <span class="math">\(\Delta\)</span> element wise:</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},R_{a^{2}}\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|R_{a^{2}}R_{a^{2}}\right|a^{2}\right\rangle -\left\langle a^{2}\left|R_{a^{2}}R_{a^{2}}\right|a^{2}\right\rangle =0\]</div>
+<p>and,</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},R_{b^{2}}\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|R_{a^{2}}R_{b^{2}}\right|a^{2}\right\rangle -\left\langle a^{2}\left|R_{b^{2}}R_{a^{2}}\right|a^{2}\right\rangle\]</div>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},R_{b^{2}}\right]\right|a^{2}\right\rangle =\left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|a^{2}\right\rangle -\left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle =0\]</div>
+<p>since <span class="math">\(\left\langle \left.b^{2}\right|a^{2}\right\rangle =0\)</span>, because <span class="math">\(a^{2}\)</span> and <span class="math">\(b^{2}\)</span> are orthogonal. By same argument:</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{b^{2}},R_{a^{2}}\right]\right|a^{2}\right\rangle =0\]</div>
+<p>and,</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{b^{2}},R_{b^{2}}\right]\right|a^{2}\right\rangle =0\]</div>
+<p>Giving:</p>
+<div class="math">
+\[\begin{split}\Delta=\left(\begin{array}{cc} 0 &amp; 0\\ 0 &amp; 0 \end{array}\right)\end{split}\]</div>
+<p>Now the evaluation of <span class="math">\(\Sigma\)</span>:</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},R_{a^{2}}^{+}\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|R_{a^{2}}R_{a^{2}}^{\dagger}\right|a^{2}\right\rangle -\left\langle a^{2}\left|R_{a^{2}}^{\dagger}R_{a^{2}}\right|a^{2}\right\rangle\]</div>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},R_{a^{2}}^{+}\right]\right|a^{2}\right\rangle =\left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle -\left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle =0\]</div>
+<p>and,</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},R_{b^{2}}^{+}\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|R_{a^{2}}R_{b^{2}}^{\dagger}\right|a^{2}\right\rangle -\left\langle a^{2}\left|R_{b^{2}}^{\dagger}R_{a^{2}}\right|a^{2}\right\rangle\]</div>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},R_{b^{2}}^{+}\right]\right|a^{2}\right\rangle =\left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|b^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle -\left\langle \left.a^{2}\right|b^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle =0\]</div>
+<p>and as above,</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{b^{2}},R_{a^{2}}^{+}\right]\right|a^{2}\right\rangle =0\]</div>
+<p>and,</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{b^{2}},R_{b^{2}}^{+}\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|R_{b^{2}}R_{b^{2}}^{\dagger}\right|a^{2}\right\rangle -\left\langle a^{2}\left|R_{b^{2}}^{\dagger}R_{b^{2}}\right|a^{2}\right\rangle\]</div>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{b^{2}},R_{b^{2}}^{+}\right]\right|a^{2}\right\rangle =\left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|b^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle -\left\langle \left.a^{2}\right|b^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|a^{2}\right\rangle =1\]</div>
+<p>Giving:</p>
+<div class="math">
+\[\begin{split}\Sigma=\left(\begin{array}{cc} 0 &amp; 0\\ 0 &amp; 1 \end{array}\right)\end{split}\]</div>
+<p>For <span class="math">\(A\)</span> and <span class="math">\(B\)</span> the Hamiltonian is given as, <span class="math">\(\hat{H}^{\mathrm{KS}}=\hat{T}+\hat{V}_{Ne}+\hat{V}_{Hxc}\left[n_{a}\right]\)</span>. It is known that for this Hamiltonian that, <span class="math">\(\hat{H}^{\mathrm{KS}}\left|i^{2}\right\rangle =2\epsilon_{i}\left|i^{2}\right\rangle\)</span> . Now evaluating <span class="math">\(B\)</span>:</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}\right]\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|R_{a^{2}}\hat{H}^{\mathrm{KS}}R_{a^{2}}\right|a^{2}\right\rangle -\left\langle a^{2}\left|R_{a^{2}}R_{a^{2}}\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle -\left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}R_{a^{2}}R_{a^{2}}\right|a^{2}\right\rangle +\left\langle a^{2}\left|R_{a^{2}}\hat{H}^{\mathrm{KS}}R_{a^{2}}\right|a^{2}\right\rangle\]</div>
+<div class="math">
+\[\begin{split}\begin{array}{ccc} \left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}\right]\right]\right|a^{2}\right\rangle &amp; = &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \\ &amp; + &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \end{array}\end{split}\]</div>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}\right]\right]\right|a^{2}\right\rangle =0\]</div>
+<p>and,</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}\right]\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|R_{a^{2}}\hat{H}^{\mathrm{KS}}R_{b^{2}}\right|a^{2}\right\rangle -\left\langle a^{2}\left|R_{a^{2}}R_{b^{2}}\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle -\left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}R_{b^{2}}R_{a^{2}}\right|a^{2}\right\rangle +\left\langle a^{2}\left|R_{b^{2}}\hat{H}^{\mathrm{KS}}R_{a^{2}}\right|a^{2}\right\rangle\]</div>
+<div class="math">
+\[\begin{split}\begin{array}{ccc} \left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}\right]\right]\right|a^{2}\right\rangle &amp; = &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle b^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \\ &amp; + &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle b^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \end{array}\end{split}\]</div>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}\right]\right]\right|a^{2}\right\rangle =-\left\langle b^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle +\left\langle b^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle =0\]</div>
+<p>and by similar argument:</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{b^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}\right]\right]\right|a^{2}\right\rangle =0\]</div>
+<p>and,</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{b^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}\right]\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|R_{b^{2}}\hat{H}^{\mathrm{KS}}R_{b^{2}}\right|a^{2}\right\rangle -\left\langle a^{2}\left|R_{b^{2}}R_{b^{2}}\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle -\left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}R_{b^{2}}R_{b^{2}}\right|a^{2}\right\rangle +\left\langle a^{2}\left|R_{b^{2}}\hat{H}^{\mathrm{KS}}R_{b^{2}}\right|a^{2}\right\rangle\]</div>
+<div class="math">
+\[\begin{split}\begin{array}{ccc} \left\langle a^{2}\left|\left[R_{b^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}\right]\right]\right|a^{2}\right\rangle &amp; = &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle b^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|a^{2}\right\rangle \left\langle b^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|a^{2}\right\rangle \\ &amp; + &amp; \left\langle \left.a^{2}\right|b^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|b^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \end{array}\end{split}\]</div>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{b^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}\right]\right]\right|a^{2}\right\rangle =0\]</div>
+<p>Giving:</p>
+<div class="math">
+\[\begin{split}B=\left(\begin{array}{cc} 0 &amp; 0\\ 0 &amp; 0 \end{array}\right)\end{split}\]</div>
+<p>Now evaluating <span class="math">\(A\)</span>:</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}^{+}\right]\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|R_{a^{2}}\hat{H}^{\mathrm{KS}}R_{a^{2}}^{+}\right|a^{2}\right\rangle -\left\langle a^{2}\left|R_{a^{2}}R_{a^{2}}^{+}\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle -\left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}R_{a^{2}}^{+}R_{a^{2}}\right|a^{2}\right\rangle +\left\langle a^{2}\left|R_{a^{2}}^{+}\hat{H}^{\mathrm{KS}}R_{a^{2}}\right|a^{2}\right\rangle\]</div>
+<div class="math">
+\[\begin{split}\begin{array}{ccc} \left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}^{+}\right]\right]\right|a^{2}\right\rangle &amp; = &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \\ &amp; + &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \end{array}\end{split}\]</div>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}^{+}\right]\right]\right|a^{2}\right\rangle =0\]</div>
+<p>and,</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}^{+}\right]\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|R_{a^{2}}\hat{H}^{\mathrm{KS}}R_{b^{2}}^{+}\right|a^{2}\right\rangle -\left\langle a^{2}\left|R_{a^{2}}R_{b^{2}}^{+}\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle -\left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}R_{b^{2}}^{+}R_{a^{2}}\right|a^{2}\right\rangle +\left\langle a^{2}\left|R_{b^{2}}^{+}\hat{H}^{\mathrm{KS}}R_{a^{2}}\right|a^{2}\right\rangle\]</div>
+<div class="math">
+\[\begin{split}\begin{array}{ccc} \left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}^{+}\right]\right]\right|a^{2}\right\rangle &amp; = &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|b^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|b^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|b^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \\ &amp; + &amp; \left\langle \left.a^{2}\right|b^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \end{array}\end{split}\]</div>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}^{+}\right]\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|b^{2}\right\rangle -\left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|b^{2}\right\rangle =0\]</div>
+<p>by a similar argument:</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{b^{2}},\left[\hat{H}^{\mathrm{KS}},R_{a^{2}}^{+}\right]\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|b^{2}\right\rangle -\left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|b^{2}\right\rangle =0\]</div>
+<p>and,</p>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{b^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}^{+}\right]\right]\right|a^{2}\right\rangle =\left\langle a^{2}\left|R_{b^{2}}\hat{H}^{\mathrm{KS}}R_{b^{2}}^{+}\right|a^{2}\right\rangle -\left\langle a^{2}\left|R_{b^{2}}R_{b^{2}}^{+}\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle -\left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}R_{b^{2}}^{+}R_{b^{2}}\right|a^{2}\right\rangle +\left\langle a^{2}\left|R_{b^{2}}^{+}\hat{H}^{\mathrm{KS}}R_{b^{2}}\right|a^{2}\right\rangle\]</div>
+<div class="math">
+\[\begin{split}\begin{array}{ccc} \left\langle a^{2}\left|\left[R_{b^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}^{+}\right]\right]\right|a^{2}\right\rangle &amp; = &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle b^{2}\left|\hat{H}^{\mathrm{KS}}\right|b^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|b^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \\ &amp; - &amp; \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|b^{2}\right\rangle \left\langle \left.a^{2}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|a^{2}\right\rangle \\ &amp; + &amp; \left\langle \left.a^{2}\right|b^{2}\right\rangle \left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle \left\langle \left.b^{2}\right|a^{2}\right\rangle \end{array}\end{split}\]</div>
+<div class="math">
+\[\left\langle a^{2}\left|\left[R_{a^{2}},\left[\hat{H}^{\mathrm{KS}},R_{b^{2}}^{+}\right]\right]\right|a^{2}\right\rangle =\left\langle b^{2}\left|\hat{H}^{\mathrm{KS}}\right|b^{2}\right\rangle -\left\langle a^{2}\left|\hat{H}^{\mathrm{KS}}\right|a^{2}\right\rangle =2\left(\epsilon_{b}-\epsilon_{a}\right)\]</div>
+<p>Giving:</p>
+<div class="math">
+\[\begin{split}A=\left(\begin{array}{cc} 0 &amp; 0\\ 0 &amp; 2\left(\epsilon_{b}-\epsilon_{a}\right) \end{array}\right)\end{split}\]</div>
+<p>Per definition of the basis, it was such that <span class="math">\(a^{2}\)</span> and <span class="math">\(b^{2}\)</span> is different in two-electrons. Since not all of the above matrices equals zero, it can be thought that this double excitation, <span class="math">\(a^{2}\rightarrow b^{2}\)</span>, is described, even in the limit of <span class="math">\(\mu\rightarrow0\)</span> (and ignoring orbital rotations). This double excitation have the energy equal two two times the orbital difference. It can thus be seen that TD-MC-srDFT does not reduce to standard DFT, were such a double excitation would not be included, in the limit of <span class="math">\(\mu\rightarrow0\)</span>.</p>
+<ul class="simple">
+<li>Multi-configuration time-dependent density-functional theory based on range separation, Emmanuel Fromager, Stefan Knecht og Hans Jørgen Aa. Jensen.</li>
+</ul>
 </div>
 </div>
 

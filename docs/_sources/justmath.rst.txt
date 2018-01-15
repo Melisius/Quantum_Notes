@@ -34,7 +34,7 @@ A unitary matrix is defined as:
 .. math::
    U^{\dagger}U=UU^{\dagger}=1
    
-Real orthogoanl matrix
+Real orthogonal matrix
 ~~~~~~~~~~~~~~~~~~~~~~
 
 A real orthogonal matrix must satisfy:
@@ -85,3 +85,34 @@ From the commutator relation it can be noted that:
 
 .. math::
    \left[\hat{A},\hat{B}\right]=\hat{A}\hat{B}-\hat{B}\hat{A}=-\left(\hat{B}\hat{A}-\hat{A}\hat{B}\right)=-\left[\hat{B},\hat{A}\right]
+   
+Jacobi identity
+~~~~~~~~~~~~~~~
+
+Lets consider:
+
+.. math::
+   \left[A,\left[B,C\right]\right]+\left[B,\left[C,A\right]\right]+\left[C,\left[A,B\right]\right]
+   
+Now by expansion:
+
+.. math::
+   \left[A,BC-CB\right]+\left[B,CA-AC\right]+\left[C,AB-BA\right]
+   
+.. math::
+   A\left(BC-CB\right)-\left(BC-CB\right)A+B\left(CA-AC\right)-\left(CA-AC\right)B+C\left(AB-BA\right)-\left(AB-BA\right)C
+   
+.. math::
+   ABC-ACB-BCA+CBA+BCA-BAC-CAB+ACB+CAB-CBA-ABC+BAC
+   
+Now by rearranging:
+
+.. math::
+   ABC-ABC+ACB-ACB+BAC-BAC+BCA-BCA+CAB-CAB+CBA-CBA=0
+   
+Now giving:
+
+.. math::
+   \left[A,\left[B,C\right]\right]+\left[B,\left[C,A\right]\right]+\left[C,\left[A,B\right]\right]=0
+   
+Which is known as Jacobi identity.
