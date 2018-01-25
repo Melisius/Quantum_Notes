@@ -1,6 +1,6 @@
 
-Just Maths
-==========
+Mathematics
+===========
 
 Matrices
 --------

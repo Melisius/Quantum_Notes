@@ -1,6 +1,6 @@
 
-Dalton Surgery
-==============
+Dalton
+======
 
 Triplet Response
 ----------------
