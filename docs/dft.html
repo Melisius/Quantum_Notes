@@ -36,8 +36,8 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
-        <link rel="next" title="One-index Transformation" href="oneindextransformation.html"/>
-        <link rel="prev" title="Just Maths" href="justmath.html"/> 
+        <link rel="next" title="Response" href="response.html"/>
+        <link rel="prev" title="Hamiltonian, Fock and Density Matrix" href="H_F_Dmatrix.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -89,15 +89,15 @@
               <p class="caption"><span class="caption-text">Content</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daltonsurgery.html">Dalton Surgery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
-<li class="toctree-l1"><a class="reference internal" href="justmath.html">Just Maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="daltonsurgery.html">Dalton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Density Functional Theory</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#density-matrix-expansion">Density matrix expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="oneindextransformation.html">One-index Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hartreefock.html">Hartree-Fock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
 </ul>
 
             
@@ -163,31 +163,47 @@
             
   <div class="section" id="density-functional-theory">
 <h1>Density Functional Theory<a class="headerlink" href="#density-functional-theory" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="density-matrix-expansion">
-<h2>Density matrix expansion<a class="headerlink" href="#density-matrix-expansion" title="Permalink to this headline">¶</a></h2>
-<p>The density matrix is given as:</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In the formalism of Kohn-Sham DFT the energy can be expressed as:</p>
 <div class="math">
-\[\tilde{D}_{pq}\left(\kappa\right)=\left\langle \tilde{0}\left|p^{\dagger}q\right|\tilde{0}\right\rangle =\left\langle 0\left|\exp\left(\hat{\kappa}\right)p^{\dagger}q\exp\left(-\hat{\kappa}\right)\right|0\right\rangle\]</div>
-<p>The BCH expansion is given as:</p>
+\[E\left[\rho\right]=T\left[\rho\right]+V^{\mathrm{ext}}\left[\rho\right]+J\left[\rho\right]+E_{xc}\left[\rho\right]+V_{NN}\]</div>
+<p>Here <span class="math">\(\rho\)</span> is the electron density. <span class="math">\(V_{NN}\)</span> is the nuclei-nuclei interaction, thus is does not depend on the electron density. The first term is the kinetic energy, it have an expressed similar to that of Hartree-Fock:</p>
 <div class="math">
-\[\exp\left(A\right)B\exp\left(-A\right)=B+\left[A,B\right]+\frac{1}{2!}\left[A,\left[A,B\right]\right]+...\]</div>
-<p>If <span class="math">\(A=\hat{\kappa}\)</span> and <span class="math">\(B=p^{\dagger}q\)</span>, it can be written that:</p>
+\[T\left[\rho\right]=\int\phi\left(r\right)\left(-\nabla^{2}\right)\phi\left(r\right)dr\]</div>
+<p>The second term is the electron interaction with an external field. Here it should be noted that the field on the electrons by the nuclei is thought of as an external field. It is given as:</p>
 <div class="math">
-\[\tilde{D}_{pq}\left(A\right)=\left\langle 0\left|B\right|0\right\rangle +\left\langle 0\left|\left[A,B\right]\right|0\right\rangle +O\left(A^{2}\right)\]</div>
+\[V^{\mathrm{ext}}\left[\rho\right]=\int\hat{V}^{\mathrm{ext}}\left(r\right)\rho\left(r\right)dr\]</div>
+<p>The third term is the coulomb interaction of the electron density with the electron density. This term is also known as the Hartree term. And is given as:</p>
 <div class="math">
-\[\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\left\langle 0\left|\left[\hat{\kappa},p^{\dagger}q\right]\right|0\right\rangle +O\left(\kappa^{2}\right)\]</div>
-<p>It can now be used that:</p>
+\[J\left[\rho\right]=\frac{1}{2}\int\int\frac{\rho\left(r_{1}\right)\rho\left(r_{2}\right)}{r_{12}}dr_{1}dr_{2}\]</div>
+<p>The last term is the exchange-correlation term. This term deals with the electron exchange and electron correlation (that is not included in the Hartree term). Just as in Hartree-Fock the determinant of the Kohn-Sham equations, the Kohn-Sham determinant, can be parametrize by unitary orbital-rotations, such that:</p>
+<div class="math">
+\[\left|\tilde{0}\right\rangle =\exp\left(-\hat{\kappa}\right)\left|0\right\rangle\]</div>
+<p>with,</p>
 <div class="math">
 \[\hat{\kappa}=\sum_{pq}\kappa_{pq}p^{\dagger}q\]</div>
-<p>Thus giving:</p>
+<p>By this parameterization the density will now depend on both the spacial placement and on the orbital rotation. The density can be expressed as:</p>
 <div class="math">
-\[\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\left\langle 0\left|\left[\sum_{rs}\kappa_{rs}r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle +O\left(\kappa^{2}\right)\]</div>
-<p>Since <span class="math">\(\kappa_{rs}\)</span> is just a matrix element, the above equation can rewritten as:</p>
+\[\rho\left(r,\kappa\right)=\sum_{pq}\tilde{D}_{pq}\left(\kappa\right)\Omega_{pq}\left(r\right)\]</div>
+<p>Here <span class="math">\(\tilde{D}_{pq}\left(\kappa\right)\)</span> is the density matrix of the orbital-rotation parameterized Kohn-Sham orbitals, thus given as:</p>
 <div class="math">
-\[\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\sum_{rs}\left\langle 0\left|\left[r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle \kappa_{rs}+O\left(\kappa^{2}\right)\]</div>
-<ul class="simple">
-<li>Four-Component Relativistic Kohn-Sham Theory, Trond Saue, Trygve Helgaker</li>
-</ul>
+\[\tilde{D}_{pq}\left(\kappa\right)=\left\langle \tilde{0}\left|p^{\dagger}q\right|\tilde{0}\right\rangle =\left\langle 0\left|\exp\left(\hat{\kappa}\right)p^{\dagger}q\exp\left(-\hat{\kappa}\right)\right|0\right\rangle\]</div>
+<p><span class="math">\(\Omega_{pq}\left(r\right)\)</span> is an overlap distribution, thus simply given as:</p>
+<div class="math">
+\[\Omega_{pq}\left(r\right)=\phi_{p}^{\dagger}\left(r\right)\phi_{q}\left(r\right)\]</div>
+<p>By the above definition of the electron density, it is possible to express the energy in terms of the density matrix and the overlap distribution:</p>
+<div class="math">
+\[\begin{split}\begin{array}{ccc} E\left[\rho\right] &amp; = &amp; \sum_{pq}\left[\int\phi\left(r\right)\left(-\nabla^{2}\right)\phi\left(r\right)dr-\sum_{N}Z_{N}\int\frac{\Omega_{pq}\left(r\right)}{r_{N}}dr\right]\tilde{D}_{pq}\left(\kappa\right)\\ &amp; + &amp; \frac{1}{2}\int\int\frac{\Omega_{pq}\left(r_{1}\right)\Omega_{rs}\left(r_{2}\right)}{r_{12}}dr_{1}dr_{2}\tilde{D}_{pq}\left(\kappa\right)\tilde{D}_{rs}\left(\kappa\right)+E_{xc}\left[\rho\right]+V_{NN} \end{array}\end{split}\]</div>
+<p>Here the external potential have been assumed to only excerted by the nuclei. Notice that no new information have been gathered about the exchange-correlation functional. By standard notation this can be shortened to:</p>
+<div class="math">
+\[\begin{split}\begin{array}{ccc} E\left[\rho\right] &amp; = &amp; \sum_{pq}h_{pq}\tilde{D}_{pq}\left(\kappa\right)\\ &amp; + &amp; \frac{1}{2}\left(pq|rs\right)\tilde{D}_{pq}\left(\kappa\right)\tilde{D}_{rs}\left(\kappa\right)+E_{xc}\left[\rho\right]+V_{NN} \end{array}\end{split}\]</div>
+<p>With,</p>
+<div class="math">
+\[h_{pq}=\int\phi\left(r\right)\left(-\nabla^{2}\right)\phi\left(r\right)dr-\sum_{N}Z_{N}\int\frac{\Omega_{pq}\left(r\right)}{r_{N}}dr\]</div>
+<p>and,</p>
+<div class="math">
+\[\left(pq|rs\right)=\int\int\frac{\Omega_{pq}\left(r_{1}\right)\Omega_{rs}\left(r_{2}\right)}{r_{12}}dr_{1}dr_{2}\]</div>
 </div>
 </div>
 
@@ -201,10 +217,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="oneindextransformation.html" class="btn btn-neutral float-right" title="One-index Transformation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="response.html" class="btn btn-neutral float-right" title="Response" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="justmath.html" class="btn btn-neutral" title="Just Maths" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="H_F_Dmatrix.html" class="btn btn-neutral" title="Hamiltonian, Fock and Density Matrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

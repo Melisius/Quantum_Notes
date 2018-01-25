@@ -14,4 +14,5 @@ Notes about Quantum Chemistry
    daltonsurgery.rst
    justmath.rst
    H_F_Dmatrix.rst
+   dft.rst
    response.rst
