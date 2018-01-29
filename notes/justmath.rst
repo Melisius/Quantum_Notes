@@ -98,21 +98,25 @@ Now by expansion:
 
 .. math::
    \left[A,BC-CB\right]+\left[B,CA-AC\right]+\left[C,AB-BA\right]
-   
+ 
+Which can be rearranged to: 
+ 
 .. math::
-   A\left(BC-CB\right)-\left(BC-CB\right)A+B\left(CA-AC\right)-\left(CA-AC\right)B+C\left(AB-BA\right)-\left(AB-BA\right)C
-   
-.. math::
-   ABC-ACB-BCA+CBA+BCA-BAC-CAB+ACB+CAB-CBA-ABC+BAC
-   
-Now by rearranging:
+   \begin{array}{c}A\left(BC-CB\right)-\left(BC-CB\right)A+B\left(CA-AC\right)\\-\left(CA-AC\right)B+C\left(AB-BA\right)-\left(AB-BA\right)C\end{array}
+
+Which can be rearranged to: 
 
 .. math::
-   ABC-ABC+ACB-ACB+BAC-BAC+BCA-BCA+CAB-CAB+CBA-CBA=0
+   \begin{array}{c}ABC-ACB-BCA+CBA+BCA-BAC\\-CAB+ACB+CAB-CBA-ABC+BAC\end{array}
    
-Now giving:
+Now by a final rearranging:
+
+.. math::
+   \begin{array}{c}ABC-ABC+ACB-ACB+BAC-BAC\\+BCA-BCA+CAB-CAB+CBA-CBA=0\end{array}
+   
+Thus showing:
 
 .. math::
    \left[A,\left[B,C\right]\right]+\left[B,\left[C,A\right]\right]+\left[C,\left[A,B\right]\right]=0
    
-Which is known as Jacobi identity.
+Which is known as the Jacobi identity.

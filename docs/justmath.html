@@ -108,6 +108,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
 </ul>
 
@@ -241,17 +242,19 @@
 <p>Now by expansion:</p>
 <div class="math">
 \[\left[A,BC-CB\right]+\left[B,CA-AC\right]+\left[C,AB-BA\right]\]</div>
+<p>Which can be rearranged to:</p>
 <div class="math">
-\[A\left(BC-CB\right)-\left(BC-CB\right)A+B\left(CA-AC\right)-\left(CA-AC\right)B+C\left(AB-BA\right)-\left(AB-BA\right)C\]</div>
+\[\begin{split}\begin{array}{c}A\left(BC-CB\right)-\left(BC-CB\right)A+B\left(CA-AC\right)\\-\left(CA-AC\right)B+C\left(AB-BA\right)-\left(AB-BA\right)C\end{array}\end{split}\]</div>
+<p>Which can be rearranged to:</p>
 <div class="math">
-\[ABC-ACB-BCA+CBA+BCA-BAC-CAB+ACB+CAB-CBA-ABC+BAC\]</div>
-<p>Now by rearranging:</p>
+\[\begin{split}\begin{array}{c}ABC-ACB-BCA+CBA+BCA-BAC\\-CAB+ACB+CAB-CBA-ABC+BAC\end{array}\end{split}\]</div>
+<p>Now by a final rearranging:</p>
 <div class="math">
-\[ABC-ABC+ACB-ACB+BAC-BAC+BCA-BCA+CAB-CAB+CBA-CBA=0\]</div>
-<p>Now giving:</p>
+\[\begin{split}\begin{array}{c}ABC-ABC+ACB-ACB+BAC-BAC\\+BCA-BCA+CAB-CAB+CBA-CBA=0\end{array}\end{split}\]</div>
+<p>Thus showing:</p>
 <div class="math">
 \[\left[A,\left[B,C\right]\right]+\left[B,\left[C,A\right]\right]+\left[C,\left[A,B\right]\right]=0\]</div>
-<p>Which is known as Jacobi identity.</p>
+<p>Which is known as the Jacobi identity.</p>
 </div>
 </div>
 </div>

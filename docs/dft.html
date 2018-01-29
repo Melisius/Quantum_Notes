@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Density Functional Theory</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#energy-expansion">Energy Expansion</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
@@ -194,16 +195,43 @@
 \[\Omega_{pq}\left(r\right)=\phi_{p}^{\dagger}\left(r\right)\phi_{q}\left(r\right)\]</div>
 <p>By the above definition of the electron density, it is possible to express the energy in terms of the density matrix and the overlap distribution:</p>
 <div class="math">
-\[\begin{split}\begin{array}{ccc} E\left[\rho\right] &amp; = &amp; \sum_{pq}\left[\int\phi\left(r\right)\left(-\nabla^{2}\right)\phi\left(r\right)dr-\sum_{N}Z_{N}\int\frac{\Omega_{pq}\left(r\right)}{r_{N}}dr\right]\tilde{D}_{pq}\left(\kappa\right)\\ &amp; + &amp; \frac{1}{2}\int\int\frac{\Omega_{pq}\left(r_{1}\right)\Omega_{rs}\left(r_{2}\right)}{r_{12}}dr_{1}dr_{2}\tilde{D}_{pq}\left(\kappa\right)\tilde{D}_{rs}\left(\kappa\right)+E_{xc}\left[\rho\right]+V_{NN} \end{array}\end{split}\]</div>
+\[\begin{split}\begin{array}{ccc} E\left[\rho\right] &amp; = &amp; \sum_{pq}\left[\int\phi\left(r\right)\left(-\nabla^{2}\right)\phi\left(r\right)dr-\sum_{N}Z_{N}\int\frac{\Omega_{pq}\left(r\right)}{r_{N}}dr\right]\tilde{D}_{pq}\left(\kappa\right)\\ &amp; + &amp; \frac{1}{2}\sum_{pqrs}\int\int\frac{\Omega_{pq}\left(r_{1}\right)\Omega_{rs}\left(r_{2}\right)}{r_{12}}dr_{1}dr_{2}\tilde{D}_{pq}\left(\kappa\right)\tilde{D}_{rs}\left(\kappa\right)+E_{xc}\left[\rho\right]+V_{NN} \end{array}\end{split}\]</div>
 <p>Here the external potential have been assumed to only excerted by the nuclei. Notice that no new information have been gathered about the exchange-correlation functional. By standard notation this can be shortened to:</p>
 <div class="math">
-\[\begin{split}\begin{array}{ccc} E\left[\rho\right] &amp; = &amp; \sum_{pq}h_{pq}\tilde{D}_{pq}\left(\kappa\right)\\ &amp; + &amp; \frac{1}{2}\left(pq|rs\right)\tilde{D}_{pq}\left(\kappa\right)\tilde{D}_{rs}\left(\kappa\right)+E_{xc}\left[\rho\right]+V_{NN} \end{array}\end{split}\]</div>
+\[\begin{split}\begin{array}{ccc} E\left[\rho\right] &amp; = &amp; \sum_{pq}h_{pq}\tilde{D}_{pq}\left(\kappa\right)\\ &amp; + &amp; \frac{1}{2}\sum_{pqrs}\left(pq|rs\right)\tilde{D}_{pq}\left(\kappa\right)\tilde{D}_{rs}\left(\kappa\right)+E_{xc}\left[\rho\right]+V_{NN} \end{array}\end{split}\]</div>
 <p>With,</p>
 <div class="math">
 \[h_{pq}=\int\phi\left(r\right)\left(-\nabla^{2}\right)\phi\left(r\right)dr-\sum_{N}Z_{N}\int\frac{\Omega_{pq}\left(r\right)}{r_{N}}dr\]</div>
 <p>and,</p>
 <div class="math">
 \[\left(pq|rs\right)=\int\int\frac{\Omega_{pq}\left(r_{1}\right)\Omega_{rs}\left(r_{2}\right)}{r_{12}}dr_{1}dr_{2}\]</div>
+<ul class="simple">
+<li>Four-Component Relativistic Kohn-Sham Theory, Trond Saue og Trygve Helgaker.</li>
+</ul>
+</div>
+<div class="section" id="energy-expansion">
+<h2>Energy Expansion<a class="headerlink" href="#energy-expansion" title="Permalink to this headline">¶</a></h2>
+<p>The Kohn-Sham energy can be expanded with respect to the orbital-rotations. Here the Taylor series of the KS energy around <span class="math">\(\kappa=0\)</span>:</p>
+<div class="math">
+\[E\left(\kappa\right)=E\left[\rho\left(\kappa\right)\right]+\sum_{pq}\frac{\partial E\left[\rho\left(\kappa\right)\right]}{\partial\kappa_{pq}}\kappa_{pq}+\mathcal{O}\left(\kappa^{2}\right)\]</div>
+<p>This notation can be shortened:</p>
+<div class="math">
+\[E\left(\kappa\right)=E^{[0]}+\sum_{pq}E_{pq}^{[1]}\kappa_{pq}+\mathcal{O}\left(\kappa^{2}\right)\]</div>
+<p>with the superscript indication the order of derivative with respect to kappa. The density matrix can also by expanded, by using the BCH expansion:</p>
+<div class="math">
+\[\tilde{D}_{pq}=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\sum_{rs}\left\langle 0\left|\left[p^{\dagger}q,r^{\dagger}s\right]\right|0\right\rangle \kappa_{rs}+\mathcal{O}\left(\kappa^{2}\right)\]</div>
+<p>If the zero’th order term of the density matrix is associated with the zero’th order term of the energy, it can be written that:</p>
+<div class="math">
+\[\begin{split}\begin{array}{ccc} E^{[0]} &amp; = &amp; \sum_{pq}h_{pq}\left\langle 0\left|p^{\dagger}q\right|0\right\rangle \\ &amp; + &amp; \frac{1}{2}\sum_{pqrs}\left(pq|rs\right)\left\langle 0\left|p^{\dagger}q\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \\ &amp; + &amp; E_{xc}\left[\rho\right]+V_{NN} \end{array}\end{split}\]</div>
+<p>Since the reference wavefunction only holds electrons in the occupied orbitals, it can be seen that <span class="math">\(p\)</span>, <span class="math">\(q\)</span>, <span class="math">\(r\)</span> and <span class="math">\(s\)</span> most be indicies for occupied orbitals:</p>
+<div class="math">
+\[\begin{split}\begin{array}{ccc} E^{[0]} &amp; = &amp; \sum_{ij}h_{ij}\left\langle 0\left|i^{\dagger}j\right|0\right\rangle \\ &amp; + &amp; \frac{1}{2}\sum_{ijkl}\left(ik|jl\right)\left\langle 0\left|i^{\dagger}k\right|0\right\rangle \left\langle 0\left|j^{\dagger}l\right|0\right\rangle \\ &amp; + &amp; E_{xc}\left[\rho\right]+V_{NN} \end{array}\end{split}\]</div>
+<p>Now the only way that <span class="math">\(\left\langle 0\left|i^{\dagger}j\right|0\right\rangle\)</span> can be non-zero is if <span class="math">\(i=j\)</span>, and it thus equals one:</p>
+<div class="math">
+\[E^{[0]}=\sum_{i}h_{ii}+\frac{1}{2}\sum_{ij}\left(ii|jj\right)+E_{xc}\left[\rho\right]+V_{NN}\]</div>
+<ul class="simple">
+<li>Four-Component Relativistic Kohn-Sham Theory, Trond Saue og Trygve Helgaker.</li>
+</ul>
 </div>
 </div>
 
