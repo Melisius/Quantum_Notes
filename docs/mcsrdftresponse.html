@@ -90,12 +90,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MCSCF-srDFT response</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#td-mc-srdft-two-state-analysis">TD-MC-srDFT two-state analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="daltonsurgery.html">Dalton</a></li>
 <li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
 </ul>
 
@@ -162,6 +164,34 @@
             
   <div class="section" id="mcscf-srdft-response">
 <h1>MCSCF-srDFT response<a class="headerlink" href="#mcscf-srdft-response" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>When calculating response properties such as excitation energies, in the framework of MC-srDFT the goal is to solve the response equations:</p>
+<div class="math">
+\[\left(E^{[2]}-\omega S^{[2]}\right)X=0\]</div>
+<p>In MC-srDFT the electron-electron interaction is split up in a long-range and a short-range part, thus also splitting the Hessian into long-range short-range, and the metric into long-range short-range. The equation thus become:</p>
+<div class="math">
+\[\left(E^{[2],\mu}-\omega S^{[2],\mu}\right)X=0\]</div>
+<p>The metric is just the usual as in MCSCF response, but with the long-range integrals. The Hessian splits into three parts:</p>
+<div class="math">
+\[E^{[2],\mu}=E^{[2],\mathrm{lr},\mu}+E^{[2],\mathrm{sr},\mu}+K_{Hxc}^{\mathrm{sr},\mu}\]</div>
+<p>Here <span class="math">\(E^{[2],\mathrm{lr},\mu}\)</span> is built from the wave function part, i.e. by contributions that origin from:</p>
+<div class="math">
+\[\left\langle \Psi_{0}^{\mu}\left|\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi_{0}^{\mu}\right\rangle\]</div>
+<p>Thus this can be constructed as in regular MCSCF response, just by using the long-range two electron integrals. The srDFT contribution comes from <span class="math">\(E^{[2],\mathrm{sr},\mu}\)</span>, here the origin is of the form:</p>
+<div class="math">
+\[\hat{V}_{Hxc}^{\mathrm{sr},\mu}\left[n_{\Psi_{0}^{\mu}}\right]\]</div>
+<p>Here the first term is the Hartree-exchange-correlation potential. This differs from regular DFT response since the density is calculated from a refrence multi-configurational wave function, instead of from a single KS determinant. The lasat term is the Hartree-exchange-correlation kernal, and is given as:</p>
+<div class="math">
+\[K_{Hxc}^{\mathrm{sr},\mu}=\int\frac{\delta^{2}E_{Hxc}^{\mathrm{sr},\mu}}{\delta n\left(r\right)\delta n\left(r'\right)}n^{[1],\mu}\left(r\right)n^{[1],\mu\dagger}\left(r'\right)drdr'\]</div>
+<p>Here <span class="math">\(n^{[1],\mu}\)</span> is the density gradient given as:</p>
+<div class="math">
+\[\begin{split}n^{[1],\mu}\left(r\right)=\left[\begin{array}{c} \left\langle \Psi_{0}^{\mu}\left|\left[\hat{q},n\left(r\right)\right]\right|\Psi_{0}^{\mu}\right\rangle \\ \left\langle \Psi_{0}^{\mu}\left|\left[\hat{R},n\left(r\right)\right]\right|\Psi_{0}^{\mu}\right\rangle \\ \left\langle \Psi_{0}^{\mu}\left|\left[\hat{q}^{\dagger},n\left(r\right)\right]\right|\Psi_{0}^{\mu}\right\rangle \\ \left\langle \Psi_{0}^{\mu}\left|\left[\hat{R}^{\dagger},n\left(r\right)\right]\right|\Psi_{0}^{\mu}\right\rangle \end{array}\right]\end{split}\]</div>
+<p>Here it can be seen that the response of the density is connected to the response of the wave function with repect to the wave function parameters.</p>
+<ul class="simple">
+<li>Multi-configuration time-dependent density-functional theory based on range separation, Emmanuel Fromager, Stefan Knecht og Hans Jørgen Aa. Jensen.</li>
+</ul>
+</div>
 <div class="section" id="td-mc-srdft-two-state-analysis">
 <h2>TD-MC-srDFT two-state analysis<a class="headerlink" href="#td-mc-srdft-two-state-analysis" title="Permalink to this headline">¶</a></h2>
 <p>For now it is given that the linear response matrix elements, in the limit of <span class="math">\(\mu\rightarrow0\)</span> and with the disregarding of orbit rotations are constructed as:</p>

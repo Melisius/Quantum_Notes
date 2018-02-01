@@ -2,6 +2,48 @@
 MCSCF-srDFT response
 ====================
 
+Introduction
+------------
+
+When calculating response properties such as excitation energies, in the framework of MC-srDFT the goal is to solve the response equations:
+
+.. math::
+   \left(E^{[2]}-\omega S^{[2]}\right)X=0
+   
+In MC-srDFT the electron-electron interaction is split up in a long-range and a short-range part, thus also splitting the Hessian into long-range short-range, and the metric into long-range short-range. The equation thus become:
+
+.. math::
+   \left(E^{[2],\mu}-\omega S^{[2],\mu}\right)X=0
+   
+The metric is just the usual as in MCSCF response, but with the long-range integrals. The Hessian splits into three parts:
+
+.. math::
+   E^{[2],\mu}=E^{[2],\mathrm{lr},\mu}+E^{[2],\mathrm{sr},\mu}+K_{Hxc}^{\mathrm{sr},\mu}
+   
+Here :math:`E^{[2],\mathrm{lr},\mu}` is built from the wave function part, i.e. by contributions that origin from:
+
+.. math::
+   \left\langle \Psi_{0}^{\mu}\left|\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi_{0}^{\mu}\right\rangle 
+   
+Thus this can be constructed as in regular MCSCF response, just by using the long-range two electron integrals. The srDFT contribution comes from :math:`E^{[2],\mathrm{sr},\mu}`, here the origin is of the form:
+
+.. math::
+   \hat{V}_{Hxc}^{\mathrm{sr},\mu}\left[n_{\Psi_{0}^{\mu}}\right]
+   
+Here the first term is the Hartree-exchange-correlation potential. This differs from regular DFT response since the density is calculated from a refrence multi-configurational wave function, instead of from a single KS determinant. The lasat term is the Hartree-exchange-correlation kernal, and is given as:
+
+.. math::
+   K_{Hxc}^{\mathrm{sr},\mu}=\int\frac{\delta^{2}E_{Hxc}^{\mathrm{sr},\mu}}{\delta n\left(r\right)\delta n\left(r'\right)}n^{[1],\mu}\left(r\right)n^{[1],\mu\dagger}\left(r'\right)drdr'
+   
+Here :math:`n^{[1],\mu}` is the density gradient given as:
+
+.. math::
+   n^{[1],\mu}\left(r\right)=\left[\begin{array}{c} \left\langle \Psi_{0}^{\mu}\left|\left[\hat{q},n\left(r\right)\right]\right|\Psi_{0}^{\mu}\right\rangle \\ \left\langle \Psi_{0}^{\mu}\left|\left[\hat{R},n\left(r\right)\right]\right|\Psi_{0}^{\mu}\right\rangle \\ \left\langle \Psi_{0}^{\mu}\left|\left[\hat{q}^{\dagger},n\left(r\right)\right]\right|\Psi_{0}^{\mu}\right\rangle \\ \left\langle \Psi_{0}^{\mu}\left|\left[\hat{R}^{\dagger},n\left(r\right)\right]\right|\Psi_{0}^{\mu}\right\rangle \end{array}\right]
+   
+Here it can be seen that the response of the density is connected to the response of the wave function with repect to the wave function parameters.
+
+- Multi-configuration time-dependent density-functional theory based on range separation, Emmanuel Fromager, Stefan Knecht og Hans Jørgen Aa. Jensen.
+
 TD-MC-srDFT two-state analysis
 ------------------------------
 
