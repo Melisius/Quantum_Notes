@@ -25,7 +25,7 @@ The third term is the coulomb interaction of the electron density with the elect
 .. math::
    J\left[\rho\right]=\frac{1}{2}\int\int\frac{\rho\left(r_{1}\right)\rho\left(r_{2}\right)}{r_{12}}dr_{1}dr_{2}
    
-The last term is the exchange-correlation term. This term deals with the electron exchange and electron correlation (that is not included in the Hartree term). Just as in Hartree-Fock the determinant of the Kohn-Sham equations, the Kohn-Sham determinant, can be parametrize by unitary orbital-rotations, such that:
+The last term is the exchange-correlation term. This term deals with the electron exchange and electron correlation (that is not included in the Hartree term). Just as in Hartree-Fock the determinant of the Kohn-Sham equations, the Kohn-Sham determinant, can be parametrized by an unitary orbital-rotations, such that:
 
 .. math::
    \left|\tilde{0}\right\rangle =\exp\left(-\hat{\kappa}\right)\left|0\right\rangle 
@@ -105,28 +105,27 @@ Now the only way that :math:`\left\langle 0\left|i^{\dagger}j\right|0\right\rang
 .. math::
    E^{[0]}=\sum_{i}h_{ii}+\frac{1}{2}\sum_{ij}\left(ii|jj\right)+E_{xc}\left[\rho\right]+V_{NN}
    
-**Seem to be of wrong sign for the first two terms**
 Now if the first order term of the density matrix is associated with the first order term of the energy:
 
 .. math::
-   \begin{array}{ccc} E^{[1]} & = & \sum_{pq}h_{pq}\frac{\partial\tilde{D}_{pq}}{\partial\kappa_{rs}}\\ & + & \frac{1}{2}\frac{\partial}{\partial\kappa_{RS}}\sum_{pqrs}\left(pq|rs\right)\tilde{D}_{pq}\tilde{D}_{rs}\\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{rs}}+\frac{\partial V_{NN}}{\partial\kappa_{rs}} \end{array}
+   \begin{array}{ccc} E_{RS}^{[1]} & = & \sum_{pq}h_{pq}\frac{\partial\tilde{D}_{pq}}{\partial\kappa_{RS}}\\ & + & \frac{1}{2}\frac{\partial}{\partial\kappa_{RS}}\sum_{pqrs}\left(pq|rs\right)\tilde{D}_{pq}\tilde{D}_{rs}\\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{RS}}+\frac{\partial V_{NN}}{\partial\kappa_{RS}} \end{array}
    
-By expanding with the chain-rule:
+By expanding with the the product rule:
 
 .. math::
-   \begin{array}{ccc} E^{[1]} & = & \sum_{pq}h_{pq}\frac{\partial\tilde{D}_{pq}}{\partial\kappa_{rs}}\\ & + & \frac{1}{2}\sum_{pqrs}\left(pq|rs\right)\left\{ \frac{\partial\tilde{D}_{pq}}{\partial\kappa_{RS}}\tilde{D}_{rs}+\tilde{D}_{pq}\frac{\partial\tilde{D}_{rs}}{\partial\kappa_{RS}}\right\} \\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{rs}}+\frac{\partial V_{NN}}{\partial\kappa_{rs}} \end{array}
+   \begin{array}{ccc} E_{RS}^{[1]} & = & \sum_{pq}h_{pq}\frac{\partial\tilde{D}_{pq}}{\partial\kappa_{RS}}\\ & + & \frac{1}{2}\sum_{pqrs}\left(pq|rs\right)\frac{\partial\tilde{D}_{pq}}{\partial\kappa_{RS}}\tilde{D}_{rs}\\ & + & \frac{1}{2}\sum_{pqrs}\left(pq|rs\right)\tilde{D}_{pq}\frac{\partial\tilde{D}_{rs}}{\partial\kappa_{RS}}\\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{RS}}+\frac{\partial V_{NN}}{\partial\kappa_{RS}} \end{array}
    
-By expanding the derivatives:
+It can be seen that if :math:`r,s` are switched with :math:`p,q` in the third term, it becomes exactly the second term because of the symmetry of the two electron integral. By expanding the derivatives:
+   
+.. math::
+   \begin{array}{ccc} E_{RS}^{[1]} & = & \sum_{pq}h_{pq}\left\langle 0\left|\left[R^{\dagger}S,p^{\dagger}q\right]\right|0\right\rangle \\ & + & \sum_{pqrs}\left(pq|rs\right)\left\langle 0\left|\left[R^{\dagger}S,p^{\dagger}q\right]\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{RS}}+\frac{\partial V_{NN}}{\partial\kappa_{RS}} \end{array}
+   
+Since the nuclear-nuclear repulsion does not depend on :math:`\kappa` this term will vanish. For the two electron part, the term coming from :math:`\sum_{rs}\left\langle 0\left|\left[r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle \kappa_{rs}\sum_{r's'}\left\langle 0\left|\left[r'^{\dagger}s',p'^{\dagger}q'\right]\right|0\right\rangle \kappa_{r's'}` are not included, because these will be of second order in :math:`\kappa`. The derivative of the exchange-correlation functional will be dealt with after the one and two electron part. The relation :math:`\left[p^{\dagger}q,r^{\dagger}s\right]=p^{\dagger}s\delta_{qr}-r^{\dagger}q\delta_{ps}` can now be used:
 
 .. math::
-   \begin{array}{ccc} E^{[1]} & = & \sum_{pq}h_{pq}\left\langle 0\left|\left[r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle \\ & + & \frac{1}{2}\sum_{pqrs}\left(pq|rs\right)\left\{ \left\langle 0\left|\left[R^{\dagger}S,p^{\dagger}q\right]\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \right.\\ & + & \left.\left\langle 0\left|p^{\dagger}q\right|0\right\rangle \left\langle 0\left|\left[R^{\dagger}S,r^{\dagger}s\right]\right|0\right\rangle \right\} \\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{rs}}+\frac{\partial V_{NN}}{\partial\kappa_{rs}} \end{array}
-   
-Since the nuclear-nuclear repulsion does not depend on :math:`\kappa` this term will vanish. For the two electron part, the terms coming from :math:`\sum_{rs}\left\langle 0\left|\left[r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle \kappa_{rs}\sum_{r's'}\left\langle 0\left|\left[r'^{\dagger}s',p'^{\dagger}q'\right]\right|0\right\rangle \kappa_{r's'}` are not included, because these will be of second order in :math:`\kappa`. The derivative of the exchange-correlation functional will be dealt with after the one and two electron part. The relation :math:`\left[p^{\dagger}q,r^{\dagger}s\right]=p^{\dagger}s\delta_{qr}-r^{\dagger}q\delta_{ps}` can now be used:
+   \begin{array}{ccc} E_{RS}^{[1]} & = & \sum_{pq}h_{pq}\left\langle 0\left|R^{\dagger}q\right|0\right\rangle \delta_{pS}-\sum_{pq}h_{pq}\left\langle 0\left|p^{\dagger}S\right|0\right\rangle \delta_{qR}\\ & + & \sum_{pqrs}\left(pq|rs\right)\left\langle 0\left|R^{\dagger}q\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{pS}\\ & - & \sum_{pqrs}\left(pq|rs\right)\left\langle 0\left|p^{\dagger}S\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{Rq}\\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{RS}} \end{array}
 
-.. math::
-   \begin{array}{ccc} E^{[1]} & = & \sum_{pq}h_{pq}\left\{ \left\langle 0\left|r^{\dagger}q\right|0\right\rangle \delta_{ps}-\left\langle 0\left|p^{\dagger}s\right|0\right\rangle \delta_{qr}\right\} \\ & + & \frac{1}{2}\sum_{pqrs}\left(pq|rs\right)\left\{ \left\langle 0\left|R^{\dagger}q\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{pS}\right.\\ & - & \left\langle 0\left|p^{\dagger}S\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{Rq}\\ & + & \left\langle 0\left|p^{\dagger}q\right|0\right\rangle \left\langle 0\left|R^{\dagger}s\right|0\right\rangle \delta_{rS}\\ & - & \left.\left\langle 0\left|p^{\dagger}q\right|0\right\rangle \left\langle 0\left|r^{\dagger}S\right|0\right\rangle \delta_{Rs}\right\} \\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{rs}} \end{array}
-   
-It can now be seen that if :math:`\kappa\equiv\kappa_{ij}` that all of the terms equal zero, since:
+It can now be seen that if :math:`R,S=i,j` that all of the terms equal zero, since: 
 
 .. math::
    \left\langle 0\left|i^{\dagger}q\right|0\right\rangle \delta_{pj}-\left\langle 0\left|p^{\dagger}j\right|0\right\rangle \delta_{qi}=\left\langle 0\left|i^{\dagger}i\right|0\right\rangle \delta_{jj}-\left\langle 0\left|j^{\dagger}j\right|0\right\rangle \delta_{ii}=0
@@ -134,39 +133,28 @@ It can now be seen that if :math:`\kappa\equiv\kappa_{ij}` that all of the terms
 and,
 
 .. math::
-   \begin{array}{cc} & \left\langle 0\left|i^{\dagger}q\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{pj}\\ - & \left\langle 0\left|p^{\dagger}j\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{iq}\\ + & \left\langle 0\left|p^{\dagger}q\right|0\right\rangle \left\langle 0\left|i^{\dagger}s\right|0\right\rangle \delta_{rj}\\ - & \left\langle 0\left|p^{\dagger}q\right|0\right\rangle \left\langle 0\left|r^{\dagger}j\right|0\right\rangle \delta_{is} \end{array}
+   \begin{array}{cc} & \left\langle 0\left|i^{\dagger}q\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{pj}-\left\langle 0\left|p^{\dagger}j\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{iq}\\ = & \left\langle 0\left|i^{\dagger}i\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{jj}-\left\langle 0\left|j^{\dagger}j\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{ii}\\ = & \left\langle 0\left|i^{\dagger}i\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{jj}-\left\langle 0\left|j^{\dagger}j\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{ii}\\ = & 0 \end{array}
    
-Equals:
+The same argument can be made for :math:`R,S=a,b`. Now for :math:`R,S=i,a` :
 
 .. math::
-   \begin{array}{cc} & \left\langle 0\left|i^{\dagger}i\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{jj}\\ - & \left\langle 0\left|j^{\dagger}j\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{ii}\\ + & \left\langle 0\left|j^{\dagger}i\right|0\right\rangle \left\langle 0\left|i^{\dagger}s\right|0\right\rangle \delta_{rj}\\ - & \left\langle 0\left|j^{\dagger}i\right|0\right\rangle \left\langle 0\left|r^{\dagger}j\right|0\right\rangle \delta_{is} \end{array}
+   \begin{array}{ccc} E_{ia}^{[1]} & = & \sum_{pq}h_{pq}\left\langle 0\left|i^{\dagger}q\right|0\right\rangle \delta_{pa}-\sum_{pq}h_{pq}\left\langle 0\left|p^{\dagger}a\right|0\right\rangle \delta_{qi}\\ & + & \sum_{pqrs}\left(pq|rs\right)\left\langle 0\left|i^{\dagger}q\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{pa}\\ & - & \sum_{pqrs}\left(pq|rs\right)\left\langle 0\left|p^{\dagger}a\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{iq}\\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{ia}} \end{array}
    
-Equals:
+Now by letting the :math:`\delta` s equal to one:
 
 .. math::
-   \begin{array}{cc} & \left\langle 0\left|i^{\dagger}i\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{jj}\\ - & \left\langle 0\left|j^{\dagger}j\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{ii}\\ + & 0\\ - & 0\\ = & 0 \end{array}
+   \begin{array}{ccc} E_{ia}^{[1]} & = & \sum_{q}h_{aq}\left\langle 0\left|i^{\dagger}q\right|0\right\rangle \delta_{aa}-\sum_{p}h_{p}\left\langle 0\left|p^{\dagger}a\right|0\right\rangle \delta_{ii}\\ & + & \sum_{qrs}\left(aq|rs\right)\left\langle 0\left|i^{\dagger}q\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{aa}\\ & - & \sum_{prs}\left(pi|rs\right)\left\langle 0\left|p^{\dagger}a\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{ii}\\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{ia}} \end{array}
    
-The same argument can be made for :math:`\kappa\equiv\kappa_{ab}`. Now for :math:`\kappa\equiv\kappa_{ia}`:
+Now eliminating one more index of them sums by letting the annihilation and creation operators be identical.Thus giving:
 
 .. math::
-   \begin{array}{ccc} E^{[1]} & = & \sum_{pq}h_{pq}\left\{ \left\langle 0\left|i^{\dagger}q\right|0\right\rangle \delta_{pa}-\left\langle 0\left|p^{\dagger}a\right|0\right\rangle \delta_{qi}\right\} \\ & + & \frac{1}{2}\sum_{pqrs}\left(pq|rs\right)\left\{ \left\langle 0\left|i^{\dagger}q\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{pa}\right.\\ & - & \left\langle 0\left|p^{\dagger}a\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{iq}\\ & + & \left\langle 0\left|p^{\dagger}q\right|0\right\rangle \left\langle 0\left|i^{\dagger}s\right|0\right\rangle \delta_{ra}\\ & - & \left.\left\langle 0\left|p^{\dagger}q\right|0\right\rangle \left\langle 0\left|r^{\dagger}a\right|0\right\rangle \delta_{is}\right\} \\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{ia}} \end{array}
-   
-Now by letting the two first :math:`\delta` equal to one:
-
-.. math::
-   \begin{array}{ccc} E^{[1]} & = & \sum_{ai}h_{ai}\left\{ \left\langle 0\left|i^{\dagger}i\right|0\right\rangle \delta_{aa}-\left\langle 0\left|a^{\dagger}a\right|0\right\rangle \delta_{ii}\right\} \\ & + & \frac{1}{2}\sum_{airs}\left(pq|rs\right)\left\{ \left\langle 0\left|i^{\dagger}i\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{aa}\right.\\ & - & \left\langle 0\left|a^{\dagger}a\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{ii}\\ & + & \left\langle 0\left|a^{\dagger}i\right|0\right\rangle \left\langle 0\left|i^{\dagger}s\right|0\right\rangle \delta_{ra}\\ & - & \left.\left\langle 0\left|a^{\dagger}i\right|0\right\rangle \left\langle 0\left|r^{\dagger}a\right|0\right\rangle \delta_{is}\right\} \\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{ia}} \end{array}
-   
-Thus giving:
-
-.. math::
-   \begin{array}{ccc} E^{[1]} & = & \sum_{ai}h_{ai}\left\{ \left\langle 0\left|i^{\dagger}i\right|0\right\rangle \delta_{aa}-\left\langle 0\left|a^{\dagger}a\right|0\right\rangle \delta_{ii}\right\} \\ & + & \frac{1}{2}\sum_{airs}\left(pq|rs\right)\left\{ \left\langle 0\left|i^{\dagger}i\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{aa}\right.\\ & - & \left.\left\langle 0\left|a^{\dagger}a\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{ii}\right\} \\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{ia}} \end{array}
+   \begin{array}{ccc} E_{ia}^{[1]} & = & h_{ai}\left\langle 0\left|i^{\dagger}i\right|0\right\rangle \delta_{aa}-h_{ai}\left\langle 0\left|a^{\dagger}a\right|0\right\rangle \delta_{ii}\\ & + & \sum_{rs}\left(ai|rs\right)\left\langle 0\left|i^{\dagger}i\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{aa}\\ & - & \sum_{rs}\left(ai|rs\right)\left\langle 0\left|a^{\dagger}a\right|0\right\rangle \left\langle 0\left|r^{\dagger}s\right|0\right\rangle \delta_{ii}\\ & + & \frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{ia}} \end{array}
    
 It can now be seen that :math:`r` must be equal to :math:`s` and must be of an occupied type:
 
 .. math::
-   E^{[1]}=\sum_{ai}h_{ai}+\frac{1}{2}\sum_{aij}\left(pq|jj\right)+\frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{ia}}
-   
-**First term seem to be of wrong sign, and second term seem to be a factor -2 wrong**
+   E_{ia}^{[1]}=\sum_{ai}h_{ai}+\sum_{j}\left(pq|jj\right)+\frac{\partial E_{xc}\left[\rho\right]}{\partial\kappa_{ia}}
+
 Now only the last term need to be evaluated. The expansion of exchange-correlation energy density is simply:
 
 .. math::
@@ -187,7 +175,7 @@ As before the term :math:`\left\langle 0\left|\left[r^{\dagger}s,p^{\dagger}q\ri
    
 .. math::
    \frac{\partial e_{xc}\left(\rho,\zeta\right)}{\partial\kappa_{ia}}=\sum_{ai}\left\{ \frac{\partial e_{xc}}{\partial\rho}\Omega_{ai}+2\frac{\partial e_{xc}}{\partial\zeta}\left(\nabla\rho_{0}\nabla\Omega_{ai}\right)\right\} 
-
+   
 - Four-Component Relativistic Kohn-Sham Theory, Trond Saue og Trygve Helgaker.
 
 
