@@ -36,8 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
-        <link rel="next" title="Dalton Surgery" href="daltonsurgery.html"/>
-        <link rel="prev" title="MCSCF-srDFT" href="mcscfsrdft.html"/> 
+        <link rel="prev" title="Multi-Configurational Self-Consistent Field" href="mcscf.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -89,15 +88,17 @@
               <p class="caption"><span class="caption-text">Content</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="daltonsurgery.html">Dalton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Response</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quasi-energy">Quasi Energy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linear-transformation">Linear-Transformation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="daltonsurgery.html">Dalton Surgery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="justmath.html">Just Maths</a></li>
-<li class="toctree-l1"><a class="reference internal" href="densitymatrixexpansion.html">Density matrix expansion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oneindextransformation.html">One-index Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hartreefock.html">Hartree-Fock</a></li>
 </ul>
 
             
@@ -163,6 +164,86 @@
             
   <div class="section" id="response">
 <h1>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="quasi-energy">
+<h2>Quasi Energy<a class="headerlink" href="#quasi-energy" title="Permalink to this headline">¶</a></h2>
+<p>The time-dependent Schrödinger equation is given as:</p>
+<div class="math">
+\[\left(\hat{H}-i\frac{\partial}{\partial t}\right)\left|0\left(t\right)\right\rangle =0\]</div>
+<p>Here the Hamiltonian is given as, the zeroth order Hamiltonian and a time-dependent perturbation.
+Thus:</p>
+<div class="math">
+\[\hat{H}=\hat{H}_{0}+\hat{V}\left(t\right)\]</div>
+<p>Now the wave function can be parameterized by extracting a time-dependent phase factor:</p>
+<div class="math">
+\[\left|0\left(t\right)\right\rangle =\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle\]</div>
+<p>By insertion into the time-dependent Schrödinger equation:</p>
+<div class="math">
+\[\left(\hat{H}-i\frac{\partial}{\partial t}\right)\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle =\hat{H}\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle -i\frac{\partial}{\partial t}\left[\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle \right]=0\]</div>
+<p>Now by applying the product-rule:</p>
+<div class="math">
+\[\hat{H}\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle -i\frac{\partial}{\partial t}\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle +\exp\left(-iF\left(t\right)\right)\left(-i\frac{\partial}{\partial t}\right)\left|\tilde{0}\left(t\right)\right\rangle =0\]</div>
+<p>Since <span class="math">\(F\)</span> is a function of the time, the chain-rule can now be used on the first term:</p>
+<div class="math">
+\[\hat{H}\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle -\exp\left(-iF\left(t\right)\right)\frac{dF\left(t\right)}{dt}\left|\tilde{0}\left(t\right)\right\rangle +\exp\left(-iF\left(t\right)\right)\left(-i\frac{\partial}{\partial t}\right)\left|\tilde{0}\left(t\right)\right\rangle =0\]</div>
+<p>Now giving:</p>
+<div class="math">
+\[\hat{H}\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle +\exp\left(-iF\left(t\right)\right)\left(-i\frac{\partial}{\partial t}\right)\left|\tilde{0}\left(t\right)\right\rangle =\exp\left(-iF\left(t\right)\right)\frac{dF\left(t\right)}{dt}\left|\tilde{0}\left(t\right)\right\rangle\]</div>
+<div class="math">
+\[\left(\hat{H}-i\frac{\partial}{\partial t}\right)\left|\tilde{0}\left(t\right)\right\rangle =\dot{F}\left(t\right)\left|\tilde{0}\left(t\right)\right\rangle\]</div>
+<p>If the wave function is assumed to be normalized at all times, this can be rewritten to give an expression for <span class="math">\(\dot{F}\)</span>:</p>
+<div class="math">
+\[\dot{F}\left(t\right)=\left\langle \tilde{0}\left(t\right)\left|\hat{H}-i\frac{\partial}{\partial t}\right|\tilde{0}\left(t\right)\right\rangle\]</div>
+<p>Now if the perturbation is periodic the quasi-energy can be defined as the time average of the above equation:</p>
+<div class="math">
+\[Q=\frac{1}{T}\int_{0}^{T}\dot{F}\left(t\right)dt=\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{H}-i\frac{\partial}{\partial t}\right|\tilde{0}\left(t\right)\right\rangle dt\]</div>
+<p>Now by expanding the Hamiltonian in the quasi energy:</p>
+<div class="math">
+\[Q=\frac{1}{T}\int_{0}^{T}\dot{F}\left(t\right)dt=\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{H}_{0}+\hat{V}-i\frac{\partial}{\partial t}\right|\tilde{0}\left(t\right)\right\rangle dt\]</div>
+<div class="math">
+\[Q=\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{H}_{0}\right|\tilde{0}\left(t\right)\right\rangle dt+\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{V}\right|\tilde{0}\left(t\right)\right\rangle dt+\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|-i\frac{\partial}{\partial t}\right|\tilde{0}\left(t\right)\right\rangle dt\]</div>
+<p>Now giving:</p>
+<div class="math">
+\[Q=Q_{0}+\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{V}\right|\tilde{0}\left(t\right)\right\rangle dt\]</div>
+<p>Here:</p>
+<div class="math">
+\[Q_{0}=E_{0}-S\]</div>
+<p>with,</p>
+<div class="math">
+\[E_{0}=\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{H}_{0}\right|\tilde{0}\left(t\right)\right\rangle dt\]</div>
+<p>and,</p>
+<div class="math">
+\[-S=-\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|i\frac{\partial}{\partial t}\right|\tilde{0}\left(t\right)\right\rangle dt\]</div>
+<p>Since the perturbation is assumed to be periodic, the perturbation can be written in terms of its Fourier components:</p>
+<div class="math">
+\[\hat{V}\left(t\right)=\sum_{k=-N}^{N}\exp\left(-i\omega_{k}t\right)\sum_{X}\epsilon_{X}\left(\omega_{k}\right)\hat{H}_{X}\]</div>
+<p>Here <span class="math">\(\epsilon_{X}\)</span> is the perturbation field strengths and :math`hat{H}_{X}` is the perturbation Hamiltonian.
+Thus giving:</p>
+<div class="math">
+\[Q=Q_{0}+\sum_{k=-N}^{N}\sum_{X}\epsilon_{X}\left(\omega_{k}\right)E_{X}\left(\omega_{k}\right)\]</div>
+<p>with,</p>
+<div class="math">
+\[E_{X}\left(\omega_{k}\right)=\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{H}_{X}\right|\tilde{0}\left(t\right)\right\rangle \exp\left(-i\omega_{k}t\right)dt\]</div>
+<p>A Taylor expansion can be made the quasi energy around the perturbation field equal to zero.
+Now molecular properties can be found as the derivatives of the quasi energy inside the Taylor expansion.
+First order properties are thus given as:</p>
+<div class="math">
+\[\left.\frac{dQ}{d\epsilon_{A}\left(\omega_{a}\right)}\right|_{\epsilon=0}=\frac{dQ_{0}}{d\epsilon_{A}\left(\omega_{a}\right)}+\frac{d}{d\epsilon_{A}\left(\omega_{a}\right)}\left[\sum_{k=-N}^{N}\sum_{X}\epsilon_{X}\left(\omega_{k}\right)E_{X}\left(\omega_{k}\right)\right]\]</div>
+<p>By using the product-rule:</p>
+<div class="math">
+\[\left.\frac{dQ}{d\epsilon_{A}\left(\omega_{a}\right)}\right|_{\epsilon=0}=\frac{dQ_{0}}{d\epsilon_{A}\left(\omega_{a}\right)}+\sum_{k=-N}^{N}\sum_{X}\frac{d\epsilon_{X}\left(\omega_{k}\right)}{d\epsilon_{A}\left(\omega_{a}\right)}E_{X}\left(\omega_{k}\right)+\sum_{k=-N}^{N}\sum_{X}\epsilon_{X}\left(\omega_{k}\right)\frac{dE_{X}\left(\omega_{k}\right)}{d\epsilon_{A}\left(\omega_{a}\right)}\]</div>
+<div class="math">
+\[\left.\frac{dQ}{d\epsilon_{A}\left(\omega_{a}\right)}\right|_{\epsilon=0}=\frac{dQ_{0}}{d\epsilon_{A}\left(\omega_{a}\right)}+E_{A}\left(\omega_{a}\right)+\sum_{k=-N}^{N}\sum_{X}\epsilon_{X}\left(\omega_{k}\right)\frac{dE_{X}\left(\omega_{k}\right)}{d\epsilon_{A}\left(\omega_{a}\right)}\]</div>
+<p>The last term is zero, because the derivative is taken for <span class="math">\(\epsilon=0\)</span>, thus:</p>
+<div class="math">
+\[\left.\frac{dQ}{d\epsilon_{A}\left(\omega_{a}\right)}\right|_{\epsilon=0}=\frac{dQ_{0}}{d\epsilon_{A}\left(\omega_{a}\right)}+E_{A}\left(\omega_{a}\right)\]</div>
+<p>In the same way second order properties can be found as:</p>
+<div class="math">
+\[\left.\frac{dQ}{d\epsilon_{A}\left(\omega_{a}\right)d\epsilon_{B}\left(\omega_{b}\right)}\right|_{\epsilon=0}=\frac{dQ_{0}}{d\epsilon_{A}\left(\omega_{a}\right)d\epsilon_{B}\left(\omega_{b}\right)}+\frac{dE_{A}\left(\omega_{a}\right)}{d\epsilon_{B}\left(\omega_{b}\right)}+\frac{dE_{B}\left(\omega_{b}\right)}{d\epsilon_{A}\left(\omega_{a}\right)}\]</div>
+<ul class="simple">
+<li>Linear response at the 4-component relativistic level: Application to the frequency dependent dipole polarizabilities of the coinage metal dimers, T. Saue, and H. J. Aa. Jensen</li>
+<li>Linear response at the 4-component relativistic density-functional level: application to the frequency-dependent dipole polarizability of Hg, AuH and PtH2. Pawel Salek, Trygve Helgaker og Trond Saue.</li>
+</ul>
+</div>
 <div class="section" id="linear-transformation">
 <h2>Linear-Transformation<a class="headerlink" href="#linear-transformation" title="Permalink to this headline">¶</a></h2>
 <p>The combined triplet and singlet one-body operator:</p>
@@ -348,10 +429,8 @@ S_{i}\\
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="daltonsurgery.html" class="btn btn-neutral float-right" title="Dalton Surgery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="mcscfsrdft.html" class="btn btn-neutral" title="MCSCF-srDFT" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mcscf.html" class="btn btn-neutral" title="Multi-Configurational Self-Consistent Field" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

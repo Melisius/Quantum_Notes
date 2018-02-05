@@ -15,4 +15,5 @@ Notes about Quantum Chemistry
    justmath.rst
    H_F_Dmatrix.rst
    dft.rst
+   mcscf.rst
    response.rst

@@ -2,6 +2,132 @@
 Response
 ========
 
+Quasi Energy
+------------
+
+The time-dependent Schrödinger equation is given as:
+
+.. math::
+   \left(\hat{H}-i\frac{\partial}{\partial t}\right)\left|0\left(t\right)\right\rangle =0
+
+Here the Hamiltonian is given as, the zeroth order Hamiltonian and a time-dependent perturbation.
+Thus:
+
+.. math::
+   \hat{H}=\hat{H}_{0}+\hat{V}\left(t\right)
+   
+Now the wave function can be parameterized by extracting a time-dependent phase factor:
+
+.. math::
+   \left|0\left(t\right)\right\rangle =\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle 
+   
+By insertion into the time-dependent Schrödinger equation:
+
+.. math::
+   \left(\hat{H}-i\frac{\partial}{\partial t}\right)\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle =\hat{H}\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle -i\frac{\partial}{\partial t}\left[\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle \right]=0
+   
+Now by applying the product-rule:
+
+.. math::
+   \hat{H}\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle -i\frac{\partial}{\partial t}\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle +\exp\left(-iF\left(t\right)\right)\left(-i\frac{\partial}{\partial t}\right)\left|\tilde{0}\left(t\right)\right\rangle =0
+   
+Since :math:`F` is a function of the time, the chain-rule can now be used on the first term:
+
+.. math::
+   \hat{H}\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle -\exp\left(-iF\left(t\right)\right)\frac{dF\left(t\right)}{dt}\left|\tilde{0}\left(t\right)\right\rangle +\exp\left(-iF\left(t\right)\right)\left(-i\frac{\partial}{\partial t}\right)\left|\tilde{0}\left(t\right)\right\rangle =0
+   
+Now giving:
+
+.. math::
+   \hat{H}\exp\left(-iF\left(t\right)\right)\left|\tilde{0}\left(t\right)\right\rangle +\exp\left(-iF\left(t\right)\right)\left(-i\frac{\partial}{\partial t}\right)\left|\tilde{0}\left(t\right)\right\rangle =\exp\left(-iF\left(t\right)\right)\frac{dF\left(t\right)}{dt}\left|\tilde{0}\left(t\right)\right\rangle 
+   
+.. math::
+   \left(\hat{H}-i\frac{\partial}{\partial t}\right)\left|\tilde{0}\left(t\right)\right\rangle =\dot{F}\left(t\right)\left|\tilde{0}\left(t\right)\right\rangle 
+   
+If the wave function is assumed to be normalized at all times, this can be rewritten to give an expression for :math:`\dot{F}`:
+
+.. math::
+   \dot{F}\left(t\right)=\left\langle \tilde{0}\left(t\right)\left|\hat{H}-i\frac{\partial}{\partial t}\right|\tilde{0}\left(t\right)\right\rangle 
+   
+Now if the perturbation is periodic the quasi-energy can be defined as the time average of the above equation:
+
+.. math::
+   Q=\frac{1}{T}\int_{0}^{T}\dot{F}\left(t\right)dt=\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{H}-i\frac{\partial}{\partial t}\right|\tilde{0}\left(t\right)\right\rangle dt
+   
+Now by expanding the Hamiltonian in the quasi energy:
+
+.. math::
+   Q=\frac{1}{T}\int_{0}^{T}\dot{F}\left(t\right)dt=\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{H}_{0}+\hat{V}-i\frac{\partial}{\partial t}\right|\tilde{0}\left(t\right)\right\rangle dt
+   
+.. math::
+   Q=\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{H}_{0}\right|\tilde{0}\left(t\right)\right\rangle dt+\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{V}\right|\tilde{0}\left(t\right)\right\rangle dt+\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|-i\frac{\partial}{\partial t}\right|\tilde{0}\left(t\right)\right\rangle dt
+   
+Now giving:
+
+.. math::
+   Q=Q_{0}+\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{V}\right|\tilde{0}\left(t\right)\right\rangle dt
+   
+Here:
+
+.. math::
+   Q_{0}=E_{0}-S
+   
+with,
+
+.. math::
+   E_{0}=\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{H}_{0}\right|\tilde{0}\left(t\right)\right\rangle dt
+   
+and,
+
+.. math::
+   -S=-\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|i\frac{\partial}{\partial t}\right|\tilde{0}\left(t\right)\right\rangle dt
+   
+Since the perturbation is assumed to be periodic, the perturbation can be written in terms of its Fourier components:
+
+.. math::
+   \hat{V}\left(t\right)=\sum_{k=-N}^{N}\exp\left(-i\omega_{k}t\right)\sum_{X}\epsilon_{X}\left(\omega_{k}\right)\hat{H}_{X}
+   
+Here :math:`\epsilon_{X}` is the perturbation field strengths and :math`\hat{H}_{X}` is the perturbation Hamiltonian.
+Thus giving:
+
+.. math::
+   Q=Q_{0}+\sum_{k=-N}^{N}\sum_{X}\epsilon_{X}\left(\omega_{k}\right)E_{X}\left(\omega_{k}\right)
+   
+with,
+
+.. math::
+   E_{X}\left(\omega_{k}\right)=\frac{1}{T}\int_{0}^{T}\left\langle \tilde{0}\left(t\right)\left|\hat{H}_{X}\right|\tilde{0}\left(t\right)\right\rangle \exp\left(-i\omega_{k}t\right)dt
+   
+A Taylor expansion can be made the quasi energy around the perturbation field equal to zero. 
+Now molecular properties can be found as the derivatives of the quasi energy inside the Taylor expansion.
+First order properties are thus given as:
+
+.. math::
+   \left.\frac{dQ}{d\epsilon_{A}\left(\omega_{a}\right)}\right|_{\epsilon=0}=\frac{dQ_{0}}{d\epsilon_{A}\left(\omega_{a}\right)}+\frac{d}{d\epsilon_{A}\left(\omega_{a}\right)}\left[\sum_{k=-N}^{N}\sum_{X}\epsilon_{X}\left(\omega_{k}\right)E_{X}\left(\omega_{k}\right)\right]
+   
+By using the product-rule:
+
+.. math::
+   \left.\frac{dQ}{d\epsilon_{A}\left(\omega_{a}\right)}\right|_{\epsilon=0}=\frac{dQ_{0}}{d\epsilon_{A}\left(\omega_{a}\right)}+\sum_{k=-N}^{N}\sum_{X}\frac{d\epsilon_{X}\left(\omega_{k}\right)}{d\epsilon_{A}\left(\omega_{a}\right)}E_{X}\left(\omega_{k}\right)+\sum_{k=-N}^{N}\sum_{X}\epsilon_{X}\left(\omega_{k}\right)\frac{dE_{X}\left(\omega_{k}\right)}{d\epsilon_{A}\left(\omega_{a}\right)}
+   
+.. math::
+   \left.\frac{dQ}{d\epsilon_{A}\left(\omega_{a}\right)}\right|_{\epsilon=0}=\frac{dQ_{0}}{d\epsilon_{A}\left(\omega_{a}\right)}+E_{A}\left(\omega_{a}\right)+\sum_{k=-N}^{N}\sum_{X}\epsilon_{X}\left(\omega_{k}\right)\frac{dE_{X}\left(\omega_{k}\right)}{d\epsilon_{A}\left(\omega_{a}\right)}
+   
+The last term is zero, because the derivative is taken for :math:`\epsilon=0`, thus:
+
+.. math::
+   \left.\frac{dQ}{d\epsilon_{A}\left(\omega_{a}\right)}\right|_{\epsilon=0}=\frac{dQ_{0}}{d\epsilon_{A}\left(\omega_{a}\right)}+E_{A}\left(\omega_{a}\right)
+   
+In the same way second order properties can be found as:
+
+.. math::
+   \left.\frac{dQ}{d\epsilon_{A}\left(\omega_{a}\right)d\epsilon_{B}\left(\omega_{b}\right)}\right|_{\epsilon=0}=\frac{dQ_{0}}{d\epsilon_{A}\left(\omega_{a}\right)d\epsilon_{B}\left(\omega_{b}\right)}+\frac{dE_{A}\left(\omega_{a}\right)}{d\epsilon_{B}\left(\omega_{b}\right)}+\frac{dE_{B}\left(\omega_{b}\right)}{d\epsilon_{A}\left(\omega_{a}\right)}
+
+- Linear response at the 4-component relativistic level: Application to the frequency dependent dipole polarizabilities of the coinage metal dimers, T. Saue, and H. J. Aa. Jensen
+
+- Linear response at the 4-component relativistic density-functional level: application to the frequency-dependent dipole polarizability of Hg, AuH and PtH2. Pawel Salek, Trygve Helgaker og Trond Saue.
+   
+   
 Linear-Transformation
 ---------------------
 
