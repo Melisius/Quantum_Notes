@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
-        <link rel="next" title="Response" href="response.html"/>
+        <link rel="next" title="Response Theory" href="response.html"/>
         <link rel="prev" title="Density Functional Theory" href="dft.html"/> 
 
   
@@ -90,7 +90,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daltonsurgery.html">Dalton</a></li>
 <li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
@@ -98,7 +97,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programs.html">Programs</a></li>
 </ul>
 
             
@@ -167,16 +167,16 @@
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In MCSCF the wave function is given as:</p>
-<div class="math">
+<div class="math notranslate">
 \[\Psi_{\mathrm{MCSCF}}=\sum_{i}c_{i}^{\mathrm{CI}}\Phi_{i}\left(\left\{ c^{\mathrm{MO}}\right\} \right)\]</div>
-<p>The <span class="math">\(\Phi_{i}\)</span> are different determinants.
+<p>The <span class="math notranslate">\(\Phi_{i}\)</span> are different determinants.
 This looks very much like the CI wave function, but the big difference is that for an MCSCF wave function both the configuration coefficients and the orbital coefficients are optimized.
 In CI only the configuration coefficients are optimized.
 Thus giving two conditions for the optimization of the MCSCF wave function:</p>
-<div class="math">
+<div class="math notranslate">
 \[\frac{\partial E_{\mathrm{MCSCF}}\left(c^{\mathrm{CI}},c^{\mathrm{MO}}\right)}{\partial c_{i}^{\mathrm{CI}}}=0\]</div>
 <p>and,</p>
-<div class="math">
+<div class="math notranslate">
 \[\frac{\partial E_{\mathrm{MCSCF}}\left(c^{\mathrm{CI}},c^{\mathrm{MO}}\right)}{\partial c_{i}^{\mathrm{MO}}}=0\]</div>
 </div>
 </div>
@@ -191,7 +191,7 @@ Thus giving two conditions for the optimization of the MCSCF wave function:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="response.html" class="btn btn-neutral float-right" title="Response" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="response.html" class="btn btn-neutral float-right" title="Response Theory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="dft.html" class="btn btn-neutral" title="Density Functional Theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
         <link rel="next" title="Hamiltonian, Fock and Density Matrix" href="H_F_Dmatrix.html"/>
-        <link rel="prev" title="Dalton" href="daltonsurgery.html"/> 
+        <link rel="prev" title="MCSCF-srDFT response" href="mcsrdftresponse.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -90,7 +90,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daltonsurgery.html">Dalton</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Mathematics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#matrices">Matrices</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#real-anti-symmetric-matrix">Real (anti)-symmetric matrix</a></li>
@@ -110,7 +109,8 @@
 <li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
-<li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programs.html">Programs</a></li>
 </ul>
 
             
@@ -181,28 +181,28 @@
 <div class="section" id="real-anti-symmetric-matrix">
 <h3>Real (anti)-symmetric matrix<a class="headerlink" href="#real-anti-symmetric-matrix" title="Permalink to this headline">¶</a></h3>
 <p>A real symmetric matrix is defined as:</p>
-<div class="math">
+<div class="math notranslate">
 \[A_{i,j}=A_{j,i}\]</div>
 <p>A real anti-symmetric matrix is defined as:</p>
-<div class="math">
+<div class="math notranslate">
 \[A_{i,j}=-A_{j,i}\]</div>
 </div>
 <div class="section" id="baker-campbell-hausdorf-expansion">
 <h3>Baker-Campbell-Hausdorf expansion<a class="headerlink" href="#baker-campbell-hausdorf-expansion" title="Permalink to this headline">¶</a></h3>
 <p>The BCH expansion is given as:</p>
-<div class="math">
+<div class="math notranslate">
 \[\exp\left(A\right)B\exp\left(-A\right)=B+\left[A,B\right]+\frac{1}{2!}\left[A,\left[A,B\right]\right]+\frac{1}{3!}\left[A,\left[A,\left[A,B\right]\right]\right]+...\]</div>
 </div>
 <div class="section" id="unitary-matrix">
 <h3>Unitary matrix<a class="headerlink" href="#unitary-matrix" title="Permalink to this headline">¶</a></h3>
 <p>A unitary matrix is defined as:</p>
-<div class="math">
+<div class="math notranslate">
 \[U^{\dagger}U=UU^{\dagger}=1\]</div>
 </div>
 <div class="section" id="real-orthogonal-matrix">
 <h3>Real orthogonal matrix<a class="headerlink" href="#real-orthogonal-matrix" title="Permalink to this headline">¶</a></h3>
 <p>A real orthogonal matrix must satisfy:</p>
-<div class="math">
+<div class="math notranslate">
 \[Q^{T}Q=QQ^{T}=1\]</div>
 </div>
 </div>
@@ -211,49 +211,49 @@
 <div class="section" id="projection-operator">
 <h3>Projection operator<a class="headerlink" href="#projection-operator" title="Permalink to this headline">¶</a></h3>
 <p>A projection operator is defined as:</p>
-<div class="math">
+<div class="math notranslate">
 \[\hat{P}^{2}=\hat{P}\]</div>
 <p>As an example lets consider:</p>
-<div class="math">
+<div class="math notranslate">
 \[\hat{P}=1-\left|0\right\rangle \left\langle 0\right|\]</div>
 <p>Now:</p>
-<div class="math">
+<div class="math notranslate">
 \[\hat{P}^{2}=\left(1-\left|0\right\rangle \left\langle 0\right|\right)^{2}=1+\left|0\right\rangle \left\langle 0\right|\left|0\right\rangle \left\langle 0\right|-2\left|0\right\rangle \left\langle 0\right|\]</div>
-<p>It can now be used that <span class="math">\(\left\langle 0\right|\left|0\right\rangle =1\)</span>:</p>
-<div class="math">
+<p>It can now be used that <span class="math notranslate">\(\left\langle 0\right|\left|0\right\rangle =1\)</span>:</p>
+<div class="math notranslate">
 \[\hat{P}^{2}=1+\left|0\right\rangle \left\langle 0\right|-2\left|0\right\rangle \left\langle 0\right|=1-\left|0\right\rangle \left\langle 0\right|=\hat{P}\]</div>
 </div>
 <div class="section" id="anti-commutator">
 <h3>(anti)-Commutator<a class="headerlink" href="#anti-commutator" title="Permalink to this headline">¶</a></h3>
 <p>The commutator is defined as:</p>
-<div class="math">
+<div class="math notranslate">
 \[\left[\hat{A},\hat{B}\right]=\hat{A}\hat{B}-\hat{B}\hat{A}\]</div>
 <p>The anti-commutator is defined as:</p>
-<div class="math">
+<div class="math notranslate">
 \[\left[\hat{A},\hat{B}\right]_{+}=\hat{A}\hat{B}+\hat{B}\hat{A}\]</div>
 <p>From the commutator relation it can be noted that:</p>
-<div class="math">
+<div class="math notranslate">
 \[\left[\hat{A},\hat{B}\right]=\hat{A}\hat{B}-\hat{B}\hat{A}=-\left(\hat{B}\hat{A}-\hat{A}\hat{B}\right)=-\left[\hat{B},\hat{A}\right]\]</div>
 </div>
 <div class="section" id="jacobi-identity">
 <h3>Jacobi identity<a class="headerlink" href="#jacobi-identity" title="Permalink to this headline">¶</a></h3>
 <p>Lets consider:</p>
-<div class="math">
+<div class="math notranslate">
 \[\left[A,\left[B,C\right]\right]+\left[B,\left[C,A\right]\right]+\left[C,\left[A,B\right]\right]\]</div>
 <p>Now by expansion:</p>
-<div class="math">
+<div class="math notranslate">
 \[\left[A,BC-CB\right]+\left[B,CA-AC\right]+\left[C,AB-BA\right]\]</div>
 <p>Which can be rearranged to:</p>
-<div class="math">
+<div class="math notranslate">
 \[\begin{split}\begin{array}{c}A\left(BC-CB\right)-\left(BC-CB\right)A+B\left(CA-AC\right)\\-\left(CA-AC\right)B+C\left(AB-BA\right)-\left(AB-BA\right)C\end{array}\end{split}\]</div>
 <p>Which can be rearranged to:</p>
-<div class="math">
+<div class="math notranslate">
 \[\begin{split}\begin{array}{c}ABC-ACB-BCA+CBA+BCA-BAC\\-CAB+ACB+CAB-CBA-ABC+BAC\end{array}\end{split}\]</div>
 <p>Now by a final rearranging:</p>
-<div class="math">
+<div class="math notranslate">
 \[\begin{split}\begin{array}{c}ABC-ABC+ACB-ACB+BAC-BAC\\+BCA-BCA+CAB-CAB+CBA-CBA=0\end{array}\end{split}\]</div>
 <p>Thus showing:</p>
-<div class="math">
+<div class="math notranslate">
 \[\left[A,\left[B,C\right]\right]+\left[B,\left[C,A\right]\right]+\left[C,\left[A,B\right]\right]=0\]</div>
 <p>Which is known as the Jacobi identity.</p>
 </div>
@@ -273,7 +273,7 @@
         <a href="H_F_Dmatrix.html" class="btn btn-neutral float-right" title="Hamiltonian, Fock and Density Matrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="daltonsurgery.html" class="btn btn-neutral" title="Dalton" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mcsrdftresponse.html" class="btn btn-neutral" title="MCSCF-srDFT response" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

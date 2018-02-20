@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Programs &mdash; Quantum Notes  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
+        <link rel="prev" title="Response Theory" href="response.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Quantum Notes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cpmd">CPMD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parallelization">Parallelization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-48-water">Example - 48 Water</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Quantum Notes</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Programs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/programs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="programs">
+<h1>Programs<a class="headerlink" href="#programs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cpmd">
+<h2>CPMD<a class="headerlink" href="#cpmd" title="Permalink to this headline">¶</a></h2>
+<p>A section about the <a class="reference external" href="http://www.cpmd.org/">CPMD</a> program.</p>
+<div class="section" id="parallelization">
+<h3>Parallelization<a class="headerlink" href="#parallelization" title="Permalink to this headline">¶</a></h3>
+<p>In CPMD one of the things to keep an eye out for when trying to scale over multiple nodes is the number of planes.
+The number of planes for a given system can be found in an output file, ran for any amount of time.</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">PARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARA</span>
+ <span class="n">NCPU</span>     <span class="n">NGW</span>     <span class="n">NHG</span>  <span class="n">PLANES</span>  <span class="n">GXRAYS</span>  <span class="n">HXRAYS</span> <span class="n">ORBITALS</span> <span class="n">Z</span><span class="o">-</span><span class="n">PLANES</span>
+        <span class="mi">0</span>    <span class="mi">3877</span>   <span class="mi">30927</span>       <span class="mi">6</span>     <span class="mi">166</span>     <span class="mi">654</span>       <span class="mi">5</span>       <span class="mi">1</span>
+        <span class="mi">1</span>    <span class="mi">3875</span>   <span class="mi">30939</span>       <span class="mi">6</span>     <span class="mi">166</span>     <span class="mi">654</span>       <span class="mi">6</span>       <span class="mi">1</span>
+        <span class="mi">2</span>    <span class="mi">3871</span>   <span class="mi">30935</span>       <span class="mi">6</span>     <span class="mi">166</span>     <span class="mi">654</span>       <span class="mi">5</span>       <span class="mi">1</span>
+        <span class="mi">3</span>    <span class="mi">3871</span>   <span class="mi">30937</span>       <span class="mi">6</span>     <span class="mi">166</span>     <span class="mi">654</span>       <span class="mi">5</span>       <span class="mi">1</span>
+        <span class="mi">4</span>    <span class="mi">3869</span>   <span class="mi">30935</span>       <span class="mi">6</span>     <span class="mi">166</span>     <span class="mi">654</span>       <span class="mi">6</span>       <span class="mi">1</span>
+        <span class="mi">5</span>    <span class="mi">3868</span>   <span class="mi">30931</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">654</span>       <span class="mi">5</span>       <span class="mi">1</span>
+        <span class="mi">6</span>    <span class="mi">3868</span>   <span class="mi">30923</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">654</span>       <span class="mi">5</span>       <span class="mi">1</span>
+        <span class="mi">7</span>    <span class="mi">3870</span>   <span class="mi">30926</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">6</span>       <span class="mi">1</span>
+        <span class="mi">8</span>    <span class="mi">3866</span>   <span class="mi">30924</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">5</span>       <span class="mi">1</span>
+        <span class="mi">9</span>    <span class="mi">3864</span>   <span class="mi">30916</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">5</span>       <span class="mi">1</span>
+       <span class="mi">10</span>    <span class="mi">3864</span>   <span class="mi">30926</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">6</span>       <span class="mi">1</span>
+       <span class="mi">11</span>    <span class="mi">3862</span>   <span class="mi">30932</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">5</span>       <span class="mi">1</span>
+       <span class="mi">12</span>    <span class="mi">3862</span>   <span class="mi">30932</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">5</span>       <span class="mi">1</span>
+       <span class="mi">13</span>    <span class="mi">3866</span>   <span class="mi">30926</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">6</span>       <span class="mi">1</span>
+       <span class="mi">14</span>    <span class="mi">3864</span>   <span class="mi">30930</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">5</span>       <span class="mi">1</span>
+       <span class="mi">15</span>    <span class="mi">3868</span>   <span class="mi">30922</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">5</span>       <span class="mi">1</span>
+       <span class="mi">16</span>    <span class="mi">3872</span>   <span class="mi">30932</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">6</span>       <span class="mi">1</span>
+       <span class="mi">17</span>    <span class="mi">3870</span>   <span class="mi">30934</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">5</span>       <span class="mi">1</span>
+       <span class="mi">18</span>    <span class="mi">3870</span>   <span class="mi">30936</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">5</span>       <span class="mi">1</span>
+       <span class="mi">19</span>    <span class="mi">3868</span>   <span class="mi">30920</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">6</span>       <span class="mi">1</span>
+       <span class="mi">20</span>    <span class="mi">3868</span>   <span class="mi">30910</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">5</span>       <span class="mi">1</span>
+       <span class="mi">21</span>    <span class="mi">3866</span>   <span class="mi">30930</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">5</span>       <span class="mi">1</span>
+       <span class="mi">22</span>    <span class="mi">3861</span>   <span class="mi">30854</span>       <span class="mi">6</span>     <span class="mi">163</span>     <span class="mi">655</span>       <span class="mi">6</span>       <span class="mi">1</span>
+       <span class="mi">23</span>    <span class="mi">3860</span>   <span class="mi">30910</span>       <span class="mi">6</span>     <span class="mi">164</span>     <span class="mi">656</span>       <span class="mi">5</span>       <span class="mi">1</span>
+                               <span class="n">G</span><span class="o">=</span><span class="mi">0</span> <span class="n">COMPONENT</span> <span class="n">ON</span> <span class="n">PROCESSOR</span> <span class="p">:</span>    <span class="mi">22</span>
+<span class="n">PARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARA</span>
+</pre></div>
+</div>
+<p>The total number of planes is the sum of the column “PLANES”.
+For the above this would be 144 planes in total.
+Obviously this would mean that the parallelization would stop at (nodes*tasks_per_node)/planes = 1.
+In CPMD there is an option to let multiple nodes divide the calculation associated with a single plane.
+This setting is called CP_GROUPS.
+When using CP_GROUPS the goal is still to have the same amount of planes per effective tasks.
+Here effective tasks is the number of tasks divided with the amount of CP_GROUPS.</p>
+<div class="math notranslate">
+\[N_{\mathrm{effective\ tasks}} = \frac{N_{\mathrm{total\ tasks}}}{N{_{\mathrm{CP\_GROUPS}}}}\]</div>
+<p>To ensure that the number of planes per process is the same, the following relation must be true:</p>
+<div class="math notranslate">
+\[\frac{N{_{\mathrm{CP\_GROUPS}}} N_{\mathrm{planes}}}{N_{\mathrm{total\ tasks}}} \mod 1 = 0\]</div>
+<p>If CPMD have been compiled with OMP, OMP threading can be tried too.
+The chosen number of OMP threads and MPI processes must be chosen such that:</p>
+<div class="math notranslate">
+\[N_{\mathrm{OMP\ threads}} N_{\mathrm{MPI\ processes}} = N_{\mathrm{total\ tasks}}\]</div>
+<p>OMP threads can be set by:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OMP_NUM_THREADS</span><span class="o">=</span><span class="n">X</span>
+<span class="n">export</span> <span class="n">OMP_WAIT_POLICY</span><span class="o">=</span><span class="n">active</span>
+</pre></div>
+</div>
+<p>OMP_WAIT_POLICY ensures that the OMP threads are kept active.</p>
+<div class="section" id="example-48-water">
+<h4>Example - 48 Water<a class="headerlink" href="#example-48-water" title="Permalink to this headline">¶</a></h4>
+<p>This example was benchmarked on the supercomputer Abacus 2.0 at the University of Southern Denmark.
+On this architecture every node have 24 cores.
+For this example of 48 water, the number of planes is 168.
+Since 168 / 24 = 7, i.e. an integer, it could be thought that settings CP_GROUPS = number of nodes would be a good choice.
+It can be identified that three different “sweet spots” exist.
+Following the formula from the above section:</p>
+<div class="math notranslate">
+\[\frac{N{_{\mathrm{CP\_GROUPS}}} N_{\mathrm{planes}}}{N_{\mathrm{total\ tasks}}} \mod 1 = 0\]</div>
+<div class="math notranslate">
+\[\frac{1 \cdot 168}{7 \cdot 24} \mod 1  = 1 \mod 1 = 0\]</div>
+<div class="math notranslate">
+\[\frac{2 \cdot 168}{14 \cdot 24} \mod 1  = 1 \mod 1 = 0\]</div>
+<div class="math notranslate">
+\[\frac{3 \cdot 168}{21 \cdot 24} \mod 1  = 1 \mod 1 = 0\]</div>
+<p>This indicates that 7, 14 and 21 would be a nice number of nodes.
+Higher values of CP_GROUPS also gives integers for 7, 14 and 21 nodes.
+Try the different values to make sure to know what is best.
+For the following plots CP_GROUP = 1, 2, 3, 4 tried for all the nodes.</p>
+<div class="figure">
+<img alt="_images/Speedup_CP.svg" src="_images/Speedup_CP.svg" /></div>
+<p>For Nodes = [1, 13] the best performance was for CP_GROUPS = 1.</p>
+<p>For Nodes = [14, 20] the best performance was for CP_GROUPS = 2.</p>
+<p>For Nodes = [21, 24] the best performance was for CP_GROUPS = 3.</p>
+<p>This can be rationalized since it was found that 7, 14 and 21 nodes were the spots where the planes were evenly distributed.
+If 8 nodes is used instead of 7, some of the processes just have to do less work, while most have to do the same.
+The time per step is therefore ca. the same.
+All the numbers between 7 and 14 will have the number of CP_GROUPS equal to that of 7, because 14 nodes is needed, for the CP_GROUPS to make a more even distribution of the planes.</p>
+<div class="figure">
+<img alt="_images/Efficiency_CP.svg" src="_images/Efficiency_CP.svg" /></div>
+<p>In the efficiency plot the same story can be seen as in the speedup plot.
+Here it can also be seen that 14 and 21 looks like they are good spots.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="response.html" class="btn btn-neutral" title="Response Theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Erik Kjellgren.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -11,9 +11,9 @@ Notes about Quantum Chemistry
    
    mcscfsrdft.rst
    mcsrdftresponse.rst
-   daltonsurgery.rst
    justmath.rst
    H_F_Dmatrix.rst
    dft.rst
    mcscf.rst
    response.rst
+   programs.rst

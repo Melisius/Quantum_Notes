@@ -1,6 +1,6 @@
 
-Response
-========
+Response Theory
+===============
 
 Quasi Energy
 ------------
@@ -87,7 +87,7 @@ Since the perturbation is assumed to be periodic, the perturbation can be writte
 .. math::
    \hat{V}\left(t\right)=\sum_{k=-N}^{N}\exp\left(-i\omega_{k}t\right)\sum_{X}\epsilon_{X}\left(\omega_{k}\right)\hat{H}_{X}
    
-Here :math:`\epsilon_{X}` is the perturbation field strengths and :math`\hat{H}_{X}` is the perturbation Hamiltonian.
+Here :math:`\epsilon_{X}` is the perturbation field strengths and :math:`\hat{H}_{X}` is the perturbation Hamiltonian.
 Thus giving:
 
 .. math::
