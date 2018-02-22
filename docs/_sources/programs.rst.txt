@@ -2,6 +2,114 @@
 Programs
 ========
 
+Amber
+-----
+
+A section with some notes about the `Amber <http://ambermd.org/>`_ program.
+
+RESP charges
+~~~~~~~~~~~~
+
+Most organic molecules are not explicitly included in the force fields use in Amber.
+For these kinds of molecules the GAFF in Amber can be used. 
+This force field includes all the bonded and the Lennard-Jones parameters. 
+Thus when using these kind of general force field, charges are still needed to account for the electrostatic interactions.
+In Amber these charges can be found by doing a restrained electrostatic potential fit (RESP).
+RESP can be done using Antechamber, which is a part of the Amber program.
+The RESP calculation in Antechamber requires an electro static potential (ESP).
+This ESP can be calculated using Gaussian, which then produces a file that can immediately be used by Antechamber.
+A minimal Gaussian input file, used to make an ESP for RESP can be seen below:
+
+.. code-block:: fortran
+
+	%NProcShared="NUMBER PROCESSES"
+	%mem="AMOUNT MEMORY"MB
+	%chk="PATH TO SAVE CHK FILE"
+	#p HF/6-31G* SCF=Tight Pop=MK IOp(6/50=1)
+
+	 "SOME TITLE"
+
+	"CHARGE" "MULTIPLICITY"
+	"ATOM"         "X"        "Y"       "Z"
+	"..."
+
+	"NAME OF ESP FOR ANTECHAMBER".gesp
+
+Everything in " " should be replaced with something user defined (including the " ").
+For GAFF the method should be Hartree-Fock with the basis set 6-31G*.
+This is used to be consistent with the rest of the force field parameters.
+The setting IOp(6/50=1) specifies that the ESP should be printed in a format accepted by Antechamber.
+The printed ESP is the ".gesp" file.
+Before doing an ESP calculation it is advised to do a geometry optimization with HF/6-31G*.
+For ESP calculations other useful settings are:
+
+IOp(6/41=N), sets the number of layers for which the ESP is calculated.
+Default is N = 4.
+The chosen value must be 4 or above.
+I.e. N ≤ 4.
+
+IOp(6/42=N), sets the density of points per area of the ESP.
+Default is N = 1.
+
+IOp(6/43=N), sets the increment between ESP layers.
+Default is :math:`\frac{0.4}{\sqrt{\mathrm{layer\ index}}}`.
+If N is user defined, the increments will be 0.01*N.
+
+If more than one IOp setting is used, is specified as:
+
+.. code-block:: fortran
+
+	IOp(6/41=5,6/42=3,6/50=1)
+	
+I.e. IOp is just specified once, with all the settings inside.
+Setting IOp(6/41=10) and IOp(6/42=17) might give good results.
+Now that the ".gesp" file have been produced, the RESP charges can be calculated with Antechamber by the following command:
+
+.. code-block:: fortran
+
+	antechamber -i "ESP FILE".gesp -fi gesp -o "OUTPUT FILE".mol2 -fo mol2 -c resp
+
+This will produce a mol2 file, where the charges can be found in last column for each atom. 
+
+*****************************
+Example - para-nitrophenolate
+*****************************
+
+Here is an example with para-nitrophenolate of calculating the ESP file needed in Antechamber.
+
+.. code-block:: fortran
+	
+	%NProcShared=12
+	%mem=20000MB
+	%chk=/home/erik/AmberRuns/PNP1/Resp/PNP1resp.chk
+	#p HF/6-31G* SCF=Tight Pop=MK IOp(6/41=10,6/42=17,6/50=1)
+
+	 PNP1 RESP
+
+	-1 1
+	C          0.00000        1.22448        1.40664
+	C          0.00000        1.21586        0.05197
+	C          0.00000        0.00000       -0.66739
+	C          0.00000       -1.21586        0.05197
+	C          0.00000       -1.22448        1.40664
+	C          0.00000        0.00000        2.19316
+	O          0.00000        0.00000        3.41948
+	N          0.00000        0.00000       -2.06029
+	O          0.00000       -1.05965       -2.65602
+	O          0.00000        1.05965       -2.65602
+	H          0.00000        2.15260        1.95166
+	H          0.00000        2.13693       -0.49934
+	H          0.00000       -2.13693       -0.49934
+	H          0.00000       -2.15260        1.95166
+
+	PNP1resp.gesp
+
+After running Gaussian, the antechamber command looks like the following, for the example:
+	
+.. code-block:: fortran
+
+	antechamber -i PNP1resp.gesp -fi gesp -o PNP1.mol2 -fo mol2 -c resp
+
 CPMD
 ----
 A section about the `CPMD <http://www.cpmd.org/>`_ program.
@@ -114,11 +222,9 @@ This can be rationalized since it was found that 7, 14 and 21 nodes were the spo
 If 8 nodes is used instead of 7, some of the processes just have to do less work, while most have to do the same.
 The time per step is therefore ca. the same. 
 All the numbers between 7 and 14 will have the number of CP_GROUPS equal to that of 7, because 14 nodes is needed, for the CP_GROUPS to make a more even distribution of the planes.
+For this specific system it seems like the best parallelization is for the minimal amount of CP_GROUPS that distributes the planes evenly.
 
 .. figure:: figures/Efficiency_CP.svg
 
 In the efficiency plot the same story can be seen as in the speedup plot. 
 Here it can also be seen that 14 and 21 looks like they are good spots.
-
-
-

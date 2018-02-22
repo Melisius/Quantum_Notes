@@ -95,6 +95,13 @@
 <li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#amber">Amber</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#resp-charges">RESP charges</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-para-nitrophenolate">Example - para-nitrophenolate</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#cpmd">CPMD</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#parallelization">Parallelization</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#example-48-water">Example - 48 Water</a></li>
@@ -169,6 +176,97 @@
             
   <div class="section" id="programs">
 <h1>Programs<a class="headerlink" href="#programs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="amber">
+<h2>Amber<a class="headerlink" href="#amber" title="Permalink to this headline">¶</a></h2>
+<p>A section with some notes about the <a class="reference external" href="http://ambermd.org/">Amber</a> program.</p>
+<div class="section" id="resp-charges">
+<h3>RESP charges<a class="headerlink" href="#resp-charges" title="Permalink to this headline">¶</a></h3>
+<p>Most organic molecules are not explicitly included in the force fields use in Amber.
+For these kinds of molecules the GAFF in Amber can be used.
+This force field includes all the bonded and the Lennard-Jones parameters.
+Thus when using these kind of general force field, charges are still needed to account for the electrostatic interactions.
+In Amber these charges can be found by doing a restrained electrostatic potential fit (RESP).
+RESP can be done using Antechamber, which is a part of the Amber program.
+The RESP calculation in Antechamber requires an electro static potential (ESP).
+This ESP can be calculated using Gaussian, which then produces a file that can immediately be used by Antechamber.
+A minimal Gaussian input file, used to make an ESP for RESP can be seen below:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="p">%</span><span class="n">NProcShared</span><span class="o">=</span><span class="s2">&quot;NUMBER PROCESSES&quot;</span>
+<span class="p">%</span><span class="n">mem</span><span class="o">=</span><span class="s2">&quot;AMOUNT MEMORY&quot;</span><span class="n">MB</span>
+<span class="p">%</span><span class="n">chk</span><span class="o">=</span><span class="s2">&quot;PATH TO SAVE CHK FILE&quot;</span>
+<span class="cp">#p HF/6-31G* SCF=Tight Pop=MK IOp(6/50=1)</span>
+
+ <span class="s2">&quot;SOME TITLE&quot;</span>
+
+<span class="s2">&quot;CHARGE&quot;</span> <span class="s2">&quot;MULTIPLICITY&quot;</span>
+<span class="s2">&quot;ATOM&quot;</span>         <span class="s2">&quot;X&quot;</span>        <span class="s2">&quot;Y&quot;</span>       <span class="s2">&quot;Z&quot;</span>
+<span class="s2">&quot;...&quot;</span>
+
+<span class="s2">&quot;NAME OF ESP FOR ANTECHAMBER&quot;</span><span class="p">.</span><span class="n">gesp</span>
+</pre></div>
+</div>
+<p>Everything in ” ” should be replaced with something user defined (including the ” “).
+For GAFF the method should be Hartree-Fock with the basis set 6-31G*.
+This is used to be consistent with the rest of the force field parameters.
+The setting IOp(6/50=1) specifies that the ESP should be printed in a format accepted by Antechamber.
+The printed ESP is the “.gesp” file.
+Before doing an ESP calculation it is advised to do a geometry optimization with HF/6-31G*.
+For ESP calculations other useful settings are:</p>
+<p>IOp(6/41=N), sets the number of layers for which the ESP is calculated.
+Default is N = 4.
+The chosen value must be 4 or above.
+I.e. N ≤ 4.</p>
+<p>IOp(6/42=N), sets the density of points per area of the ESP.
+Default is N = 1.</p>
+<p>IOp(6/43=N), sets the increment between ESP layers.
+Default is <span class="math notranslate">\(\frac{0.4}{\sqrt{\mathrm{layer\ index}}}\)</span>.
+If N is user defined, the increments will be 0.01*N.</p>
+<p>If more than one IOp setting is used, is specified as:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">IOp</span><span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">41</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="o">/</span><span class="mi">42</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="o">/</span><span class="mi">50</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>I.e. IOp is just specified once, with all the settings inside.
+Setting IOp(6/41=10) and IOp(6/42=17) might give good results.
+Now that the “.gesp” file have been produced, the RESP charges can be calculated with Antechamber by the following command:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">antechamber</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;ESP FILE&quot;</span><span class="p">.</span><span class="n">gesp</span> <span class="o">-</span><span class="n">fi</span> <span class="n">gesp</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;OUTPUT FILE&quot;</span><span class="p">.</span><span class="n">mol2</span> <span class="o">-</span><span class="n">fo</span> <span class="n">mol2</span> <span class="o">-</span><span class="n">c</span> <span class="n">resp</span>
+</pre></div>
+</div>
+<p>This will produce a mol2 file, where the charges can be found in last column for each atom.</p>
+<div class="section" id="example-para-nitrophenolate">
+<h4>Example - para-nitrophenolate<a class="headerlink" href="#example-para-nitrophenolate" title="Permalink to this headline">¶</a></h4>
+<p>Here is an example with para-nitrophenolate of calculating the ESP file needed in Antechamber.</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="p">%</span><span class="n">NProcShared</span><span class="o">=</span><span class="mi">12</span>
+<span class="p">%</span><span class="n">mem</span><span class="o">=</span><span class="mi">20000</span><span class="n">MB</span>
+<span class="p">%</span><span class="n">chk</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">erik</span><span class="o">/</span><span class="n">AmberRuns</span><span class="o">/</span><span class="n">PNP1</span><span class="o">/</span><span class="n">Resp</span><span class="o">/</span><span class="n">PNP1resp</span><span class="p">.</span><span class="n">chk</span>
+<span class="cp">#p HF/6-31G* SCF=Tight Pop=MK IOp(6/41=10,6/42=17,6/50=1)</span>
+
+ <span class="n">PNP1</span> <span class="n">RESP</span>
+
+<span class="o">-</span><span class="mi">1</span> <span class="mi">1</span>
+<span class="n">C</span>          <span class="mf">0.00000</span>        <span class="mf">1.22448</span>        <span class="mf">1.40664</span>
+<span class="n">C</span>          <span class="mf">0.00000</span>        <span class="mf">1.21586</span>        <span class="mf">0.05197</span>
+<span class="n">C</span>          <span class="mf">0.00000</span>        <span class="mf">0.00000</span>       <span class="o">-</span><span class="mf">0.66739</span>
+<span class="n">C</span>          <span class="mf">0.00000</span>       <span class="o">-</span><span class="mf">1.21586</span>        <span class="mf">0.05197</span>
+<span class="n">C</span>          <span class="mf">0.00000</span>       <span class="o">-</span><span class="mf">1.22448</span>        <span class="mf">1.40664</span>
+<span class="n">C</span>          <span class="mf">0.00000</span>        <span class="mf">0.00000</span>        <span class="mf">2.19316</span>
+<span class="n">O</span>          <span class="mf">0.00000</span>        <span class="mf">0.00000</span>        <span class="mf">3.41948</span>
+<span class="n">N</span>          <span class="mf">0.00000</span>        <span class="mf">0.00000</span>       <span class="o">-</span><span class="mf">2.06029</span>
+<span class="n">O</span>          <span class="mf">0.00000</span>       <span class="o">-</span><span class="mf">1.05965</span>       <span class="o">-</span><span class="mf">2.65602</span>
+<span class="n">O</span>          <span class="mf">0.00000</span>        <span class="mf">1.05965</span>       <span class="o">-</span><span class="mf">2.65602</span>
+<span class="n">H</span>          <span class="mf">0.00000</span>        <span class="mf">2.15260</span>        <span class="mf">1.95166</span>
+<span class="n">H</span>          <span class="mf">0.00000</span>        <span class="mf">2.13693</span>       <span class="o">-</span><span class="mf">0.49934</span>
+<span class="n">H</span>          <span class="mf">0.00000</span>       <span class="o">-</span><span class="mf">2.13693</span>       <span class="o">-</span><span class="mf">0.49934</span>
+<span class="n">H</span>          <span class="mf">0.00000</span>       <span class="o">-</span><span class="mf">2.15260</span>        <span class="mf">1.95166</span>
+
+<span class="n">PNP1resp</span><span class="p">.</span><span class="n">gesp</span>
+</pre></div>
+</div>
+<p>After running Gaussian, the antechamber command looks like the following, for the example:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">antechamber</span> <span class="o">-</span><span class="n">i</span> <span class="n">PNP1resp</span><span class="p">.</span><span class="n">gesp</span> <span class="o">-</span><span class="n">fi</span> <span class="n">gesp</span> <span class="o">-</span><span class="n">o</span> <span class="n">PNP1</span><span class="p">.</span><span class="n">mol2</span> <span class="o">-</span><span class="n">fo</span> <span class="n">mol2</span> <span class="o">-</span><span class="n">c</span> <span class="n">resp</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="cpmd">
 <h2>CPMD<a class="headerlink" href="#cpmd" title="Permalink to this headline">¶</a></h2>
 <p>A section about the <a class="reference external" href="http://www.cpmd.org/">CPMD</a> program.</p>
@@ -256,7 +354,8 @@ For the following plots CP_GROUP = 1, 2, 3, 4 tried for all the nodes.</p>
 <p>This can be rationalized since it was found that 7, 14 and 21 nodes were the spots where the planes were evenly distributed.
 If 8 nodes is used instead of 7, some of the processes just have to do less work, while most have to do the same.
 The time per step is therefore ca. the same.
-All the numbers between 7 and 14 will have the number of CP_GROUPS equal to that of 7, because 14 nodes is needed, for the CP_GROUPS to make a more even distribution of the planes.</p>
+All the numbers between 7 and 14 will have the number of CP_GROUPS equal to that of 7, because 14 nodes is needed, for the CP_GROUPS to make a more even distribution of the planes.
+For this specific system it seems like the best parallelization is for the minimal amount of CP_GROUPS that distributes the planes evenly.</p>
 <div class="figure">
 <img alt="_images/Efficiency_CP.svg" src="_images/Efficiency_CP.svg" /></div>
 <p>In the efficiency plot the same story can be seen as in the speedup plot.
