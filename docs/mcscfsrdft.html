@@ -167,13 +167,15 @@
 <h1>MCSCF-srDFT<a class="headerlink" href="#mcscf-srdft" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>The method of MCSCF-srDFT is based on the separation of two electron integrals into a long-range part and a short-range part. Now the regular two electron operator is given as:</p>
+<p>The method of MCSCF-srDFT is based on the separation of two electron integrals into a long-range part and a short-range part.
+Now the regular two electron operator is given as:</p>
 <div class="math notranslate">
 \[w_{ee}\left(r_{12}\right)=r_{12}^{-1}\]</div>
 <p>Now breaking it up into two parts gives:</p>
 <div class="math notranslate">
 \[w_{ee}\left(r_{12}\right)=w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)+w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)\]</div>
-<p>Here lr is long-range, sr is short-range and <span class="math notranslate">\(\mu\)</span> is a paramter that controls where the long-range and short-range interactions are separated. From Hohnenberg-Kohn it is known that the universal functional is defined as:</p>
+<p>Here lr is long-range, sr is short-range and <span class="math notranslate">\(\mu\)</span> is a parameter that controls where the long-range and short-range interactions are separated.
+From Hohnenberg-Kohn it is known that the universal functional is defined as:</p>
 <div class="math notranslate">
 \[F\left[n\right]=\min_{\Psi\rightarrow n}\left\langle \Psi\left|\hat{T}+\hat{W}_{ee}\right|\Psi\right\rangle\]</div>
 <p>for,</p>
@@ -215,13 +217,15 @@
 </div>
 <div class="section" id="range-separation-parameter">
 <h2>Range separation parameter<a class="headerlink" href="#range-separation-parameter" title="Permalink to this headline">¶</a></h2>
-<p>In MCSCF-srDFT, the two-electron integrals was separated into a long-range and a short-range part, defined by a parameter <span class="math notranslate">\(\mu\)</span>. A method of separation is by the error function, thus giving:</p>
+<p>In MCSCF-srDFT, the two-electron integrals was separated into a long-range and a short-range part, defined by a parameter <span class="math notranslate">\(\mu\)</span>.
+A method of separation is by the error function, thus giving:</p>
 <div class="math notranslate">
 \[w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)=\frac{\mathrm{erf}\left(r_{12}\mu\right)}{r_{12}}\]</div>
 <p>and,</p>
 <div class="math notranslate">
 \[w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)=\frac{1-\mathrm{erf}\left(r_{12}\mu\right)}{r_{12}}\]</div>
-<p>It can be seen that for the long-range part and the short-range part being treated exact, that this reduces to the usual <span class="math notranslate">\(r_{12}^{-1}\)</span> behavior. Further it can be seen that for the limiting cases of <span class="math notranslate">\(\mu\)</span> gives:</p>
+<p>It can be seen that for the long-range part and the short-range part being treated exact, that this reduces to the usual <span class="math notranslate">\(r_{12}^{-1}\)</span> behavior.
+Further it can be seen that for the limiting cases of <span class="math notranslate">\(\mu\)</span> gives:</p>
 <div class="math notranslate">
 \[\lim_{\mu\rightarrow0}w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)=0\,\,\,\,\,\,\lim_{\mu\rightarrow\infty}w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)=r_{12}^{-1}\]</div>
 <div class="math notranslate">
@@ -232,10 +236,19 @@
 <p>Now if the limiting case of <span class="math notranslate">\(\mu\)</span>, it can be seen the above reduces to:</p>
 <div class="math notranslate">
 \[\lim_{\mu\rightarrow0}E_{0}=\left\langle \Psi^{0}\left|\hat{T}+\hat{V}_{Ne}+0\right|\Psi^{0}\right\rangle +E_{H}^{\mathrm{sr},0}\left[n_{\Psi^{0}}\right]+E_{xc}^{\mathrm{sr},0}\left[n_{\Psi^{0}}\right]\]</div>
-<p>Which is Kohn-Sham DFT. And:</p>
+<p>Which is Kohn-Sham DFT.
+And:</p>
 <div class="math notranslate">
 \[\lim_{\mu\rightarrow\infty}E_{0}=\left\langle \Psi^{\infty}\left|\hat{T}+\hat{V}_{Ne}+r_{12}^{-1}\right|\Psi^{\infty}\right\rangle +0+0\]</div>
-<p>Which is WFT.</p>
+<p>Which is WFT.
+Another used range separation is the erf-gau separation.
+The erf-gau separation is given as:</p>
+<div class="math notranslate">
+\[w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)=\frac{\mathrm{erf}\left(r_{12}\mu\right)}{r_{12}}-\frac{2\mu}{\sqrt{\pi}}\exp\left(-\frac{1}{3}\mu^{2}r^{2}\right)\]</div>
+<p>and,</p>
+<div class="math notranslate">
+\[w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)=1-w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)\]</div>
+<p>This separation also fulfills the limits of DFT and WFT.</p>
 </div>
 </div>
 

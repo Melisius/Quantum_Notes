@@ -210,6 +210,7 @@ This is used to be consistent with the rest of the force field parameters.
 The setting IOp(6/50=1) specifies that the ESP should be printed in a format accepted by Antechamber.
 The printed ESP is the “.gesp” file.
 Before doing an ESP calculation it is advised to do a geometry optimization with HF/6-31G*.
+If metal sites are present B3LYP/6-31G* should be used instead.
 For ESP calculations other useful settings are:</p>
 <p>IOp(6/41=N), sets the number of layers for which the ESP is calculated.
 Default is N = 4.
@@ -221,11 +222,11 @@ Default is N = 1.</p>
 Default is <span class="math notranslate">\(\frac{0.4}{\sqrt{\mathrm{layer\ index}}}\)</span>.
 If N is user defined, the increments will be 0.01*N.</p>
 <p>If more than one IOp setting is used, is specified as:</p>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">IOp</span><span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">41</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="o">/</span><span class="mi">42</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="o">/</span><span class="mi">50</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">IOp</span><span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">41</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="o">/</span><span class="mi">42</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span><span class="mi">6</span><span class="o">/</span><span class="mi">50</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>I.e. IOp is just specified once, with all the settings inside.
-Setting IOp(6/41=10) and IOp(6/42=17) might give good results.
+Setting IOp(6/41=10) and IOp(6/42=17) is [recommended settings](<a class="reference external" href="http://signe.teokem.lu.se/~ulf/Methods/resp.html">http://signe.teokem.lu.se/~ulf/Methods/resp.html</a>).
 Now that the “.gesp” file have been produced, the RESP charges can be calculated with Antechamber by the following command:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">antechamber</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;ESP FILE&quot;</span><span class="p">.</span><span class="n">gesp</span> <span class="o">-</span><span class="n">fi</span> <span class="n">gesp</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;OUTPUT FILE&quot;</span><span class="p">.</span><span class="n">mol2</span> <span class="o">-</span><span class="n">fo</span> <span class="n">mol2</span> <span class="o">-</span><span class="n">c</span> <span class="n">resp</span>
 </pre></div>
@@ -260,7 +261,7 @@ Now that the “.gesp” file have been produced, the RESP charges can be calcul
 <span class="n">PNP1resp</span><span class="p">.</span><span class="n">gesp</span>
 </pre></div>
 </div>
-<p>After running Gaussian, the antechamber command looks like the following, for the example:</p>
+<p>After running Gaussian, the Antechamber command looks like the following for this example:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">antechamber</span> <span class="o">-</span><span class="n">i</span> <span class="n">PNP1resp</span><span class="p">.</span><span class="n">gesp</span> <span class="o">-</span><span class="n">fi</span> <span class="n">gesp</span> <span class="o">-</span><span class="n">o</span> <span class="n">PNP1</span><span class="p">.</span><span class="n">mol2</span> <span class="o">-</span><span class="n">fo</span> <span class="n">mol2</span> <span class="o">-</span><span class="n">c</span> <span class="n">resp</span>
 </pre></div>
 </div>

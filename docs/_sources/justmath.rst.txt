@@ -61,12 +61,12 @@ As an example lets consider:
 Now:
 
 .. math::
-   \hat{P}^{2}=\left(1-\left|0\right\rangle \left\langle 0\right|\right)^{2}=1+\left|0\right\rangle \left\langle 0\right|\left|0\right\rangle \left\langle 0\right|-2\left|0\right\rangle \left\langle 0\right|
+   \hat{P}^{2}=\left(1-\left|0\right\rangle \left\langle 0\right|\right)^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\left.0\right\rangle \left\langle 0\right|\right)-\left(2\left|0\right\rangle \left\langle 0\right|\right)
    
-It can now be used that :math:`\left\langle 0\right|\left|0\right\rangle =1`:
+It can now be used that :math:`\left\langle 0\right|\left.0\right\rangle =1`:
 
 .. math::
-   \hat{P}^{2}=1+\left|0\right\rangle \left\langle 0\right|-2\left|0\right\rangle \left\langle 0\right|=1-\left|0\right\rangle \left\langle 0\right|=\hat{P}
+   \hat{P}^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\right)-\left(2\left|0\right\rangle \left\langle 0\right|\right)=1-\left|0\right\rangle \left\langle 0\right|=\hat{P}
 
 (anti)-Commutator
 ~~~~~~~~~~~~~~~~~

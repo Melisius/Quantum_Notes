@@ -41,6 +41,7 @@ This is used to be consistent with the rest of the force field parameters.
 The setting IOp(6/50=1) specifies that the ESP should be printed in a format accepted by Antechamber.
 The printed ESP is the ".gesp" file.
 Before doing an ESP calculation it is advised to do a geometry optimization with HF/6-31G*.
+If metal sites are present B3LYP/6-31G* should be used instead.
 For ESP calculations other useful settings are:
 
 IOp(6/41=N), sets the number of layers for which the ESP is calculated.
@@ -59,10 +60,10 @@ If more than one IOp setting is used, is specified as:
 
 .. code-block:: fortran
 
-	IOp(6/41=5,6/42=3,6/50=1)
+	IOp(6/41=10,6/42=17,6/50=1)
 	
 I.e. IOp is just specified once, with all the settings inside.
-Setting IOp(6/41=10) and IOp(6/42=17) might give good results.
+Setting IOp(6/41=10) and IOp(6/42=17) is [recommended settings](http://signe.teokem.lu.se/~ulf/Methods/resp.html).
 Now that the ".gesp" file have been produced, the RESP charges can be calculated with Antechamber by the following command:
 
 .. code-block:: fortran
@@ -104,7 +105,7 @@ Here is an example with para-nitrophenolate of calculating the ESP file needed i
 
 	PNP1resp.gesp
 
-After running Gaussian, the antechamber command looks like the following, for the example:
+After running Gaussian, the Antechamber command looks like the following for this example:
 	
 .. code-block:: fortran
 

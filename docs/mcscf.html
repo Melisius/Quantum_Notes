@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Multi-Configurational Self-Consistent Field</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hessian-transformation">Hessian Transformation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
@@ -178,6 +179,99 @@ Thus giving two conditions for the optimization of the MCSCF wave function:</p>
 <p>and,</p>
 <div class="math notranslate">
 \[\frac{\partial E_{\mathrm{MCSCF}}\left(c^{\mathrm{CI}},c^{\mathrm{MO}}\right)}{\partial c_{i}^{\mathrm{MO}}}=0\]</div>
+</div>
+<div class="section" id="hessian-transformation">
+<h2>Hessian Transformation<a class="headerlink" href="#hessian-transformation" title="Permalink to this headline">¶</a></h2>
+<p>The MCSCF Hessian have the form:</p>
+<div class="math notranslate">
+\[\begin{split}\overline{\overline{K}}=\left(\begin{array}{cc}
+^{\mathrm{cc}}\overline{\overline{K}}^{(2)} &amp; ^{\mathrm{co}}\overline{\overline{K}}^{(2)}\\
+^{\mathrm{oc}}\overline{\overline{K}}^{(2)} &amp; ^{\mathrm{oo}}\overline{\overline{K}}^{(2)}
+\end{array}\right)\end{split}\]</div>
+<p>Here the elements are given as:</p>
+<div class="math notranslate">
+\[^{\mathrm{cc}}K_{i,j}^{(2)}=2\left\langle i\left|\hat{H}-E^{(0)}\right|j\right\rangle\]</div>
+<p>and,</p>
+<div class="math notranslate">
+\[^{\mathrm{oc}}K_{pq,i}^{(2)}=2\left\langle i\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle\]</div>
+<p>and,</p>
+<div class="math notranslate">
+\[\begin{split}\begin{array}{ccc}
+^{\mathrm{oo}}K_{pq,rs}^{(2)} &amp; = &amp; \frac{1}{2}\left(1+P_{pq,rs}\right)\left\langle 0\left|\left[E_{pq}^{-},\left[E_{rs}^{-},\hat{H}\right]\right]\right|0\right\rangle \\
+&amp; = &amp; \frac{1}{2}\left\langle 0\left|\left[E_{pq}^{-},\left[E_{rs}^{-},\hat{H}\right]\right]\right|0\right\rangle +\frac{1}{2}P_{pq,rs}\left\langle 0\left|\left[E_{pq}^{-},\left[E_{rs}^{-},\hat{H}\right]\right]\right|0\right\rangle \\
+&amp; = &amp; \frac{1}{2}\left\langle 0\left|\left[E_{pq}^{-},\left[E_{rs}^{-},\hat{H}\right]\right]\right|0\right\rangle +\frac{1}{2}\left\langle 0\left|\left[E_{pq}^{-},\left[E_{rs}^{-},\hat{H}\right]\right]\right|0\right\rangle +\frac{1}{2}\left\langle 0\left|\left[E_{rs}^{-},\left[E_{pq}^{-},\hat{H}\right]\right]\right|0\right\rangle \\
+&amp; = &amp; \left\langle 0\left|\left[E_{pq}^{-},\left[E_{rs}^{-},\hat{H}\right]\right]\right|0\right\rangle +\frac{1}{2}\left\langle 0\left|\left[E_{rs}^{-},\left[E_{pq}^{-},\hat{H}\right]\right]\right|0\right\rangle
+\end{array}\end{split}\]</div>
+<p>Now we define a vector that have been transformed by a trail vector, such:</p>
+<div class="math notranslate">
+\[\begin{split}\left(\begin{array}{c}
+^{\mathrm{c}}\overline{\sigma}\\
+^{\mathrm{o}}\overline{\sigma}
+\end{array}\right)=\left(\begin{array}{cc}
+^{\mathrm{cc}}\overline{\overline{K}}^{(2)} &amp; ^{\mathrm{co}}\overline{\overline{K}}^{(2)}\\
+^{\mathrm{oc}}\overline{\overline{K}}^{(2)} &amp; ^{\mathrm{oo}}\overline{\overline{K}}^{(2)}
+\end{array}\right)\left(\begin{array}{c}
+\overline{c}\\
+\overline{\kappa}
+\end{array}\right)=\left(\begin{array}{c}
+^{\mathrm{cc}}\overline{\overline{K}}^{(2)}\overline{c}+{}^{\mathrm{co}}\overline{\overline{K}}^{(2)}\overline{\kappa}\\
+^{\mathrm{oc}}\overline{\overline{K}}^{(2)}\overline{c}+{}^{\mathrm{oo}}\overline{\overline{K}}^{(2)}\overline{\kappa}
+\end{array}\right)\end{split}\]</div>
+<p>Now lets evaluate the contributions to the sigma vector:</p>
+<div class="math notranslate">
+\[\left[^{\mathrm{cc}}\overline{\overline{K}}^{(2)}\overline{c}\right]_{i}=\sum_{j}2\left\langle i\left|\hat{H}-E^{(0)}\right|j\right\rangle c_{j}\]</div>
+<p>Now with the definition that:</p>
+<div class="math notranslate">
+\[\left|\overline{c}\right\rangle =\sum_{j}c_{j}\left|j\right\rangle\]</div>
+<p>This can be written as:</p>
+<div class="math notranslate">
+\[\left[^{\mathrm{cc}}\overline{\overline{K}}^{(2)}\overline{c}\right]_{i}=2\left\langle i\left|\hat{H}-E^{(0)}\right|\overline{c}\right\rangle\]</div>
+<p>Now the next term:</p>
+<div class="math notranslate">
+\[\begin{split}\begin{array}{ccc}
+\left[^{\mathrm{co}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{i} &amp; = &amp; \sum_{p&gt;q}2\left\langle i\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle \kappa_{pq}\\
+&amp; = &amp; 2\left\langle i\left|\sum_{p&gt;q}\kappa_{pq}\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle
+\end{array}\end{split}\]</div>
+<p>Now by the definition:</p>
+<div class="math notranslate">
+\[\hat{\kappa}=\sum_{p&gt;q}\kappa_{pq}E_{pq}^{-}\]</div>
+<p>Giving:</p>
+<div class="math notranslate">
+\[\left[^{\mathrm{co}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{i}=2\left\langle i\left|\left[\hat{\kappa},\hat{H}\right]\right|0\right\rangle\]</div>
+<div class="math notranslate">
+\[\begin{split}\begin{array}{ccc}
+\left[^{\mathrm{co}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{i} &amp; = &amp; 2\left\langle i\left|\left[\hat{\kappa},\hat{H}\right]\right|0\right\rangle \\
+&amp; = &amp; 2\left\langle i\left|\hat{H}_{\kappa}\right|0\right\rangle
+\end{array}\end{split}\]</div>
+<p>Now the next term:</p>
+<div class="math notranslate">
+\[\left[^{\mathrm{oc}}\overline{\overline{K}}^{(2)}\overline{c}\right]_{pq}=\sum_{i}2\left\langle i\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle c_{i}\]</div>
+<p>Since it can be written that:</p>
+<div class="math notranslate">
+\[2\left\langle i\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle =\left\langle i\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle +\left\langle 0\left[E_{pq}^{-},\hat{H}\right]i\right\rangle\]</div>
+<p>(why can we do this? and why do we want to do this?)
+This now leads to:</p>
+<div class="math notranslate">
+\[\left[^{\mathrm{oc}}\overline{\overline{K}}^{(2)}\overline{c}\right]_{pq}=\left\langle \overline{c}\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle +\left\langle 0\left[E_{pq}^{-},\hat{H}\right]\overline{c}\right\rangle\]</div>
+<p>And the last term:</p>
+<div class="math notranslate">
+\[\left[^{\mathrm{oo}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{pq}=\sum_{r&gt;s}\left\langle 0\left|\left[E_{pq}^{-},\left[E_{rs}^{-},\hat{H}\right]\right]\right|0\right\rangle \kappa_{rs}+\frac{1}{2}\sum_{r&gt;s}\left\langle 0\left|\left[E_{rs}^{-},\left[E_{pq}^{-},\hat{H}\right]\right]\right|0\right\rangle \kappa_{rs}\]</div>
+<p>This can be rewritten as:</p>
+<div class="math notranslate">
+\[\left[^{\mathrm{oo}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{pq}=\left\langle 0\left|\left[E_{pq}^{-},\hat{H}_{\kappa}\right]\right|0\right\rangle +\frac{1}{2}\left\langle 0\left|\left[\hat{\kappa},\left[E_{pq}^{-},\hat{H}\right]\right]\right|0\right\rangle\]</div>
+<p>Now by using the Jacobi identity:</p>
+<div class="math notranslate">
+\[\left[^{\mathrm{oo}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{pq}=\left\langle 0\left|\left[E_{pq}^{-},\hat{H}_{\kappa}\right]\right|0\right\rangle -\frac{1}{2}\left\langle 0\left|\left[E_{pq}^{-},\left[\hat{H},\hat{\kappa}\right]\right]\right|0\right\rangle -\frac{1}{2}\left\langle 0\left|\left[\hat{H},\left[\hat{\kappa},E_{pq}^{-}\right]\right]\right|0\right\rangle\]</div>
+<p>Now by using the relation, <span class="math notranslate">\(\left[\hat{A},\left[\hat{B},\hat{C}\right]\right]=-\left[\left[\hat{B},\hat{C}\right],\hat{A}\right]\)</span> and <span class="math notranslate">\(\left[\hat{A},\hat{B}\right]=-\left[\hat{B},\hat{A}\right]\)</span>:</p>
+<div class="math notranslate">
+\[\left[^{\mathrm{oo}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{pq}=\left\langle 0\left|\left[E_{pq}^{-},\hat{H}_{\kappa}\right]\right|0\right\rangle +\frac{1}{2}\left\langle 0\left|\left[E_{pq}^{-},\left[\hat{\kappa},\hat{H}\right]\right]\right|0\right\rangle +\frac{1}{2}\left\langle 0\left|\left[\left[\hat{\kappa},E_{pq}^{-}\right],\hat{H}\right]\right|0\right\rangle\]</div>
+<p>Now:</p>
+<div class="math notranslate">
+\[\left[^{\mathrm{oo}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{pq}=\frac{3}{2}\left\langle 0\left|\left[E_{pq}^{-},\hat{H}_{\kappa}\right]\right|0\right\rangle +\frac{1}{2}\left\langle 0\left|\left[\left[\hat{\kappa},E_{pq}^{-}\right],\hat{H}\right]\right|0\right\rangle\]</div>
+<p>Now <span class="math notranslate">\(\left\langle 0\left|\left[\left[\hat{\kappa},E_{pq}^{-}\right],\hat{H}\right]\right|0\right\rangle =\left[^{\mathrm{o}}\overline{E}^{(1)},\overline{\kappa}\right]_{pq}\)</span>:</p>
+<div class="math notranslate">
+\[\left[^{\mathrm{oo}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{pq}=\frac{3}{2}\left\langle 0\left|\left[E_{pq}^{-},\hat{H}_{\kappa}\right]\right|0\right\rangle +\frac{1}{2}\left[^{\mathrm{o}}\overline{E}^{(1)},\overline{\kappa}\right]_{pq}\]</div>
+<p>NOTE this is the wrong results, the factor 3/2 and 1/2 are not supposed to be here. Something went very wrong!</p>
 </div>
 </div>
 
