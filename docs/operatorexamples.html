@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Quantum Notes  documentation</title>
+  <title>Quantum operator examples &mdash; Quantum Notes  documentation</title>
   
 
   
@@ -34,9 +33,11 @@
 
   
         <link rel="index" title="Index"
-              href="#"/>
+              href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Quantum Notes  documentation" href="index.html"/> 
+    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
+        <link rel="next" title="Hamiltonian, Fock and Density Matrix" href="H_F_Dmatrix.html"/>
+        <link rel="prev" title="Mathematics" href="justmath.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -86,11 +87,14 @@
             
             
               <p class="caption"><span class="caption-text">Content</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="operatorexamples.html">Quantum operator examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quantum operator examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#orbital-rotation-operator">Orbital rotation operator</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
@@ -140,12 +144,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Quantum operator examples</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/operatorexamples.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -157,11 +163,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="quantum-operator-examples">
+<h1>Quantum operator examples<a class="headerlink" href="#quantum-operator-examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="orbital-rotation-operator">
+<h2>Orbital rotation operator<a class="headerlink" href="#orbital-rotation-operator" title="Permalink to this headline">¶</a></h2>
+<p>The orbital rotation operator is given as:</p>
+<div class="math notranslate">
+\[\hat{\kappa}=\sum_{pq}\kappa_{pq}\hat{E}_{pq}\]</div>
+<p>The orbital rotation operator is anti-Hermitian, thus:</p>
+<div class="math notranslate">
+\[\kappa_{pq}=-\kappa_{qp}^{*}\]</div>
+<p>here the * denotes complex conjugate.
+Now the sum can be expanded:</p>
+<div class="math notranslate">
+\[\hat{\kappa}=\sum_{p&gt;q}\left(\kappa_{pq}\hat{E}_{pq}+\kappa_{qp}\hat{E}_{qp}\right)+\sum_{p}\kappa_{pp}\hat{E}_{pp}\]</div>
+<p>Now by employing the anti-Hermitian property:</p>
+<div class="math notranslate">
+\[\hat{\kappa}=\sum_{p&gt;q}\left(\kappa_{pq}\hat{E}_{pq}-\kappa_{pq}^{*}\hat{E}_{qp}\right)+\sum_{p}\kappa_{pp}\hat{E}_{pp}\]</div>
+<p>If it is known that the orbital rotations are real (this is not always the case), this can be simplified:</p>
+<div class="math notranslate">
+\[\hat{\kappa}=\sum_{p&gt;q}\kappa_{pq}\left(\hat{E}_{pq}-\hat{E}_{qp}\right)\]</div>
+<p>here it is used that <span class="math notranslate">\(Re\left(\kappa_{pq}^{*}\right)=Re\left(\kappa_{pq}\right)\)</span> and that <span class="math notranslate">\(Re\left(\kappa_{pp}\right)=Re\left(-\kappa_{pp}^{*}\right)=0\)</span>.
+Now by <span class="math notranslate">\(\hat{E}_{pq}-\hat{E}_{qp}=\hat{E}_{pq}^{-}\)</span>:</p>
+<div class="math notranslate">
+\[\hat{\kappa}=\sum_{p&gt;q}\kappa_{pq}\hat{E}_{pq}^{-}\]</div>
+</div>
 </div>
 
 
@@ -171,6 +197,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="H_F_Dmatrix.html" class="btn btn-neutral float-right" title="Hamiltonian, Fock and Density Matrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="justmath.html" class="btn btn-neutral" title="Mathematics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

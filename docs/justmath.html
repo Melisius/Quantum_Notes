@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
-        <link rel="next" title="Hamiltonian, Fock and Density Matrix" href="H_F_Dmatrix.html"/>
+        <link rel="next" title="Quantum operator examples" href="operatorexamples.html"/>
         <link rel="prev" title="MCSCF-srDFT response" href="mcsrdftresponse.html"/> 
 
   
@@ -93,6 +93,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Mathematics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#matrices">Matrices</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#real-anti-symmetric-matrix">Real (anti)-symmetric matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anti-hermitian-matrix">(anti)-Hermitian matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#baker-campbell-hausdorf-expansion">Baker-Campbell-Hausdorf expansion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#unitary-matrix">Unitary matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#real-orthogonal-matrix">Real orthogonal matrix</a></li>
@@ -110,6 +111,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="operatorexamples.html">Quantum operator examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
@@ -191,6 +193,17 @@
 <div class="math notranslate">
 \[A_{i,j}=-A_{j,i}\]</div>
 </div>
+<div class="section" id="anti-hermitian-matrix">
+<h3>(anti)-Hermitian matrix<a class="headerlink" href="#anti-hermitian-matrix" title="Permalink to this headline">¶</a></h3>
+<p>A Hermitian matrix is defined as:</p>
+<div class="math notranslate">
+\[A_{i,j}=A_{j,i}^{*}\]</div>
+<p>From the definition it can be seen that the diagonal can only be real.</p>
+<p>An anti-Hermitian matrix is defined as:</p>
+<div class="math notranslate">
+\[A_{i,j}=-A_{j,i}^{*}\]</div>
+<p>From the definition it can be seen that the diagonal can only be imaginary.</p>
+</div>
 <div class="section" id="baker-campbell-hausdorf-expansion">
 <h3>Baker-Campbell-Hausdorf expansion<a class="headerlink" href="#baker-campbell-hausdorf-expansion" title="Permalink to this headline">¶</a></h3>
 <p>The BCH expansion is given as:</p>
@@ -222,10 +235,10 @@
 \[\hat{P}=1-\left|0\right\rangle \left\langle 0\right|\]</div>
 <p>Now:</p>
 <div class="math notranslate">
-\[\hat{P}^{2}=\left(1-\left|0\right\rangle \left\langle 0\right|\right)^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\left.0\right\rangle \left\langle 0\right|\right)-\left(2\left|0\right\rangle \left\langle 0\right|\right)\]</div>
+\[\hat{P}^{2}=\left(1-\left|0\right\rangle \left\langle 0\right|\right)^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\left.0\right\rangle \left\langle 0\right|\right)-2\left(\left|0\right\rangle \left\langle 0\right|\right)\]</div>
 <p>It can now be used that <span class="math notranslate">\(\left\langle 0\right|\left.0\right\rangle =1\)</span>:</p>
 <div class="math notranslate">
-\[\hat{P}^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\right)-\left(2\left|0\right\rangle \left\langle 0\right|\right)=1-\left|0\right\rangle \left\langle 0\right|=\hat{P}\]</div>
+\[\hat{P}^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\right)-2\left(\left|0\right\rangle \left\langle 0\right|\right)=1-\left|0\right\rangle \left\langle 0\right|=\hat{P}\]</div>
 </div>
 <div class="section" id="anti-commutator">
 <h3>(anti)-Commutator<a class="headerlink" href="#anti-commutator" title="Permalink to this headline">¶</a></h3>
@@ -314,7 +327,7 @@ Lets define <span class="math notranslate">\(f_{x_{1}}=\frac{\partial f}{\partia
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="H_F_Dmatrix.html" class="btn btn-neutral float-right" title="Hamiltonian, Fock and Density Matrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="operatorexamples.html" class="btn btn-neutral float-right" title="Quantum operator examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="mcsrdftresponse.html" class="btn btn-neutral" title="MCSCF-srDFT response" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

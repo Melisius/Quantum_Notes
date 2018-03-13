@@ -103,14 +103,12 @@ Now by the definition:
 Giving:
 
 .. math::
-   \left[^{\mathrm{co}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{i}=2\left\langle i\left|\left[\hat{\kappa},\hat{H}\right]\right|0\right\rangle 
-   
-.. math::
    \begin{array}{ccc}
    \left[^{\mathrm{co}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{i} & = & 2\left\langle i\left|\left[\hat{\kappa},\hat{H}\right]\right|0\right\rangle \\
    & = & 2\left\langle i\left|\hat{H}_{\kappa}\right|0\right\rangle 
    \end{array}
-   
+
+with :math:`\hat{H}_{\kappa}=\left[\hat{\kappa},\hat{H}\right]`.   
 Now the next term:
 
 .. math::

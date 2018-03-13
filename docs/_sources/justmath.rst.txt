@@ -18,6 +18,24 @@ A real anti-symmetric matrix is defined as:
 .. math::
    A_{i,j}=-A_{j,i}
    
+(anti)-Hermitian matrix
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A Hermitian matrix is defined as:
+
+.. math::
+   A_{i,j}=A_{j,i}^{*}
+   
+From the definition it can be seen that the diagonal can only be real.
+
+An anti-Hermitian matrix is defined as:
+
+.. math::
+   A_{i,j}=-A_{j,i}^{*}
+   
+From the definition it can be seen that the diagonal can only be imaginary.
+
+   
 Baker-Campbell-Hausdorf expansion
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -61,12 +79,12 @@ As an example lets consider:
 Now:
 
 .. math::
-   \hat{P}^{2}=\left(1-\left|0\right\rangle \left\langle 0\right|\right)^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\left.0\right\rangle \left\langle 0\right|\right)-\left(2\left|0\right\rangle \left\langle 0\right|\right)
+   \hat{P}^{2}=\left(1-\left|0\right\rangle \left\langle 0\right|\right)^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\left.0\right\rangle \left\langle 0\right|\right)-2\left(\left|0\right\rangle \left\langle 0\right|\right)
    
 It can now be used that :math:`\left\langle 0\right|\left.0\right\rangle =1`:
 
 .. math::
-   \hat{P}^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\right)-\left(2\left|0\right\rangle \left\langle 0\right|\right)=1-\left|0\right\rangle \left\langle 0\right|=\hat{P}
+   \hat{P}^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\right)-2\left(\left|0\right\rangle \left\langle 0\right|\right)=1-\left|0\right\rangle \left\langle 0\right|=\hat{P}
 
 (anti)-Commutator
 ~~~~~~~~~~~~~~~~~

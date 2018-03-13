@@ -90,6 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operatorexamples.html">Quantum operator examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
@@ -107,6 +108,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#example-48-water">Example - 48 Water</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#vmd">VMD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#set-periodic-boundary-conditions">Set periodic boundary conditions</a></li>
 </ul>
 </li>
 </ul>
@@ -326,7 +331,7 @@ The chosen number of OMP threads and MPI processes must be chosen such that:</p>
 <span class="n">export</span> <span class="n">OMP_WAIT_POLICY</span><span class="o">=</span><span class="n">active</span>
 </pre></div>
 </div>
-<p>OMP_WAIT_POLICY ensures that the OMP threads are kept active.</p>
+<p>OMP_WAIT_POLICY=active, ensures that the OMP threads are kept active.</p>
 <div class="section" id="example-48-water">
 <h4>Example - 48 Water<a class="headerlink" href="#example-48-water" title="Permalink to this headline">¶</a></h4>
 <p>This example was benchmarked on the supercomputer Abacus 2.0 at the University of Southern Denmark.
@@ -362,6 +367,25 @@ For this specific system it seems like the best parallelization is for the minim
 <p>In the efficiency plot the same story can be seen as in the speedup plot.
 Here it can also be seen that 14 and 21 looks like they are good spots.</p>
 </div>
+</div>
+</div>
+<div class="section" id="vmd">
+<h2>VMD<a class="headerlink" href="#vmd" title="Permalink to this headline">¶</a></h2>
+<p>A section about some tricks for the <a class="reference external" href="http://www.ks.uiuc.edu/Research/vmd/">VMD</a> program.</p>
+<div class="section" id="set-periodic-boundary-conditions">
+<h3>Set periodic boundary conditions<a class="headerlink" href="#set-periodic-boundary-conditions" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes trajectories from programs does not include the information about the periodic boundary conditions.
+For a cubic box this is easy to specify on via the TCL terminal.
+This can be specified by the following two commands.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pbc</span> <span class="nb">set</span> <span class="p">{</span><span class="n">X</span> <span class="n">Y</span> <span class="n">Z</span><span class="p">}</span> <span class="o">-</span><span class="nb">all</span> <span class="o">-</span><span class="n">molid</span> <span class="n">top</span>
+<span class="n">pbc</span> <span class="n">box</span> <span class="o">-</span><span class="n">center</span> <span class="n">origin</span> <span class="o">-</span><span class="n">shiftcenter</span> <span class="p">{</span><span class="n">cX</span> <span class="n">cY</span> <span class="n">cZ</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The first command sets the size of the box for all frames.
+“X”, “Y” and “Z” have to be specified in Angstrom.
+The next command sets the origin of the box.
+“cX”, “cY” and “cZ” is specified as the starting location of the box.
+The default is just (0, 0, 0).</p>
 </div>
 </div>
 </div>

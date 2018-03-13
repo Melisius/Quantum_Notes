@@ -91,6 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operatorexamples.html">Quantum operator examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Multi-Configurational Self-Consistent Field</a><ul>
@@ -237,13 +238,12 @@ Thus giving two conditions for the optimization of the MCSCF wave function:</p>
 \[\hat{\kappa}=\sum_{p&gt;q}\kappa_{pq}E_{pq}^{-}\]</div>
 <p>Giving:</p>
 <div class="math notranslate">
-\[\left[^{\mathrm{co}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{i}=2\left\langle i\left|\left[\hat{\kappa},\hat{H}\right]\right|0\right\rangle\]</div>
-<div class="math notranslate">
 \[\begin{split}\begin{array}{ccc}
 \left[^{\mathrm{co}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{i} &amp; = &amp; 2\left\langle i\left|\left[\hat{\kappa},\hat{H}\right]\right|0\right\rangle \\
 &amp; = &amp; 2\left\langle i\left|\hat{H}_{\kappa}\right|0\right\rangle
 \end{array}\end{split}\]</div>
-<p>Now the next term:</p>
+<p>with <span class="math notranslate">\(\hat{H}_{\kappa}=\left[\hat{\kappa},\hat{H}\right]\)</span>.
+Now the next term:</p>
 <div class="math notranslate">
 \[\left[^{\mathrm{oc}}\overline{\overline{K}}^{(2)}\overline{c}\right]_{pq}=\sum_{i}2\left\langle i\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle c_{i}\]</div>
 <p>Since it can be written that:</p>
