@@ -117,13 +117,12 @@ Now the next term:
 Since it can be written that:
 
 .. math::
-   2\left\langle i\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle =\left\langle i\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle +\left\langle 0\left[E_{pq}^{-},\hat{H}\right]i\right\rangle 
+   2\left\langle i\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle =\left\langle i\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle +\left\langle 0\left|\left[E_{pq}^{-},\hat{H}\right]\right|i\right\rangle 
    
-(why can we do this? and why do we want to do this?)
 This now leads to:
 
 .. math::
-   \left[^{\mathrm{oc}}\overline{\overline{K}}^{(2)}\overline{c}\right]_{pq}=\left\langle \overline{c}\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle +\left\langle 0\left[E_{pq}^{-},\hat{H}\right]\overline{c}\right\rangle 
+   \left[^{\mathrm{oc}}\overline{\overline{K}}^{(2)}\overline{c}\right]_{pq}=\left\langle \overline{c}\left|\left[E_{pq}^{-},\hat{H}\right]\right|0\right\rangle +\left\langle 0\left|\left[E_{pq}^{-},\hat{H}\right]\right|\overline{c}\right\rangle 
    
 And the last term:
 
@@ -156,3 +155,5 @@ Now :math:`\left\langle 0\left|\left[\left[\hat{\kappa},E_{pq}^{-}\right],\hat{H
    \left[^{\mathrm{oo}}\overline{\overline{K}}^{(2)}\overline{\kappa}\right]_{pq}=\frac{3}{2}\left\langle 0\left|\left[E_{pq}^{-},\hat{H}_{\kappa}\right]\right|0\right\rangle +\frac{1}{2}\left[^{\mathrm{o}}\overline{E}^{(1)},\overline{\kappa}\right]_{pq}
    
 NOTE this is the wrong results, the factor 3/2 and 1/2 are not supposed to be here. Something went very wrong!
+
+- Molecular Electronic-Structure Theory, Trygve Helgaker, Poul Jorgensen, Jeppe Olsen

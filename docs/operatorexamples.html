@@ -92,7 +92,9 @@
 <li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Quantum operator examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#transpose-of-operator-matrix">Transpose of operator matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#orbital-rotation-operator">Orbital rotation operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transpose-of-operator-matrix-example">Transpose of operator matrix, example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
@@ -165,6 +167,39 @@
             
   <div class="section" id="quantum-operator-examples">
 <h1>Quantum operator examples<a class="headerlink" href="#quantum-operator-examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="transpose-of-operator-matrix">
+<h2>Transpose of operator matrix<a class="headerlink" href="#transpose-of-operator-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Lets consider a general operator, that changes a state:</p>
+<div class="math notranslate">
+\[\hat{O}\left|i\right\rangle =\left|j\right\rangle\]</div>
+<p>Now lets define the adjoint of the operator as:</p>
+<div class="math notranslate">
+\[\left\langle i\right|\hat{O}^{\dagger}=\left\langle j\right|\]</div>
+<p>These two definitions implies:</p>
+<div class="math notranslate">
+\[\left\langle k\left|\hat{O}\right|i\right\rangle =\left\langle k\left|j\right.\right\rangle\]</div>
+<p>and,</p>
+<div class="math notranslate">
+\[\left\langle i\left|\hat{O}^{\dagger}\right|k\right\rangle =\left\langle j\left|k\right.\right\rangle\]</div>
+<p>It is known that:</p>
+<div class="math notranslate">
+\[\left\langle i\left|j\right.\right\rangle =\left\langle j\left|i\right.\right\rangle ^{*}\]</div>
+<p>Thus giving:</p>
+<div class="math notranslate">
+\[\left\langle k\left|\hat{O}\right|i\right\rangle =\left\langle i\left|\hat{O}^{\dagger}\right|k\right\rangle ^{*}\]</div>
+<p>Now if the operator is Hermitian i.e:</p>
+<div class="math notranslate">
+\[\hat{O}=\hat{O}^{\dagger}\]</div>
+<p>It can be written that:</p>
+<div class="math notranslate">
+\[\left\langle k\left|\hat{O}\right|i\right\rangle =\left\langle i\left|\hat{O}\right|k\right\rangle ^{*}\]</div>
+<p>Thus if the wave functions are real, it gives:</p>
+<div class="math notranslate">
+\[\left\langle k\left|\hat{O}\right|i\right\rangle =\left\langle i\left|\hat{O}\right|k\right\rangle\]</div>
+<ul class="simple">
+<li>Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory, Szabo and Ostlund</li>
+</ul>
+</div>
 <div class="section" id="orbital-rotation-operator">
 <h2>Orbital rotation operator<a class="headerlink" href="#orbital-rotation-operator" title="Permalink to this headline">¶</a></h2>
 <p>The orbital rotation operator is given as:</p>
@@ -187,6 +222,37 @@ Now the sum can be expanded:</p>
 Now by <span class="math notranslate">\(\hat{E}_{pq}-\hat{E}_{qp}=\hat{E}_{pq}^{-}\)</span>:</p>
 <div class="math notranslate">
 \[\hat{\kappa}=\sum_{p&gt;q}\kappa_{pq}\hat{E}_{pq}^{-}\]</div>
+</div>
+<div class="section" id="transpose-of-operator-matrix-example">
+<h2>Transpose of operator matrix, example<a class="headerlink" href="#transpose-of-operator-matrix-example" title="Permalink to this headline">¶</a></h2>
+<p>Lets consider the following matrix:</p>
+<div class="math notranslate">
+\[\left\langle i\left|\left[\hat{E}_{pq}^{-},\hat{H}\right]\right|0\right\rangle\]</div>
+<p>Now the following relation can be used:</p>
+<div class="math notranslate">
+\[\left\langle k\left|\hat{O}\right|i\right\rangle =\left\langle i\left|\hat{O}^{\dagger}\right|k\right\rangle ^{*}\]</div>
+<p>Thus:</p>
+<div class="math notranslate">
+\[\left\langle i\left|\left[\hat{E}_{pq}^{-},\hat{H}\right]\right|0\right\rangle =\left\langle 0\left|\left[\hat{E}_{pq}^{-},\hat{H}\right]^{\dagger}\right|i\right\rangle ^{*}\]</div>
+<p>Now calculating the new operator by using <span class="math notranslate">\(\left(\hat{A}\hat{B}\right)^{\dagger}=\hat{B}^{\dagger}\hat{A}^{\dagger}\)</span>:</p>
+<div class="math notranslate">
+\[\left[\hat{E}_{pq}^{-},\hat{H}\right]^{\dagger}=\left(\hat{E}_{pq}^{-}\hat{H}-\hat{H}\hat{E}_{pq}^{-}\right)^{\dagger}=\hat{H}^{\dagger}\hat{E}_{pq}^{-\dagger}-\hat{E}_{pq}^{-\dagger}\hat{H}^{\dagger}\]</div>
+<p>It is known that <span class="math notranslate">\(\hat{H}^{\dagger}=\hat{H}\)</span> and <span class="math notranslate">\(\hat{E}_{pq}^{-}\equiv\hat{E}_{pq}-\hat{E}_{qp}\)</span>.
+Now evaluating:</p>
+<div class="math notranslate">
+\[\hat{E}_{pq}^{-\dagger}=\hat{E}_{pq}^{\dagger}-\hat{E}_{qp}^{\dagger}\]</div>
+<p>Expanding:</p>
+<div class="math notranslate">
+\[\hat{E}_{pq}=\left(p^{\dagger}q\right)^{\dagger}=q^{\dagger}p=\hat{E}_{qp}\]</div>
+<p>Now:</p>
+<div class="math notranslate">
+\[\hat{E}_{pq}^{-\dagger}=\hat{E}_{qp}-\hat{E}_{pq}=-\hat{E}_{pq}^{-}\]</div>
+<p>Thus:</p>
+<div class="math notranslate">
+\[\left[\hat{E}_{pq}^{-},\hat{H}\right]^{\dagger}=-\hat{H}\hat{E}_{pq}^{-}+\hat{E}_{pq}^{-}\hat{H}=\left[\hat{E}_{pq}^{-},\hat{H}\right]\]</div>
+<p>Now since this commutator is Hermitian it is found that:</p>
+<div class="math notranslate">
+\[\left\langle i\left|\left[\hat{E}_{pq}^{-},\hat{H}\right]\right|0\right\rangle =\left\langle 0\left|\left[\hat{E}_{pq}^{-},\hat{H}\right]\right|i\right\rangle\]</div>
 </div>
 </div>
 
