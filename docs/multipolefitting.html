@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Lagrangian multipliers &mdash; Quantum Notes  documentation</title>
+  <title>Multipole fit &mdash; Quantum Notes  documentation</title>
   
 
   
@@ -89,7 +89,8 @@
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Lagrangian multipliers</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multipole fit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#matrix-equation">Matrix Equation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#constraints">Constraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-matrix">Example Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#implementation-comments">Implementation comments</a></li>
@@ -142,7 +143,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Lagrangian multipliers</li>
+      <li>Multipole fit</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -161,8 +162,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="lagrangian-multipliers">
-<h1>Lagrangian multipliers<a class="headerlink" href="#lagrangian-multipliers" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="multipole-fit">
+<h1>Multipole fit<a class="headerlink" href="#multipole-fit" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="matrix-equation">
+<h2>Matrix Equation<a class="headerlink" href="#matrix-equation" title="Permalink to this headline">¶</a></h2>
 <p>Lets consider the electrostatic potential due to multipoles places at the position of atoms:</p>
 <div class="math notranslate nohighlight">
 \[E_{i}=\sum_{j}^{atom}\sum_{n}^{multipole}\frac{\left(-1\right)^{n}}{n!}T_{ij}^{(n)}m_{j}^{(n)}\]</div>
@@ -192,6 +195,7 @@
 <p>and,</p>
 <div class="math notranslate nohighlight">
 \[x_{jn}=m_{j}^{(n)}\]</div>
+</div>
 <div class="section" id="constraints">
 <h2>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h2>
 <p>For the technique of Lagrangian multiplies, the multipoles <span class="math notranslate nohighlight">\(m_{j}^{(n)}\)</span> can be constrained.

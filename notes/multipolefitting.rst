@@ -1,6 +1,9 @@
 
-Lagrangian multipliers
-======================
+Multipole fit
+=============
+
+Matrix Equation
+---------------
 
 Lets consider the electrostatic potential due to multipoles places at the position of atoms:
 
