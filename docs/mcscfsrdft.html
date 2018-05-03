@@ -25,26 +25,19 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
-        <link rel="next" title="MCSCF-srDFT response" href="mcsrdftresponse.html"/>
-        <link rel="prev" title="Quantum Notes" href="index.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MCSCF-srDFT response" href="mcsrdftresponse.html" />
+    <link rel="prev" title="Quantum Notes" href="index.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -95,10 +88,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operatorexamples.html">Quantum operator examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multipolefitting.html">Lagrangian multipliers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programs.html">Programs</a></li>
 </ul>
 
@@ -111,7 +106,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Quantum Notes</a>
@@ -119,9 +114,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -169,84 +165,84 @@
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>The method of MCSCF-srDFT is based on the separation of two electron integrals into a long-range part and a short-range part.
 Now the regular two electron operator is given as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[w_{ee}\left(r_{12}\right)=r_{12}^{-1}\]</div>
 <p>Now breaking it up into two parts gives:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[w_{ee}\left(r_{12}\right)=w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)+w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)\]</div>
-<p>Here lr is long-range, sr is short-range and <span class="math notranslate">\(\mu\)</span> is a parameter that controls where the long-range and short-range interactions are separated.
+<p>Here lr is long-range, sr is short-range and <span class="math notranslate nohighlight">\(\mu\)</span> is a parameter that controls where the long-range and short-range interactions are separated.
 From Hohnenberg-Kohn it is known that the universal functional is defined as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F\left[n\right]=\min_{\Psi\rightarrow n}\left\langle \Psi\left|\hat{T}+\hat{W}_{ee}\right|\Psi\right\rangle\]</div>
 <p>for,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{W}_{ee}=\frac{1}{2}\sum_{i\neq j}w_{ee}\left(r_{ij}\right)\]</div>
 <p>This gives rise to:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{W}_{ee}=\hat{W}_{ee}^{\mathrm{lr},\mu}+\hat{W}_{ee}^{\mathrm{sr},\mu}=\frac{1}{2}\sum_{i\neq j}w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)+\frac{1}{2}\sum_{i\neq j}w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)\]</div>
 <p>A separation of the universal functional into a long-range and a short-range part should also be possible:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F\left[n\right]=F^{\mathrm{lr},\mu}\left[n\right]+F^{\mathrm{sr},\mu}\left[n\right]\]</div>
 <p>Here:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F^{\mathrm{lr},\mu}\left[n\right]=\min_{\Psi\rightarrow n}\left\langle \Psi\left|\hat{T}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi\right\rangle\]</div>
 <p>and,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F^{\mathrm{sr},\mu}\left[n\right]=E_{H}^{\mathrm{sr},\mu}\left[n\right]+E_{xc}^{\mathrm{sr},\mu}\left[n\right]\]</div>
-<p>Here <span class="math notranslate">\(E_{H}^{\mathrm{sr},\mu}\)</span> is the Hartree term and <span class="math notranslate">\(E_{xc}^{\mathrm{sr},\mu}\)</span> is the exchange-correlation term, both given as short-range. Now the ground state energy can be expresesd accourding to the variational principle:</p>
-<div class="math notranslate">
+<p>Here <span class="math notranslate nohighlight">\(E_{H}^{\mathrm{sr},\mu}\)</span> is the Hartree term and <span class="math notranslate nohighlight">\(E_{xc}^{\mathrm{sr},\mu}\)</span> is the exchange-correlation term, both given as short-range. Now the ground state energy can be expresesd accourding to the variational principle:</p>
+<div class="math notranslate nohighlight">
 \[E_{0}=\min_{n}\left\{ F\left[n\right]+\int v_{Ne}\left(r\right)n\left(r\right)dr\right\}\]</div>
 <p>Giving:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[E_{0}=\min_{\Psi}\left\{ \left\langle \Psi\left|\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi\right\rangle +E_{H}^{\mathrm{sr},\mu}\left[n_{\Psi}\right]+E_{xc}^{\mathrm{sr},\mu}\left[n_{\Psi}\right]\right\}\]</div>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[E_{0}=\left\langle \Psi^{\mu}\left|\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi^{\mu}\right\rangle +E_{H}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]+E_{xc}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\]</div>
 <p>Similarly as Kohn-Sham DFT this leads to a self-consistent equation:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left(\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}+\hat{V}_{Hxc}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\right)\left|\Psi^{\mu}\right\rangle =\epsilon^{\mu}\left|\Psi^{\mu}\right\rangle\]</div>
-<p>Here <span class="math notranslate">\(\hat{V}_{\mathrm{Hxc}}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\)</span> is the potential energy functional, defined as:</p>
-<div class="math notranslate">
+<p>Here <span class="math notranslate nohighlight">\(\hat{V}_{\mathrm{Hxc}}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\)</span> is the potential energy functional, defined as:</p>
+<div class="math notranslate nohighlight">
 \[\hat{V}_{Hxc}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]=\int v_{Hxc}\left[n_{\Psi^{\mu}}\right]\left(r\right)dr\]</div>
 <p>with,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[v_{Hxc}\left[n_{\Psi^{\mu}}\right]\left(r\right)=\frac{\delta\left(E_{H}^{\mathrm{sr},\mu}+E_{xc}^{\mathrm{sr},\mu}\right)}{\delta n\left(r\right)}\left[n_{\Psi^{\mu}}\right]\]</div>
 <ul class="simple">
 <li>On the universality of the long-/short-range separation in multiconfigurational densityfunctional theory, Emmanuel Fromager, Julien Toulouse, and Hans Jørgen Aa. Jensen</li>
-<li>On the universality of the long-/short-range separation in multiconfigurational densityfunctional theory. II. Investigating <span class="math notranslate">\(f^{0}\)</span> actinide species, Emmanuel Fromager, Florent Réal, Pernilla Wåhlin, Ulf Wahlgren, and Hans Jørgen Aa. Jensen</li>
+<li>On the universality of the long-/short-range separation in multiconfigurational densityfunctional theory. II. Investigating <span class="math notranslate nohighlight">\(f^{0}\)</span> actinide species, Emmanuel Fromager, Florent Réal, Pernilla Wåhlin, Ulf Wahlgren, and Hans Jørgen Aa. Jensen</li>
 </ul>
 </div>
 <div class="section" id="range-separation-parameter">
 <h2>Range separation parameter<a class="headerlink" href="#range-separation-parameter" title="Permalink to this headline">¶</a></h2>
-<p>In MCSCF-srDFT, the two-electron integrals was separated into a long-range and a short-range part, defined by a parameter <span class="math notranslate">\(\mu\)</span>.
+<p>In MCSCF-srDFT, the two-electron integrals was separated into a long-range and a short-range part, defined by a parameter <span class="math notranslate nohighlight">\(\mu\)</span>.
 A method of separation is by the error function, thus giving:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)=\frac{\mathrm{erf}\left(r_{12}\mu\right)}{r_{12}}\]</div>
 <p>and,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)=\frac{1-\mathrm{erf}\left(r_{12}\mu\right)}{r_{12}}\]</div>
-<p>It can be seen that for the long-range part and the short-range part being treated exact, that this reduces to the usual <span class="math notranslate">\(r_{12}^{-1}\)</span> behavior.
-Further it can be seen that for the limiting cases of <span class="math notranslate">\(\mu\)</span> gives:</p>
-<div class="math notranslate">
+<p>It can be seen that for the long-range part and the short-range part being treated exact, that this reduces to the usual <span class="math notranslate nohighlight">\(r_{12}^{-1}\)</span> behavior.
+Further it can be seen that for the limiting cases of <span class="math notranslate nohighlight">\(\mu\)</span> gives:</p>
+<div class="math notranslate nohighlight">
 \[\lim_{\mu\rightarrow0}w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)=0\,\,\,\,\,\,\lim_{\mu\rightarrow\infty}w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)=r_{12}^{-1}\]</div>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\lim_{\mu\rightarrow0}w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)=r_{12}^{-1}\,\,\,\,\,\,\lim_{\mu\rightarrow\infty}w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)=0\]</div>
 <p>The ground state energy was found as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[E_{0}=\left\langle \Psi^{\mu}\left|\hat{T}+\hat{V}_{Ne}+\hat{W}_{ee}^{\mathrm{lr},\mu}\right|\Psi^{\mu}\right\rangle +E_{H}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]+E_{xc}^{\mathrm{sr},\mu}\left[n_{\Psi^{\mu}}\right]\]</div>
-<p>Now if the limiting case of <span class="math notranslate">\(\mu\)</span>, it can be seen the above reduces to:</p>
-<div class="math notranslate">
+<p>Now if the limiting case of <span class="math notranslate nohighlight">\(\mu\)</span>, it can be seen the above reduces to:</p>
+<div class="math notranslate nohighlight">
 \[\lim_{\mu\rightarrow0}E_{0}=\left\langle \Psi^{0}\left|\hat{T}+\hat{V}_{Ne}+0\right|\Psi^{0}\right\rangle +E_{H}^{\mathrm{sr},0}\left[n_{\Psi^{0}}\right]+E_{xc}^{\mathrm{sr},0}\left[n_{\Psi^{0}}\right]\]</div>
 <p>Which is Kohn-Sham DFT.
 And:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\lim_{\mu\rightarrow\infty}E_{0}=\left\langle \Psi^{\infty}\left|\hat{T}+\hat{V}_{Ne}+r_{12}^{-1}\right|\Psi^{\infty}\right\rangle +0+0\]</div>
 <p>Which is WFT.
 Another used range separation is the erf-gau separation.
 The erf-gau separation is given as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)=\frac{\mathrm{erf}\left(r_{12}\mu\right)}{r_{12}}-\frac{2\mu}{\sqrt{\pi}}\exp\left(-\frac{1}{3}\mu^{2}r^{2}\right)\]</div>
 <p>and,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[w_{ee}^{\mathrm{sr},\mu}\left(r_{12}\right)=1-w_{ee}^{\mathrm{lr},\mu}\left(r_{12}\right)\]</div>
 <p>This separation also fulfills the limits of DFT and WFT.</p>
 </div>
@@ -254,9 +250,7 @@ The erf-gau separation is given as:</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -278,7 +272,7 @@ The erf-gau separation is given as:</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -297,6 +291,7 @@ The erf-gau separation is given as:</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -315,14 +310,13 @@ The erf-gau separation is given as:</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

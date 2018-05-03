@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lagrangian multipliers &mdash; Quantum Notes  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Programs" href="programs.html" />
+    <link rel="prev" title="Response Theory" href="response.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Quantum Notes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operatorexamples.html">Quantum operator examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="H_F_Dmatrix.html">Hamiltonian, Fock and Density Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lagrangian multipliers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#constraints">Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-matrix">Example Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation-comments">Implementation comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#traceless-comments">Traceless comments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programs.html">Programs</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Quantum Notes</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Lagrangian multipliers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/multipolefitting.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lagrangian-multipliers">
+<h1>Lagrangian multipliers<a class="headerlink" href="#lagrangian-multipliers" title="Permalink to this headline">¶</a></h1>
+<p>Lets consider the electrostatic potential due to multipoles places at the position of atoms:</p>
+<div class="math notranslate nohighlight">
+\[E_{i}=\sum_{j}^{atom}\sum_{n}^{multipole}\frac{\left(-1\right)^{n}}{n!}T_{ij}^{(n)}m_{j}^{(n)}\]</div>
+<p>If the quantum mechanical electrostatic potential is to be minimized, a cost function can written of the form:</p>
+<div class="math notranslate nohighlight">
+\[z=\sum_{i}^{point}\left(V_{i,\mathrm{QM}}-E_{i}\right)^{2}+\sum_{l}^{constraints}\lambda_{l}g_{l}\]</div>
+<p>Expanding the square:</p>
+<div class="math notranslate nohighlight">
+\[z=\sum_{i}^{point}\left(V_{i,\mathrm{QM}}^{2}+E_{i}^{2}-2E_{i}V_{i,\mathrm{QM}}\right)+\sum_{l}^{constraints}\lambda_{l}g_{l}\]</div>
+<p>It is known that in the minima that the derivative with respect to all parameters equals to zero.</p>
+<blockquote>
+<div>Now with, <span class="math notranslate nohighlight">\(\frac{\partial E_{i}^{2}}{\partial m_{p}^{(k)}}=2\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\sum_{n}^{multipole}\frac{\left(-1\right)^{n}}{n!}T_{ij}^{(n)}m_{j}^{(n)}\)</span>, it can be written:</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\sum_{k}^{multipole}\frac{\partial z}{\partial m_{p}^{(k)}}=\sum_{k}^{multipole}\sum_{i}^{point}\left(\sum_{j}^{atom}2\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\sum_{n}^{multipole}\frac{\left(-1\right)^{n}}{n!}T_{ij}^{(n)}m_{j}^{(n)}-2V_{i,\mathrm{QM}}\sum_{j}^{atom}\frac{\left(-1\right)^{k}}{k!}T_{ij}^{(k)}\right)\]</div>
+<p>Since the condition was <span class="math notranslate nohighlight">\(\sum_{k}^{multipole}\frac{\partial z}{\partial m^{(k)}}=0\)</span>, and reducing out the factor 2, it can be written as:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{p}^{atom}\sum_{k}^{multipole}\sum_{j}^{atom}\sum_{n}^{multipole}\sum_{i}^{point}\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\frac{\left(-1\right)^{n}}{n!}T_{ij}^{(n)}m_{j}^{(n)}=\sum_{j}^{atom}\sum_{k}^{multipole}\sum_{i}^{point}V_{i,\mathrm{QM}}\frac{\left(-1\right)^{k}}{k!}T_{ij}^{(k)}\]</div>
+<p>Now this can be identified as a matrix equation of the following form:</p>
+<div class="math notranslate nohighlight">
+\[\overline{\overline{A}}\overline{x}=\overline{B}\]</div>
+<p>With the elements given as:</p>
+<div class="math notranslate nohighlight">
+\[A_{pk,jn}=\sum_{i}^{point}\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\frac{\left(-1\right)^{n}}{n!}T_{ij}^{(n)}\]</div>
+<p>and,</p>
+<div class="math notranslate nohighlight">
+\[B_{jn}=\sum_{i}^{point}V_{i,\mathrm{QM}}\frac{\left(-1\right)^{k}}{k!}T_{ij}^{(k)}\]</div>
+<p>and,</p>
+<div class="math notranslate nohighlight">
+\[x_{jn}=m_{j}^{(n)}\]</div>
+<div class="section" id="constraints">
+<h2>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h2>
+<p>For the technique of Lagrangian multiplies, the multipoles <span class="math notranslate nohighlight">\(m_{j}^{(n)}\)</span> can be constrained.
+The general constraint for multipoles is given as:</p>
+<div class="math notranslate nohighlight">
+\[g_{n}=\sum_{i}^{n}\sum_{j}^{atoms}m_{j}^{(i)}R^{(n-i)}-m_{tot}^{(n)}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(R^{(m)}\)</span> is the direct product of the distance between the origin and the multipole <span class="math notranslate nohighlight">\(m\)</span> times.
+And <span class="math notranslate nohighlight">\(R^{(0)}=1\)</span>.
+Thus:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial z}{\partial\lambda_{n}}=g_{n}=0\]</div>
+<p>Giving:</p>
+<div class="math notranslate nohighlight">
+\[m_{tot}^{(n)}=\sum_{i}^{n}\sum_{j}^{atoms}m_{j}^{(i)}R^{(n-i)}\]</div>
+<p>Which is the constraints that should be fulfilled.</p>
+</div>
+<div class="section" id="example-matrix">
+<h2>Example Matrix<a class="headerlink" href="#example-matrix" title="Permalink to this headline">¶</a></h2>
+<p>A total matrix equation as (for up to dipoles), with <span class="math notranslate nohighlight">\(d_{i}=r_{i}-R_{\mathrm{cm}}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{cccccccccccccccc}
+     A_{1,1}^{q,q} &amp; \ldots &amp; A_{1,k}^{q,q} &amp; A_{1,1}^{q,\mu_{x}} &amp; \ldots &amp; A_{1,k}^{q,\mu_{x}} &amp; A_{1,1}^{q,\mu_{y}} &amp; \ldots &amp; A_{1,k}^{q,\mu_{y}} &amp; A_{1,1}^{q,\mu_{z}} &amp; \ldots &amp; A_{1,k}^{q,\mu_{z}} &amp; 1 &amp; d_{1,x} &amp; d_{1,y} &amp; d_{1,z}\\
+     \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+     A_{p,1}^{q,q} &amp; \ldots &amp; A_{p,k}^{q,q} &amp; A_{p,1}^{q,\mu_{x}} &amp; \ldots &amp; A_{p,k}^{q,\mu_{x}} &amp; A_{p,1}^{q,\mu_{y}} &amp; \ldots &amp; A_{p,k}^{q,\mu_{y}} &amp; A_{p,1}^{q,\mu_{z}} &amp; \ldots &amp; A_{p,k}^{q,\mu_{z}} &amp; 1 &amp; d_{k,x} &amp; d_{k,y} &amp; d_{k,z}\\
+     A_{1,1}^{\mu_{x},q} &amp; \ldots &amp; A_{1,k}^{\mu_{x},q} &amp; A_{1,1}^{\mu_{x},\mu_{x}} &amp; \ldots &amp; A_{1,k}^{\mu_{x},\mu_{x}} &amp; A_{1,1}^{\mu_{x},\mu_{y}} &amp; \ldots &amp; A_{1,k}^{\mu_{x},\mu_{y}} &amp; A_{1,1}^{\mu_{x},\mu_{z}} &amp; \ldots &amp; A_{1,k}^{\mu_{x},\mu_{z}} &amp; 0 &amp; 1 &amp; 0 &amp; 0\\
+     \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+     A_{p,1}^{\mu_{x},q} &amp; \ldots &amp; A_{p,k}^{\mu_{x},q} &amp; A_{p,1}^{\mu_{x},\mu_{x}} &amp; \ldots &amp; A_{p,k}^{\mu_{x},\mu_{x}} &amp; A_{p,1}^{\mu_{x},\mu_{y}} &amp; \ldots &amp; A_{p,k}^{\mu_{x},\mu_{y}} &amp; A_{p,1}^{\mu_{x},\mu_{z}} &amp; \ldots &amp; A_{p,k}^{\mu_{x},\mu_{z}} &amp; 0 &amp; 1 &amp; 0 &amp; 0\\
+     A_{1,1}^{\mu_{y},q} &amp; \ldots &amp; A_{1,k}^{\mu_{y},q} &amp; A_{1,1}^{\mu_{y},\mu_{x}} &amp; \ldots &amp; A_{1,k}^{\mu_{y},\mu_{x}} &amp; A_{1,1}^{\mu_{y},\mu_{y}} &amp; \ldots &amp; A_{1,k}^{\mu_{y},\mu_{y}} &amp; A_{1,1}^{\mu_{y},\mu_{z}} &amp; \ldots &amp; A_{1,k}^{\mu_{y},\mu_{z}} &amp; 0 &amp; 0 &amp; 1 &amp; 0\\
+     \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+     A_{p,1}^{\mu_{y},q} &amp; \ldots &amp; A_{p,k}^{\mu_{y},q} &amp; A_{p,1}^{\mu_{y},\mu_{x}} &amp; \ldots &amp; A_{p,k}^{\mu_{y},\mu_{x}} &amp; A_{p,1}^{\mu_{y},\mu_{y}} &amp; \ldots &amp; A_{p,k}^{\mu_{y},\mu_{y}} &amp; A_{p,1}^{\mu_{y},\mu_{z}} &amp; \ldots &amp; A_{p,k}^{\mu_{y},\mu_{z}} &amp; 0 &amp; 0 &amp; 1 &amp; 0\\
+     A_{1,1}^{\mu_{z},q} &amp; \ldots &amp; A_{1,k}^{\mu_{z},q} &amp; A_{1,1}^{\mu_{z},\mu_{x}} &amp; \ldots &amp; A_{1,k}^{\mu_{z},\mu_{x}} &amp; A_{1,1}^{\mu_{z},\mu_{y}} &amp; \ldots &amp; A_{1,k}^{\mu_{z},\mu_{y}} &amp; A_{1,1}^{\mu_{z},\mu_{z}} &amp; \ldots &amp; A_{1,k}^{\mu_{z},\mu_{z}} &amp; 0 &amp; 0 &amp; 0 &amp; 1\\
+     \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+     A_{p,1}^{\mu_{z},q} &amp; \ldots &amp; A_{p,k}^{\mu_{z},q} &amp; A_{p,1}^{\mu_{z},\mu_{x}} &amp; \ldots &amp; A_{p,k}^{\mu_{z},\mu_{x}} &amp; A_{p,1}^{\mu_{z},\mu_{y}} &amp; \ldots &amp; A_{p,k}^{\mu_{z},\mu_{y}} &amp; A_{p,1}^{\mu_{z},\mu_{z}} &amp; \ldots &amp; A_{p,k}^{\mu_{z},\mu_{z}} &amp; 0 &amp; 0 &amp; 0 &amp; 1\\
+     1 &amp; \ldots &amp; 1 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+     d_{1,x} &amp; \ldots &amp; d_{k,x} &amp; 1 &amp; \ldots &amp; 1 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+     d_{1,y} &amp; \ldots &amp; d_{k,y} &amp; 0 &amp; \ldots &amp; 0 &amp; 1 &amp; \ldots &amp; 1 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+     d_{1,z} &amp; \ldots &amp; d_{k,z} &amp; 0 &amp; \ldots &amp; 0 &amp; 0 &amp; \ldots &amp; 0 &amp; 1 &amp; \ldots &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+     \end{array}\right]\left[\begin{array}{c}
+     q_{1}\\
+     \vdots\\
+     q_{p}\\
+     \mu_{x,1}\\
+     \vdots\\
+     \mu_{x,p}\\
+     \mu_{y,1}\\
+     \vdots\\
+     \mu_{y,p}\\
+     \mu_{z,1}\\
+     \vdots\\
+     \mu_{z,p}\\
+     \lambda_{q}\\
+     \lambda_{\mu_{x}}\\
+     \lambda_{\mu_{y}}\\
+     \lambda_{\mu_{z}}
+     \end{array}\right]=\left[\begin{array}{c}
+     B_{1}^{q}\\
+     \vdots\\
+     B_{p}^{q}\\
+     B_{1}^{\mu_{x}}\\
+     \vdots\\
+     B_{p}^{\mu_{x}}\\
+     B_{1}^{\mu_{y}}\\
+     \vdots\\
+     B_{p}^{\mu_{y}}\\
+     B_{1}^{\mu_{z}}\\
+     \vdots\\
+     B_{p}^{\mu_{z}}\\
+     q_{tot}\\
+     \mu_{x,tot}\\
+     \mu_{y,tot}\\
+     \mu_{z,tot}
+     \end{array}\right]\end{split}\]</div>
+<p>Or in more compressed form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{cccc}
+     A^{q,q} &amp; A^{q,\mu} &amp; 1 &amp; \left(r_{j}-R_{\mathrm{cm}}\right)\\
+     A^{q,\mu} &amp; A^{\mu,\mu} &amp; 0 &amp; 1\\
+     1 &amp; 0 &amp; 0 &amp; 0\\
+     \left(r_{j}-R_{\mathrm{cm}}\right) &amp; 1 &amp; 0 &amp; 0
+     \end{array}\right]\left[\begin{array}{c}
+     q\\
+     \mu\\
+     \lambda_{q}\\
+     \lambda_{mu}
+     \end{array}\right]=\left[\begin{array}{c}
+     B^{q}\\
+     B^{\mu}\\
+     q_{tot}\\
+     \mu_{tot}
+     \end{array}\right]\end{split}\]</div>
+</div>
+<div class="section" id="implementation-comments">
+<h2>Implementation comments<a class="headerlink" href="#implementation-comments" title="Permalink to this headline">¶</a></h2>
+<p>For the implementation it can be noted that <span class="math notranslate nohighlight">\(\overline{\overline{A}}\)</span> is symmetric.
+Now the matrix <span class="math notranslate nohighlight">\(A\)</span> can be constructed by constructing an auxiliary matrix:</p>
+<div class="math notranslate nohighlight">
+\[A_{aux,pk,i}=\sum_{i}^{point}\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[A=A_{aux}\cdot A_{aux}^{T}\]</div>
+</div>
+<div class="section" id="traceless-comments">
+<h2>Traceless comments<a class="headerlink" href="#traceless-comments" title="Permalink to this headline">¶</a></h2>
+<p>The equations can as easily be written in traceless, just by chaninging:</p>
+<div class="math notranslate nohighlight">
+\[A_{pk,jn}=\sum_{i}^{point}\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\frac{\left(-1\right)^{n}}{n!}T_{ij}^{(n)}\rightarrow\sum_{i}^{point}\frac{\left(-1\right)^{k}}{\left(2k-1\right)!!}T_{ip}^{(k)}\frac{\left(-1\right)^{n}}{\left(2n-1\right)!!}T_{ij}^{(n)}\]</div>
+<p>and,</p>
+<div class="math notranslate nohighlight">
+\[B_{jn}=\sum_{i}^{point}V_{i,\mathrm{QM}}\frac{\left(-1\right)^{k}}{k!}T_{ij}^{(k)}\rightarrow\sum_{i}^{point}V_{i,\mathrm{QM}}\frac{\left(-1\right)^{k}}{\left(2k-1\right)!!}T_{ip}^{(k)}\]</div>
+<p>Thus also:</p>
+<div class="math notranslate nohighlight">
+\[A_{aux,pk,i}=\sum_{i}^{point}\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\rightarrow\sum_{i}^{point}\frac{\left(-1\right)^{k}}{\left(2k-1\right)!!}T_{ip}^{(k)}\]</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="programs.html" class="btn btn-neutral float-right" title="Programs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="response.html" class="btn btn-neutral" title="Response Theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Erik Kjellgren.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

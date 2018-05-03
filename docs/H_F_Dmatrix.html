@@ -25,26 +25,19 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
-        <link rel="next" title="Density Functional Theory" href="dft.html"/>
-        <link rel="prev" title="Mathematics" href="justmath.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Density Functional Theory" href="dft.html" />
+    <link rel="prev" title="Quantum operator examples" href="operatorexamples.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -91,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="mcscfsrdft.html">MCSCF-srDFT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcsrdftresponse.html">MCSCF-srDFT response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="justmath.html">Mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operatorexamples.html">Quantum operator examples</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Hamiltonian, Fock and Density Matrix</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#one-index-transformation">One-index Transformation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#singlet-case">Singlet Case</a></li>
@@ -104,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multipolefitting.html">Lagrangian multipliers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programs.html">Programs</a></li>
 </ul>
 
@@ -116,7 +111,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Quantum Notes</a>
@@ -124,9 +119,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -175,55 +171,55 @@
 <div class="section" id="singlet-case">
 <h3>Singlet Case<a class="headerlink" href="#singlet-case" title="Permalink to this headline">¶</a></h3>
 <p>It is given that:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{\kappa}=\sum_{mn}\kappa_{mn}E_{mn}\]</div>
 <p>and</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{H}=\sum_{pq}h_{pq}E_{pq}+\frac{1}{2}\sum_{pqrs}g_{pqrs}e_{pqrs}\]</div>
-<p>Now lets consider <span class="math notranslate">\(\left[\hat{\kappa},\hat{H}\right]\)</span>, which can be split up as:</p>
-<div class="math notranslate">
+<p>Now lets consider <span class="math notranslate nohighlight">\(\left[\hat{\kappa},\hat{H}\right]\)</span>, which can be split up as:</p>
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{H}\right]=\left[\hat{\kappa},\hat{h}\right]+\left[\hat{\kappa},\hat{g}\right]\]</div>
 <p>Now lets consider the one-electron part first:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{h}\right]=\sum_{pq}\left[\hat{\kappa},h_{pq}E_{pq}\right]=\sum_{pqmn}\left[\kappa_{mn}E_{mn},h_{pq}E_{pq}\right]\]</div>
-<p><span class="math notranslate">\(\kappa_{mn}\)</span> and <span class="math notranslate">\(h_{pq}\)</span> are just matrix elements and can therefore be taken out, giving:</p>
-<div class="math notranslate">
+<p><span class="math notranslate nohighlight">\(\kappa_{mn}\)</span> and <span class="math notranslate nohighlight">\(h_{pq}\)</span> are just matrix elements and can therefore be taken out, giving:</p>
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqmn}\kappa_{mn}h_{pq}\left[E_{mn},E_{pq}\right]\]</div>
-<p>Now it can be used that <span class="math notranslate">\(\left[E_{mn},E_{pq}\right]=E_{mq}\delta_{pn}-E_{pn}\delta_{mq}\)</span>:</p>
-<div class="math notranslate">
+<p>Now it can be used that <span class="math notranslate nohighlight">\(\left[E_{mn},E_{pq}\right]=E_{mq}\delta_{pn}-E_{pn}\delta_{mq}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqmn}\kappa_{mn}h_{pq}\left(E_{mq}\delta_{pn}-E_{pn}\delta_{mq}\right)\]</div>
 <p>Now the parenteses can be expanded:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqmn}\kappa_{mn}h_{pq}E_{mq}\delta_{pn}-\sum_{pqmn}\kappa_{mn}h_{pq}E_{pn}\delta_{mq}\]</div>
-<p>For the first sum it can be required that <span class="math notranslate">\(n=p\)</span>, and for the second sum it can be required that <span class="math notranslate">\(m=q\)</span>, giving:</p>
-<div class="math notranslate">
+<p>For the first sum it can be required that <span class="math notranslate nohighlight">\(n=p\)</span>, and for the second sum it can be required that <span class="math notranslate nohighlight">\(m=q\)</span>, giving:</p>
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqm}\kappa_{mp}h_{pq}E_{mq}\delta_{pp}-\sum_{pqn}\kappa_{qn}h_{pq}E_{pn}\delta_{qq}\]</div>
-<p>Now exchanging indecies can be done, for the first sum <span class="math notranslate">\(m\)</span> and <span class="math notranslate">\(p\)</span>, and for the second sum <span class="math notranslate">\(n\)</span> and <span class="math notranslate">\(q\)</span>, giving:</p>
-<div class="math notranslate">
+<p>Now exchanging indecies can be done, for the first sum <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(p\)</span>, and for the second sum <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, giving:</p>
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqm}\kappa_{pm}h_{mq}E_{pq}-\sum_{pqn}\kappa_{nq}h_{pn}E_{pq}\]</div>
-<p>Atlast for the second sum redindexing such <span class="math notranslate">\(n=p`n\rightarrow m\)</span>:</p>
-<div class="math notranslate">
+<p>Atlast for the second sum redindexing such <span class="math notranslate nohighlight">\(n=p`n\rightarrow m\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqm}\kappa_{pm}h_{mq}E_{pq}-\sum_{pqm}\kappa_{mq}h_{pm}E_{pq}=\sum_{pqm}\left(\kappa_{pm}h_{mq}-\kappa_{mq}h_{pm}\right)E_{pq}\]</div>
 <p>Now the two-electron part can be considered:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{g}\right]=\frac{1}{2}\sum_{pqrsmn}\kappa_{mn}g_{pqrs}\left[E_{mn},e_{pqrs}\right]\]</div>
-<p>Here it can be used that, <span class="math notranslate">\(\left[E_{mn},e_{pqrs}\right]=\delta_{pn}e_{mqrs}-\delta_{mq}e_{pnrs}+\delta_{rn}e_{pqms}-\delta_{ms}e_{pqrn}\)</span>. Giving:</p>
-<div class="math notranslate">
+<p>Here it can be used that, <span class="math notranslate nohighlight">\(\left[E_{mn},e_{pqrs}\right]=\delta_{pn}e_{mqrs}-\delta_{mq}e_{pnrs}+\delta_{rn}e_{pqms}-\delta_{ms}e_{pqrn}\)</span>. Giving:</p>
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{g}\right]=\frac{1}{2}\sum_{pqrsmn}\kappa_{mn}g_{pqrs}\left(\delta_{pn}e_{mqrs}-\delta_{mq}e_{pnrs}+\delta_{rn}e_{pqms}-\delta_{ms}e_{pqrn}\right)\]</div>
 <p>Now by a similar approach of elimination indicies as for the one-electron part, it can be shown that:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{g}\right]=\frac{1}{2}\sum_{pqrsm}\left(\kappa_{pm}g_{mqrs}-\kappa_{mq}g_{pmrs}+\kappa_{rm}g_{pqms}-k_{ms}g_{pqrm}\right)e_{pqrs}\]</div>
-<p>If it is defined that <span class="math notranslate">\(g_{pqrs}^{k}=\sum_{m}\left(\kappa_{pm}g_{mqrs}-\kappa_{mq}g_{pmrs}+\kappa_{rm}g_{pqms}-k_{ms}g_{pqrm}\right)\)</span>, it can be seen from symmetry that:</p>
-<div class="math notranslate">
+<p>If it is defined that <span class="math notranslate nohighlight">\(g_{pqrs}^{k}=\sum_{m}\left(\kappa_{pm}g_{mqrs}-\kappa_{mq}g_{pmrs}+\kappa_{rm}g_{pqms}-k_{ms}g_{pqrm}\right)\)</span>, it can be seen from symmetry that:</p>
+<div class="math notranslate nohighlight">
 \[g_{pqrs}^{k}=\sum_{m}\left(\kappa_{pm}g_{rsqm}-\kappa_{mq}g_{rspm}+\kappa_{rm}g_{mspq}-k_{ms}g_{rmpq}\right)=g_{rspq}^{k}\]</div>
 <p>The notation can be eased by introducing the following:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left(rs|\tilde{pq}\right)=\sum_{m}\left(\kappa_{pm}g_{rsqm}-\kappa_{mq}g_{rspm}\right)\]</div>
 <p>and,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\tilde{h}_{pq}=\sum_{m}\left(\kappa_{pm}h_{mq}-\kappa_{mq}h_{pm}\right)\]</div>
 <p>Now giving the total one-index transformed Hamiltonian as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[H\left(\kappa\right)=\sum_{pq}\tilde{h}_{pq}E_{pq}+\frac{1}{2}\sum_{rspq}\left(\left(rs|\tilde{pq}\right)e_{pqrs}+\left(pq|\tilde{rs}\right)e_{pqrs}\right)\]</div>
 <ul class="simple">
 <li>Molecular Electronic-Structure Theory, Trygve Helgaker, Poul Jorgensen, Jeppe Olsen</li>
@@ -232,36 +228,36 @@
 <div class="section" id="triplet-case">
 <h3>Triplet Case<a class="headerlink" href="#triplet-case" title="Permalink to this headline">¶</a></h3>
 <p>Lets consider the commutators that makes the difference between triplet and singlet. First for the one electron operator:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[E_{mn},E_{pq}\left(S\right)\right]=\sum_{\sigma\tau}\left[a_{m\sigma}^{\dagger}a_{n\tau},S_{\tau}a_{p\tau}^{\dagger}a_{q\tau}\right]\]</div>
-<p>Now it can be used that <span class="math notranslate">\(\left[a_{P}^{\dagger}a_{Q},a_{R}^{\dagger}a_{S}\right]=\left[a_{P}^{\dagger},a_{R}^{\dagger}a_{S}\right]a_{Q}+a_{P}^{\dagger}\left[a_{Q},a_{R}^{\dagger}a_{S}\right]\)</span>:</p>
-<div class="math notranslate">
+<p>Now it can be used that <span class="math notranslate nohighlight">\(\left[a_{P}^{\dagger}a_{Q},a_{R}^{\dagger}a_{S}\right]=\left[a_{P}^{\dagger},a_{R}^{\dagger}a_{S}\right]a_{Q}+a_{P}^{\dagger}\left[a_{Q},a_{R}^{\dagger}a_{S}\right]\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\left[E_{mn},E_{pq}\left(S\right)\right]=\sum_{\sigma\tau}\left(\left[a_{m\sigma}^{\dagger}a_{n\sigma},S_{\tau}a_{p\tau}^{\dagger}\right]a_{q\tau}+a_{p\tau}^{\dagger}\left[S_{\sigma}a_{m\sigma}^{\dagger}a_{n\tau},S_{\tau}a_{q\tau}\right]\right)\]</div>
-<p>It can now be used that <span class="math notranslate">\(\left[a_{P}^{\dagger},a_{Q}^{\dagger}a_{R}\right]=-\delta_{PR}a_{Q}^{\dagger}\)</span> and <span class="math notranslate">\(\left[a_{P},a_{Q}^{\dagger}a_{R}\right]=\delta_{PQ}a_{R}\)</span>:</p>
-<div class="math notranslate">
+<p>It can now be used that <span class="math notranslate nohighlight">\(\left[a_{P}^{\dagger},a_{Q}^{\dagger}a_{R}\right]=-\delta_{PR}a_{Q}^{\dagger}\)</span> and <span class="math notranslate nohighlight">\(\left[a_{P},a_{Q}^{\dagger}a_{R}\right]=\delta_{PQ}a_{R}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\left[E_{mn},E_{pq}\left(S\right)\right]=\sum_{\sigma\tau}\left(S_{\tau}\delta_{\sigma\tau}\delta_{np}a_{m\sigma}^{\dagger}a_{q\tau}-\delta_{\sigma\tau}\delta_{qm}a_{p\tau}^{\dagger}a_{n\sigma}\right)\]</div>
 <p>Now it can be identified that:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[E_{mn},E_{pq}\left(S\right)\right]=\delta_{np}E_{mq}\left(S\right)-\delta_{qm}E_{pn}\left(S\right)\]</div>
-<p>Thus it can be seen that for the one-electron one index transformation, if <span class="math notranslate">\(S=-\)</span>:</p>
-<div class="math notranslate">
+<p>Thus it can be seen that for the one-electron one index transformation, if <span class="math notranslate nohighlight">\(S=-\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\left[\hat{\kappa},\hat{h}\right]=\sum_{pqm}\left(\kappa_{pm}h_{mq}-\kappa_{mq}h_{pm}\right)E_{pq}\left(-\right)\]</div>
 <p>Now the same analysis can be done for the two electron operator:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[E_{mn}\left(S\right),e_{pqrs}\right]=\left[E_{mn}\left(S\right),E_{pq}E_{rs}-\delta_{qr}E_{ps}\right]\]</div>
-<p>Using <span class="math notranslate">\(\left[A,BC\right]=\left[A,B\right]C+B\left[A,C\right]\)</span>:</p>
-<div class="math notranslate">
+<p>Using <span class="math notranslate nohighlight">\(\left[A,BC\right]=\left[A,B\right]C+B\left[A,C\right]\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\left[E_{mn}\left(S\right),e_{pqrs}\right]=E_{pq}\left[E_{mn}\left(S\right),E_{rs}\right]+E_{rs}\left[E_{mn}\left(S\right),E_{pq}\right]-\delta_{qr}\left[E_{mn}\left(S\right),E_{ps}\right]\]</div>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{ccc}
 \left[E_{mn}\left(S\right),e_{pqrs}\right] &amp; = &amp; \delta_{nr}E_{pq}E_{ms}\left(S\right)-\delta_{ms}E_{pq}E_{rn}\left(S\right)+\delta_{np}E_{mq}\left(S\right)E_{rs}\\
  &amp;  &amp; -\delta_{mq}E_{pn}\left(S\right)E_{rs}-\delta_{qr}\delta_{np}E_{ms}\left(S\right)+\delta_{qr}\delta_{ms}E_{pn}\left(S\right)
 \end{array}\end{split}\]</div>
-<p>Now using <span class="math notranslate">\(e_{pqrs}=E_{pq}E_{rs}-\delta_{qr}E_{ps}\)</span>:</p>
-<div class="math notranslate">
+<p>Now using <span class="math notranslate nohighlight">\(e_{pqrs}=E_{pq}E_{rs}-\delta_{qr}E_{ps}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\left[E_{mn}\left(S\right),e_{pqrs}\right]=\delta_{pn}e_{mqrs}\left(-,+\right)-\delta_{mq}e_{pnrs}\left(-,+\right)+\delta_{rn}e_{pqms}\left(+,-\right)-\delta_{ms}e_{pqrn}\left(+,-\right)\]</div>
-<p>Here <span class="math notranslate">\(+\)</span> indicates no <span class="math notranslate">\(S\)</span> and <span class="math notranslate">\(-\)</span> indicates <span class="math notranslate">\(S\)</span>. This can now be used to find the one index transformed Hamiltonian for the triplet state, in steps similar to that of the singlet state to get the total Hamilonian:</p>
-<div class="math notranslate">
+<p>Here <span class="math notranslate nohighlight">\(+\)</span> indicates no <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(-\)</span> indicates <span class="math notranslate nohighlight">\(S\)</span>. This can now be used to find the one index transformed Hamiltonian for the triplet state, in steps similar to that of the singlet state to get the total Hamilonian:</p>
+<div class="math notranslate nohighlight">
 \[H\left(\kappa\right)=\sum_{pq}\tilde{h}_{pq}E_{pq}\left(-\right)+\frac{1}{2}\sum_{rspq}\left(\left(rs|\tilde{pq}\right)e_{pqrs}\left(+,-\right)+\left(pq\tilde{rs}\right)e_{pqrs}\left(-,+\right)\right)\]</div>
 <ul class="simple">
 <li>Triplet excitation properties in large scale multiconfiguration linear response calculations, Jeppe Olsen, Danny L. Yeager, and Poul Jo/rgensen</li>
@@ -270,75 +266,75 @@
 </div>
 <div class="section" id="generalized-fock-matrix-elements">
 <h2>Generalized Fock Matrix Elements<a class="headerlink" href="#generalized-fock-matrix-elements" title="Permalink to this headline">¶</a></h2>
-<p>For the following, <span class="math notranslate">\(i,j,k,l\)</span> are inactive <span class="math notranslate">\(v,w,x,y,z\)</span> are active, <span class="math notranslate">\(a,b,c,d,e\)</span> are virtual and <span class="math notranslate">\(m,n,o,p,q,r,s,t,u\)</span> are general orbitals.Lets consider:</p>
-<div class="math notranslate">
+<p>For the following, <span class="math notranslate nohighlight">\(i,j,k,l\)</span> are inactive <span class="math notranslate nohighlight">\(v,w,x,y,z\)</span> are active, <span class="math notranslate nohighlight">\(a,b,c,d,e\)</span> are virtual and <span class="math notranslate nohighlight">\(m,n,o,p,q,r,s,t,u\)</span> are general orbitals.Lets consider:</p>
+<div class="math notranslate nohighlight">
 \[D_{iq}=\left\langle 0\left|E_{iq}\right|0\right\rangle\]</div>
 <p>and,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[d_{pqis}=\left\langle 0\left|e_{pqis}\right|0\right\rangle =\left\langle 0\left|E_{pq}E_{is}-\delta_{iq}E_{ps}\right|0\right\rangle\]</div>
 <p>Now lets remember that the density matrices vanish if any of the indicies are a virtual orbital. If it is now choosen that one index is inactive, the following simplification can be made:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[D_{iq}=2\delta_{iq}\]</div>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[d_{pqis}=2\delta_{is}D_{pq}-\delta_{iq}D_{ps}\]</div>
 <p>Now the generalized Fock matrix is given as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F_{mn}=\sum_{q}D_{mq}h_{nq}+\sum_{qrs}d_{rsmq}g_{rsnq}\]</div>
 <p>Using the above expressions for the density matrix it can be written that:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F_{in}=\sum_{q}2\delta_{iq}h_{nq}+\sum_{qrs}\left(2\delta_{iq}D_{rs}-\delta_{si}D_{rq}\right)g_{rsnq}=2h_{ni}+\sum_{qrs}\left(2\delta_{iq}D_{rs}-\delta_{si}D_{rq}\right)g_{rsnq}\]</div>
 <p>Now lets consider the second sum only:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\sum_{qrs}2\delta_{iq}D_{rs}g_{rsnq}-\sum_{qrs}\delta_{si}D_{rq}g_{rsnq}=\sum_{rs}2D_{rs}g_{rsni}-\sum_{rq}D_{rq}g_{rinq}\]</div>
-<p>Now be relabelling <span class="math notranslate">\(q\)</span> to <span class="math notranslate">\(s\)</span> for the first sum:</p>
-<div class="math notranslate">
+<p>Now be relabelling <span class="math notranslate nohighlight">\(q\)</span> to <span class="math notranslate nohighlight">\(s\)</span> for the first sum:</p>
+<div class="math notranslate nohighlight">
 \[\sum_{rs}2D_{rs}g_{rsni}-\sum_{rq}D_{rq}g_{rinq}=\sum_{rs}D_{rs}\left(2g_{rsni}-g_{rins}\right)\]</div>
 <p>Giving the toal generalized Fock matrix:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F_{in}=2h_{ni}+\sum_{rs}D_{rs}\left(2g_{rsni}-g_{rins}\right)\]</div>
 <p>The notatation of an inactive and active Fock matrix can now be introduces:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F_{mn}^{I}=h_{mn}+\sum_{i}\left(2g_{mnii}-g_{miin}\right)\]</div>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F_{mn}^{A}=\sum_{uw}D_{uw}\left(g_{mnuw}-\frac{1}{2}g_{mwvn}\right)\]</div>
-<p>From the generalized Fock matrix it can be seen that if either <span class="math notranslate">\(r\)</span> or <span class="math notranslate">\(s\)</span> is anactive we get, by using <span class="math notranslate">\(D_{iq}=2\delta_{iq}\)</span>:</p>
-<div class="math notranslate">
+<p>From the generalized Fock matrix it can be seen that if either <span class="math notranslate nohighlight">\(r\)</span> or <span class="math notranslate nohighlight">\(s\)</span> is anactive we get, by using <span class="math notranslate nohighlight">\(D_{iq}=2\delta_{iq}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[F_{in}=2h_{ni}+\sum_{js}2\delta_{js}\left(2g_{jsni}-g_{jins}\right)=2h_{ni}+\sum_{j}2\left(2g_{jsni}-g_{jins}\right)=2F_{in}^{I}\]</div>
-<p>If both <span class="math notranslate">\(r\)</span> and <span class="math notranslate">\(s\)</span> are active the following is obtained:</p>
-<div class="math notranslate">
+<p>If both <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(s\)</span> are active the following is obtained:</p>
+<div class="math notranslate nohighlight">
 \[F_{in}=2h_{ni}+\sum_{uw}D_{uw}\left(2g_{uwni}-g_{uinw}\right)=2h_{ni}+2F_{in}^{A}\]</div>
 <p>Now since this covers the entire sum in the Generalized Fock matrix it can be expressed as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F_{in}=2\left(F_{in}^{I}+F_{in}^{A}\right)\]</div>
 <p>Now lets consider the generalized Fock matrix if the first index is active:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F_{vn}=\sum_{q}D_{vq}h_{nq}+\sum_{qrs}d_{vqrs}g_{nqrs}\]</div>
 <p>The sums can be split up in an active and inactive contribution:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F_{vn}=\sum_{w}D_{vw}h_{nw}+\sum_{i}D_{vi}h_{ni}+\sum_{qis}d_{vqis}g_{nqis}+\sum_{qws}d_{vqrw}g_{nqws}\]</div>
-<p>Now by using <span class="math notranslate">\(D_{iq}=2\delta_{iq}\)</span> which holdes for one index inactive it is known that if the other index is active then <span class="math notranslate">\(i\)</span> cannot be equal to <span class="math notranslate">\(q\)</span>. Now giving:</p>
-<div class="math notranslate">
+<p>Now by using <span class="math notranslate nohighlight">\(D_{iq}=2\delta_{iq}\)</span> which holdes for one index inactive it is known that if the other index is active then <span class="math notranslate nohighlight">\(i\)</span> cannot be equal to <span class="math notranslate nohighlight">\(q\)</span>. Now giving:</p>
+<div class="math notranslate nohighlight">
 \[F_{vn}=\sum_{w}D_{vw}h_{nw}+\sum_{qis}d_{vqis}g_{nqis}+\sum_{qws}d_{vqrw}g_{nqws}\]</div>
 <p>The first three index form can be manipulated as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\sum_{qis}d_{vqis}g_{nqis}=\sum_{qis}\left(2\delta_{is}D_{vq}-\delta_{qi}D_{vs}\right)g_{nqis}=2\sum_{qis}\delta_{is}D_{vq}g_{nqis}-\sum_{qis}\delta_{qi}D_{vs}g_{nqis}\]</div>
-<p>Now again by using the <span class="math notranslate">\(D\)</span> relationship of inactive orbitals and reindexing it is found that:</p>
-<div class="math notranslate">
+<p>Now again by using the <span class="math notranslate nohighlight">\(D\)</span> relationship of inactive orbitals and reindexing it is found that:</p>
+<div class="math notranslate nohighlight">
 \[\sum_{qis}d_{vqis}g_{nqis}=2\sum_{wi}D_{vw}g_{nwii}-\sum_{wi}D_{vw}g_{niiw}=\sum_{wi}D_{vw}\left(2g_{nwii}-g_{niiw}\right)\]</div>
-<p>Now the second three index sum, which by the relation <span class="math notranslate">\(d_{pqis}=2\delta_{is}D_{pq}-\delta_{iq}D_{ps}\)</span> and <span class="math notranslate">\(D_{iq}=2\delta_{iq}\)</span> is found to be:</p>
-<div class="math notranslate">
+<p>Now the second three index sum, which by the relation <span class="math notranslate nohighlight">\(d_{pqis}=2\delta_{is}D_{pq}-\delta_{iq}D_{ps}\)</span> and <span class="math notranslate nohighlight">\(D_{iq}=2\delta_{iq}\)</span> is found to be:</p>
+<div class="math notranslate nohighlight">
 \[\sum_{qws}d_{vqrw}g_{nqws}=\sum_{wxy}d_{vxwy}g_{wynx}\]</div>
 <p>Now giving:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F_{vn}=\sum_{w}D_{vw}h_{nw}+\sum_{wi}D_{vw}\left(2g_{nwii}-g_{niiw}\right)+\sum_{wxy}d_{vxwy}g_{wynx}\]</div>
 <p>Here the inactive Fock matrix can be identified giving:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F_{vn}=\sum_{w}F_{nw}^{I}D_{vw}+Q_{vn}\]</div>
 <p>Here:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[Q_{vm}=\sum_{xyz}d_{vwxy}g_{mwxy}\]</div>
 <p>Finally for Hartree-Fock:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F_{an}=0\]</div>
 <ul class="simple">
 <li>Molecular Electronic-Structure Theory, Trygve Helgaker, Poul Jorgensen, Jeppe Olsen</li>
@@ -347,24 +343,24 @@
 <div class="section" id="density-matrix-expansion">
 <h2>Density matrix expansion<a class="headerlink" href="#density-matrix-expansion" title="Permalink to this headline">¶</a></h2>
 <p>The density matrix is given as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\tilde{D}_{pq}\left(\kappa\right)=\left\langle \tilde{0}\left|p^{\dagger}q\right|\tilde{0}\right\rangle =\left\langle 0\left|\exp\left(\hat{\kappa}\right)p^{\dagger}q\exp\left(-\hat{\kappa}\right)\right|0\right\rangle\]</div>
 <p>The BCH expansion is given as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\exp\left(A\right)B\exp\left(-A\right)=B+\left[A,B\right]+\frac{1}{2!}\left[A,\left[A,B\right]\right]+...\]</div>
-<p>If <span class="math notranslate">\(A=\hat{\kappa}\)</span> and <span class="math notranslate">\(B=p^{\dagger}q\)</span>, it can be written that:</p>
-<div class="math notranslate">
+<p>If <span class="math notranslate nohighlight">\(A=\hat{\kappa}\)</span> and <span class="math notranslate nohighlight">\(B=p^{\dagger}q\)</span>, it can be written that:</p>
+<div class="math notranslate nohighlight">
 \[\tilde{D}_{pq}\left(A\right)=\left\langle 0\left|B\right|0\right\rangle +\left\langle 0\left|\left[A,B\right]\right|0\right\rangle +O\left(A^{2}\right)\]</div>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\left\langle 0\left|\left[\hat{\kappa},p^{\dagger}q\right]\right|0\right\rangle +O\left(\kappa^{2}\right)\]</div>
 <p>It can now be used that:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{\kappa}=\sum_{pq}\kappa_{pq}p^{\dagger}q\]</div>
 <p>Thus giving:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\left\langle 0\left|\left[\sum_{rs}\kappa_{rs}r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle +O\left(\kappa^{2}\right)\]</div>
-<p>Since <span class="math notranslate">\(\kappa_{rs}\)</span> is just a matrix element, the above equation can be rewritten as:</p>
-<div class="math notranslate">
+<p>Since <span class="math notranslate nohighlight">\(\kappa_{rs}\)</span> is just a matrix element, the above equation can be rewritten as:</p>
+<div class="math notranslate nohighlight">
 \[\tilde{D}_{pq}\left(\kappa\right)=\left\langle 0\left|p^{\dagger}q\right|0\right\rangle +\sum_{rs}\left\langle 0\left|\left[r^{\dagger}s,p^{\dagger}q\right]\right|0\right\rangle \kappa_{rs}+O\left(\kappa^{2}\right)\]</div>
 <ul class="simple">
 <li>Four-Component Relativistic Kohn-Sham Theory, Trond Saue, Trygve Helgaker</li>
@@ -374,9 +370,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -385,7 +379,7 @@
         <a href="dft.html" class="btn btn-neutral float-right" title="Density Functional Theory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="justmath.html" class="btn btn-neutral" title="Mathematics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="operatorexamples.html" class="btn btn-neutral" title="Quantum operator examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -398,7 +392,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -417,6 +411,7 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -435,14 +430,13 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

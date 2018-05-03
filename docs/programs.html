@@ -25,25 +25,18 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
-        <link rel="prev" title="Response Theory" href="response.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Lagrangian multipliers" href="multipolefitting.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -95,6 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multipolefitting.html">Lagrangian multipliers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Programs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#amber">Amber</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#resp-charges">RESP charges</a><ul>
@@ -127,7 +121,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Quantum Notes</a>
@@ -135,9 +129,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -224,7 +219,7 @@ I.e. N ≤ 4.</p>
 <p>IOp(6/42=N), sets the density of points per area of the ESP.
 Default is N = 1.</p>
 <p>IOp(6/43=N), sets the increment between ESP layers.
-Default is <span class="math notranslate">\(\frac{0.4}{\sqrt{\mathrm{layer\ index}}}\)</span>.
+Default is <span class="math notranslate nohighlight">\(\frac{0.4}{\sqrt{\mathrm{layer\ index}}}\)</span>.
 If N is user defined, the increments will be 0.01*N.</p>
 <p>If more than one IOp setting is used, is specified as:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">IOp</span><span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">41</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="o">/</span><span class="mi">42</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span><span class="mi">6</span><span class="o">/</span><span class="mi">50</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -317,14 +312,14 @@ In CPMD there is an option to let multiple nodes divide the calculation associat
 This setting is called CP_GROUPS.
 When using CP_GROUPS the goal is still to have the same amount of planes per effective tasks.
 Here effective tasks is the number of tasks divided with the amount of CP_GROUPS.</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[N_{\mathrm{effective\ tasks}} = \frac{N_{\mathrm{total\ tasks}}}{N{_{\mathrm{CP\_GROUPS}}}}\]</div>
 <p>To ensure that the number of planes per process is the same, the following relation must be true:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{N{_{\mathrm{CP\_GROUPS}}} N_{\mathrm{planes}}}{N_{\mathrm{total\ tasks}}} \mod 1 = 0\]</div>
 <p>If CPMD have been compiled with OMP, OMP threading can be tried too.
 The chosen number of OMP threads and MPI processes must be chosen such that:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[N_{\mathrm{OMP\ threads}} N_{\mathrm{MPI\ processes}} = N_{\mathrm{total\ tasks}}\]</div>
 <p>OMP threads can be set by:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OMP_NUM_THREADS</span><span class="o">=</span><span class="n">X</span>
@@ -340,13 +335,13 @@ For this example of 48 water, the number of planes is 168.
 Since 168 / 24 = 7, i.e. an integer, it could be thought that settings CP_GROUPS = number of nodes would be a good choice.
 It can be identified that three different “sweet spots” exist.
 Following the formula from the above section:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{N{_{\mathrm{CP\_GROUPS}}} N_{\mathrm{planes}}}{N_{\mathrm{total\ tasks}}} \mod 1 = 0\]</div>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{1 \cdot 168}{7 \cdot 24} \mod 1  = 1 \mod 1 = 0\]</div>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{2 \cdot 168}{14 \cdot 24} \mod 1  = 1 \mod 1 = 0\]</div>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{3 \cdot 168}{21 \cdot 24} \mod 1  = 1 \mod 1 = 0\]</div>
 <p>This indicates that 7, 14 and 21 would be a nice number of nodes.
 Higher values of CP_GROUPS also gives integers for 7, 14 and 21 nodes.
@@ -392,16 +387,14 @@ The default is just (0, 0, 0).</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="response.html" class="btn btn-neutral" title="Response Theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="multipolefitting.html" class="btn btn-neutral" title="Lagrangian multipliers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -414,7 +407,7 @@ The default is just (0, 0, 0).</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -433,6 +426,7 @@ The default is just (0, 0, 0).</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -451,14 +445,13 @@ The default is just (0, 0, 0).</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -25,26 +25,19 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
-        <link rel="next" title="Hamiltonian, Fock and Density Matrix" href="H_F_Dmatrix.html"/>
-        <link rel="prev" title="Mathematics" href="justmath.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Hamiltonian, Fock and Density Matrix" href="H_F_Dmatrix.html" />
+    <link rel="prev" title="Mathematics" href="justmath.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -101,6 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multipolefitting.html">Lagrangian multipliers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programs.html">Programs</a></li>
 </ul>
 
@@ -113,7 +107,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Quantum Notes</a>
@@ -121,9 +115,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -170,31 +165,31 @@
 <div class="section" id="transpose-of-operator-matrix">
 <h2>Transpose of operator matrix<a class="headerlink" href="#transpose-of-operator-matrix" title="Permalink to this headline">¶</a></h2>
 <p>Lets consider a general operator, that changes a state:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{O}\left|i\right\rangle =\left|j\right\rangle\]</div>
 <p>Now lets define the adjoint of the operator as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left\langle i\right|\hat{O}^{\dagger}=\left\langle j\right|\]</div>
 <p>These two definitions implies:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left\langle k\left|\hat{O}\right|i\right\rangle =\left\langle k\left|j\right.\right\rangle\]</div>
 <p>and,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left\langle i\left|\hat{O}^{\dagger}\right|k\right\rangle =\left\langle j\left|k\right.\right\rangle\]</div>
 <p>It is known that:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left\langle i\left|j\right.\right\rangle =\left\langle j\left|i\right.\right\rangle ^{*}\]</div>
 <p>Thus giving:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left\langle k\left|\hat{O}\right|i\right\rangle =\left\langle i\left|\hat{O}^{\dagger}\right|k\right\rangle ^{*}\]</div>
 <p>Now if the operator is Hermitian i.e:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{O}=\hat{O}^{\dagger}\]</div>
 <p>It can be written that:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left\langle k\left|\hat{O}\right|i\right\rangle =\left\langle i\left|\hat{O}\right|k\right\rangle ^{*}\]</div>
 <p>Thus if the wave functions are real, it gives:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left\langle k\left|\hat{O}\right|i\right\rangle =\left\langle i\left|\hat{O}\right|k\right\rangle\]</div>
 <ul class="simple">
 <li>Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory, Szabo and Ostlund</li>
@@ -203,64 +198,62 @@
 <div class="section" id="orbital-rotation-operator">
 <h2>Orbital rotation operator<a class="headerlink" href="#orbital-rotation-operator" title="Permalink to this headline">¶</a></h2>
 <p>The orbital rotation operator is given as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{\kappa}=\sum_{pq}\kappa_{pq}\hat{E}_{pq}\]</div>
 <p>The orbital rotation operator is anti-Hermitian, thus:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\kappa_{pq}=-\kappa_{qp}^{*}\]</div>
 <p>here the * denotes complex conjugate.
 Now the sum can be expanded:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{\kappa}=\sum_{p&gt;q}\left(\kappa_{pq}\hat{E}_{pq}+\kappa_{qp}\hat{E}_{qp}\right)+\sum_{p}\kappa_{pp}\hat{E}_{pp}\]</div>
 <p>Now by employing the anti-Hermitian property:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{\kappa}=\sum_{p&gt;q}\left(\kappa_{pq}\hat{E}_{pq}-\kappa_{pq}^{*}\hat{E}_{qp}\right)+\sum_{p}\kappa_{pp}\hat{E}_{pp}\]</div>
 <p>If it is known that the orbital rotations are real (this is not always the case), this can be simplified:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{\kappa}=\sum_{p&gt;q}\kappa_{pq}\left(\hat{E}_{pq}-\hat{E}_{qp}\right)\]</div>
-<p>here it is used that <span class="math notranslate">\(Re\left(\kappa_{pq}^{*}\right)=Re\left(\kappa_{pq}\right)\)</span> and that <span class="math notranslate">\(Re\left(\kappa_{pp}\right)=Re\left(-\kappa_{pp}^{*}\right)=0\)</span>.
-Now by <span class="math notranslate">\(\hat{E}_{pq}-\hat{E}_{qp}=\hat{E}_{pq}^{-}\)</span>:</p>
-<div class="math notranslate">
+<p>here it is used that <span class="math notranslate nohighlight">\(Re\left(\kappa_{pq}^{*}\right)=Re\left(\kappa_{pq}\right)\)</span> and that <span class="math notranslate nohighlight">\(Re\left(\kappa_{pp}\right)=Re\left(-\kappa_{pp}^{*}\right)=0\)</span>.
+Now by <span class="math notranslate nohighlight">\(\hat{E}_{pq}-\hat{E}_{qp}=\hat{E}_{pq}^{-}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\hat{\kappa}=\sum_{p&gt;q}\kappa_{pq}\hat{E}_{pq}^{-}\]</div>
 </div>
 <div class="section" id="transpose-of-operator-matrix-example">
 <h2>Transpose of operator matrix, example<a class="headerlink" href="#transpose-of-operator-matrix-example" title="Permalink to this headline">¶</a></h2>
 <p>Lets consider the following matrix:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left\langle i\left|\left[\hat{E}_{pq}^{-},\hat{H}\right]\right|0\right\rangle\]</div>
 <p>Now the following relation can be used:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left\langle k\left|\hat{O}\right|i\right\rangle =\left\langle i\left|\hat{O}^{\dagger}\right|k\right\rangle ^{*}\]</div>
 <p>Thus:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left\langle i\left|\left[\hat{E}_{pq}^{-},\hat{H}\right]\right|0\right\rangle =\left\langle 0\left|\left[\hat{E}_{pq}^{-},\hat{H}\right]^{\dagger}\right|i\right\rangle ^{*}\]</div>
-<p>Now calculating the new operator by using <span class="math notranslate">\(\left(\hat{A}\hat{B}\right)^{\dagger}=\hat{B}^{\dagger}\hat{A}^{\dagger}\)</span>:</p>
-<div class="math notranslate">
+<p>Now calculating the new operator by using <span class="math notranslate nohighlight">\(\left(\hat{A}\hat{B}\right)^{\dagger}=\hat{B}^{\dagger}\hat{A}^{\dagger}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\left[\hat{E}_{pq}^{-},\hat{H}\right]^{\dagger}=\left(\hat{E}_{pq}^{-}\hat{H}-\hat{H}\hat{E}_{pq}^{-}\right)^{\dagger}=\hat{H}^{\dagger}\hat{E}_{pq}^{-\dagger}-\hat{E}_{pq}^{-\dagger}\hat{H}^{\dagger}\]</div>
-<p>It is known that <span class="math notranslate">\(\hat{H}^{\dagger}=\hat{H}\)</span> and <span class="math notranslate">\(\hat{E}_{pq}^{-}\equiv\hat{E}_{pq}-\hat{E}_{qp}\)</span>.
+<p>It is known that <span class="math notranslate nohighlight">\(\hat{H}^{\dagger}=\hat{H}\)</span> and <span class="math notranslate nohighlight">\(\hat{E}_{pq}^{-}\equiv\hat{E}_{pq}-\hat{E}_{qp}\)</span>.
 Now evaluating:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{E}_{pq}^{-\dagger}=\hat{E}_{pq}^{\dagger}-\hat{E}_{qp}^{\dagger}\]</div>
 <p>Expanding:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{E}_{pq}=\left(p^{\dagger}q\right)^{\dagger}=q^{\dagger}p=\hat{E}_{qp}\]</div>
 <p>Now:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{E}_{pq}^{-\dagger}=\hat{E}_{qp}-\hat{E}_{pq}=-\hat{E}_{pq}^{-}\]</div>
 <p>Thus:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[\hat{E}_{pq}^{-},\hat{H}\right]^{\dagger}=-\hat{H}\hat{E}_{pq}^{-}+\hat{E}_{pq}^{-}\hat{H}=\left[\hat{E}_{pq}^{-},\hat{H}\right]\]</div>
 <p>Now since this commutator is Hermitian it is found that:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left\langle i\left|\left[\hat{E}_{pq}^{-},\hat{H}\right]\right|0\right\rangle =\left\langle 0\left|\left[\hat{E}_{pq}^{-},\hat{H}\right]\right|i\right\rangle\]</div>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -282,7 +275,7 @@ Now evaluating:</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -301,6 +294,7 @@ Now evaluating:</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -319,14 +313,13 @@ Now evaluating:</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

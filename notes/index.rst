@@ -17,4 +17,5 @@ Notes about Quantum Chemistry
    dft.rst
    mcscf.rst
    response.rst
+   multipolefitting.rst
    programs.rst

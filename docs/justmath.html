@@ -25,26 +25,19 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Quantum Notes  documentation" href="index.html"/>
-        <link rel="next" title="Quantum operator examples" href="operatorexamples.html"/>
-        <link rel="prev" title="MCSCF-srDFT response" href="mcsrdftresponse.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quantum operator examples" href="operatorexamples.html" />
+    <link rel="prev" title="MCSCF-srDFT response" href="mcsrdftresponse.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -116,6 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dft.html">Density Functional Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcscf.html">Multi-Configurational Self-Consistent Field</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response.html">Response Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multipolefitting.html">Lagrangian multipliers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programs.html">Programs</a></li>
 </ul>
 
@@ -128,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Quantum Notes</a>
@@ -136,9 +130,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -187,39 +182,39 @@
 <div class="section" id="real-anti-symmetric-matrix">
 <h3>Real (anti)-symmetric matrix<a class="headerlink" href="#real-anti-symmetric-matrix" title="Permalink to this headline">¶</a></h3>
 <p>A real symmetric matrix is defined as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[A_{i,j}=A_{j,i}\]</div>
 <p>A real anti-symmetric matrix is defined as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[A_{i,j}=-A_{j,i}\]</div>
 </div>
 <div class="section" id="anti-hermitian-matrix">
 <h3>(anti)-Hermitian matrix<a class="headerlink" href="#anti-hermitian-matrix" title="Permalink to this headline">¶</a></h3>
 <p>A Hermitian matrix is defined as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[A_{i,j}=A_{j,i}^{*}\]</div>
 <p>From the definition it can be seen that the diagonal can only be real.</p>
 <p>An anti-Hermitian matrix is defined as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[A_{i,j}=-A_{j,i}^{*}\]</div>
 <p>From the definition it can be seen that the diagonal can only be imaginary.</p>
 </div>
 <div class="section" id="baker-campbell-hausdorf-expansion">
 <h3>Baker-Campbell-Hausdorf expansion<a class="headerlink" href="#baker-campbell-hausdorf-expansion" title="Permalink to this headline">¶</a></h3>
 <p>The BCH expansion is given as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\exp\left(A\right)B\exp\left(-A\right)=B+\left[A,B\right]+\frac{1}{2!}\left[A,\left[A,B\right]\right]+\frac{1}{3!}\left[A,\left[A,\left[A,B\right]\right]\right]+...\]</div>
 </div>
 <div class="section" id="unitary-matrix">
 <h3>Unitary matrix<a class="headerlink" href="#unitary-matrix" title="Permalink to this headline">¶</a></h3>
 <p>A unitary matrix is defined as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[U^{\dagger}U=UU^{\dagger}=1\]</div>
 </div>
 <div class="section" id="real-orthogonal-matrix">
 <h3>Real orthogonal matrix<a class="headerlink" href="#real-orthogonal-matrix" title="Permalink to this headline">¶</a></h3>
 <p>A real orthogonal matrix must satisfy:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[Q^{T}Q=QQ^{T}=1\]</div>
 </div>
 </div>
@@ -228,49 +223,49 @@
 <div class="section" id="projection-operator">
 <h3>Projection operator<a class="headerlink" href="#projection-operator" title="Permalink to this headline">¶</a></h3>
 <p>A projection operator is defined as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{P}^{2}=\hat{P}\]</div>
 <p>As an example lets consider:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{P}=1-\left|0\right\rangle \left\langle 0\right|\]</div>
 <p>Now:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\hat{P}^{2}=\left(1-\left|0\right\rangle \left\langle 0\right|\right)^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\left.0\right\rangle \left\langle 0\right|\right)-2\left(\left|0\right\rangle \left\langle 0\right|\right)\]</div>
-<p>It can now be used that <span class="math notranslate">\(\left\langle 0\right|\left.0\right\rangle =1\)</span>:</p>
-<div class="math notranslate">
+<p>It can now be used that <span class="math notranslate nohighlight">\(\left\langle 0\right|\left.0\right\rangle =1\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\hat{P}^{2}=1+\left(\left|0\right\rangle \left\langle 0\right|\right)-2\left(\left|0\right\rangle \left\langle 0\right|\right)=1-\left|0\right\rangle \left\langle 0\right|=\hat{P}\]</div>
 </div>
 <div class="section" id="anti-commutator">
 <h3>(anti)-Commutator<a class="headerlink" href="#anti-commutator" title="Permalink to this headline">¶</a></h3>
 <p>The commutator is defined as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[\hat{A},\hat{B}\right]=\hat{A}\hat{B}-\hat{B}\hat{A}\]</div>
 <p>The anti-commutator is defined as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[\hat{A},\hat{B}\right]_{+}=\hat{A}\hat{B}+\hat{B}\hat{A}\]</div>
 <p>From the commutator relation it can be noted that:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[\hat{A},\hat{B}\right]=\hat{A}\hat{B}-\hat{B}\hat{A}=-\left(\hat{B}\hat{A}-\hat{A}\hat{B}\right)=-\left[\hat{B},\hat{A}\right]\]</div>
 </div>
 <div class="section" id="jacobi-identity">
 <h3>Jacobi identity<a class="headerlink" href="#jacobi-identity" title="Permalink to this headline">¶</a></h3>
 <p>Lets consider:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[A,\left[B,C\right]\right]+\left[B,\left[C,A\right]\right]+\left[C,\left[A,B\right]\right]\]</div>
 <p>Now by expansion:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[A,BC-CB\right]+\left[B,CA-AC\right]+\left[C,AB-BA\right]\]</div>
 <p>Which can be rearranged to:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{c}A\left(BC-CB\right)-\left(BC-CB\right)A+B\left(CA-AC\right)\\-\left(CA-AC\right)B+C\left(AB-BA\right)-\left(AB-BA\right)C\end{array}\end{split}\]</div>
 <p>Which can be rearranged to:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{c}ABC-ACB-BCA+CBA+BCA-BAC\\-CAB+ACB+CAB-CBA-ABC+BAC\end{array}\end{split}\]</div>
 <p>Now by a final rearranging:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{c}ABC-ABC+ACB-ACB+BAC-BAC\\+BCA-BCA+CAB-CAB+CBA-CBA=0\end{array}\end{split}\]</div>
 <p>Thus showing:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left[A,\left[B,C\right]\right]+\left[B,\left[C,A\right]\right]+\left[C,\left[A,B\right]\right]=0\]</div>
 <p>Which is known as the Jacobi identity.</p>
 </div>
@@ -280,38 +275,38 @@
 <div class="section" id="chain-rule-for-second-order">
 <h3>Chain-rule for second order<a class="headerlink" href="#chain-rule-for-second-order" title="Permalink to this headline">¶</a></h3>
 <p>Consider a function:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[f\left(x_{1}\left(\lambda_{1},\lambda_{2},..,\lambda_{M}\right),x_{2}\left(\lambda_{1},\lambda_{2},..,\lambda_{M}\right),..,x_{N}\left(\lambda_{1},\lambda_{2},..,\lambda_{M}\right)\right)\]</div>
 <p>Now the first partial derivative is given as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\partial}{\partial\lambda_{i}}f\left(x_{1},x_{2},..,x_{N}\right)=\frac{\partial f}{\partial x_{1}}\frac{\partial x_{1}}{\partial\lambda_{i}}+\frac{\partial f}{\partial x_{2}}\frac{\partial x_{2}}{\partial\lambda_{i}}+...+\frac{\partial f}{\partial x_{N}}\frac{\partial x_{N}}{\partial\lambda_{i}}\]</div>
 <p>The above equation can be formulated as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\partial}{\partial\lambda_{i}}f\left(x_{1},x_{2},..,x_{N}\right)=\sum_{k}^{N}\frac{\partial f}{\partial x_{k}}\frac{\partial x_{k}}{\partial\lambda_{i}}\]</div>
 <p>Now lets consider the second derivative:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\partial^{2}}{\partial\lambda_{j}\partial\lambda_{i}}f\left(x_{1},x_{2},..,x_{N}\right)=\frac{\partial}{\partial\lambda_{j}}\left(\frac{\partial f}{\partial x_{1}}\frac{\partial x_{1}}{\partial\lambda_{i}}+\frac{\partial f}{\partial x_{2}}\frac{\partial x_{2}}{\partial\lambda_{i}}+...+\frac{\partial f}{\partial x_{N}}\frac{\partial x_{N}}{\partial\lambda_{i}}\right)\]</div>
 <p>This is equal to:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\partial^{2}}{\partial\lambda_{j}\partial\lambda_{i}}f\left(x_{1},x_{2},..,x_{N}\right)=\frac{\partial}{\partial\lambda_{j}}\left(\frac{\partial f}{\partial x_{1}}\frac{\partial x_{1}}{\partial\lambda_{i}}\right)+\frac{\partial}{\partial\lambda_{j}}\left(\frac{\partial f}{\partial x_{2}}\frac{\partial x_{2}}{\partial\lambda_{i}}\right)+...+\frac{\partial}{\partial\lambda_{j}}\left(\frac{\partial f}{\partial x_{N}}\frac{\partial x_{N}}{\partial\lambda_{i}}\right)\]</div>
 <p>Since all of the terms should be treated the same way, lets just focus on the first term.
-Lets define <span class="math notranslate">\(f_{x_{1}}=\frac{\partial f}{\partial x_{1}}\)</span> and <span class="math notranslate">\(x_{1,\lambda_{i}}=\frac{\partial x_{1}}{\partial\lambda_{i}}\)</span>:</p>
-<div class="math notranslate">
+Lets define <span class="math notranslate nohighlight">\(f_{x_{1}}=\frac{\partial f}{\partial x_{1}}\)</span> and <span class="math notranslate nohighlight">\(x_{1,\lambda_{i}}=\frac{\partial x_{1}}{\partial\lambda_{i}}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\frac{\partial}{\partial\lambda_{j}}\left(\frac{\partial f}{\partial x_{1}}\frac{\partial x_{1}}{\partial\lambda_{i}}\right)=\frac{\partial}{\partial\lambda_{j}}\left(f_{x_{1}}x_{1,\lambda_{i}}\right)\]</div>
 <p>Now by using the product rule:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\partial}{\partial\lambda_{j}}\left(\frac{\partial f}{\partial x_{1}}\frac{\partial x_{1}}{\partial\lambda_{i}}\right)=\frac{\partial f_{x_{1}}}{\partial\lambda_{j}}x_{1,\lambda_{i}}+f_{x_{1}}\frac{\partial x_{1,\lambda_{i}}}{\partial\lambda_{j}}\]</div>
 <p>It can be seen that the first term is a first order partial derivative:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\partial f_{x_{1}}}{\partial\lambda_{j}}=\sum_{l}^{N}\frac{\partial f_{x_{1}}}{\partial x_{l}}\frac{\partial x_{l}}{\partial\lambda_{j}}\]</div>
 <p>Thus:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\partial}{\partial\lambda_{j}}\left(\frac{\partial f}{\partial x_{1}}\frac{\partial x_{1}}{\partial\lambda_{i}}\right)=\sum_{l}^{N}\frac{\partial f_{x_{1}}}{\partial x_{l}}\frac{\partial x_{l}}{\partial\lambda_{j}}x_{1,\lambda_{i}}+f_{x_{1}}\frac{\partial x_{1,\lambda_{i}}}{\partial\lambda_{j}}\]</div>
 <p>Now by back-inserting the definitions:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\partial}{\partial\lambda_{j}}\left(\frac{\partial f}{\partial x_{1}}\frac{\partial x_{1}}{\partial\lambda_{i}}\right)=\sum_{l}^{N}\left[\frac{\partial^{2}f}{\partial x_{l}\partial x_{1}}\frac{\partial x_{l}}{\partial\lambda_{j}}\right]\frac{\partial x_{1}}{\partial\lambda_{i}}+\frac{\partial f}{\partial x_{1}}\frac{\partial^{2}x_{1}}{\partial\lambda_{j}\partial\lambda_{i}}\]</div>
 <p>Thus:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\partial^{2}}{\partial\lambda_{j}\partial\lambda_{i}}f\left(x_{1},x_{2},..,x_{N}\right)=\sum_{k}^{N}\sum_{l}^{N}\left[\frac{\partial^{2}f}{\partial x_{l}\partial x_{k}}\frac{\partial x_{l}}{\partial\lambda_{j}}\right]\frac{\partial x_{k}}{\partial\lambda_{i}}+\sum_{k}^{N}\frac{\partial f}{\partial x_{k}}\frac{\partial^{2}x_{k}}{\partial\lambda_{j}\partial\lambda_{i}}\]</div>
 </div>
 </div>
@@ -319,9 +314,7 @@ Lets define <span class="math notranslate">\(f_{x_{1}}=\frac{\partial f}{\partia
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -343,7 +336,7 @@ Lets define <span class="math notranslate">\(f_{x_{1}}=\frac{\partial f}{\partia
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -362,6 +355,7 @@ Lets define <span class="math notranslate">\(f_{x_{1}}=\frac{\partial f}{\partia
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -380,14 +374,13 @@ Lets define <span class="math notranslate">\(f_{x_{1}}=\frac{\partial f}{\partia
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
