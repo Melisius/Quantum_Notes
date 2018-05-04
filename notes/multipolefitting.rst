@@ -84,16 +84,16 @@ A total matrix equation as (for up to dipoles), with :math:`d_{i}=r_{i}-R_{\math
    \left[\begin{array}{cccccccccccccccc}
 	A_{1,1}^{q,q} & \ldots & A_{1,k}^{q,q} & A_{1,1}^{q,\mu_{x}} & \ldots & A_{1,k}^{q,\mu_{x}} & A_{1,1}^{q,\mu_{y}} & \ldots & A_{1,k}^{q,\mu_{y}} & A_{1,1}^{q,\mu_{z}} & \ldots & A_{1,k}^{q,\mu_{z}} & 1 & d_{1,x} & d_{1,y} & d_{1,z}\\
 	\vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots\\
-	A_{p,1}^{q,q} & \ldots & A_{p,k}^{q,q} & A_{p,1}^{q,\mu_{x}} & \ldots & A_{p,k}^{q,\mu_{x}} & A_{p,1}^{q,\mu_{y}} & \ldots & A_{p,k}^{q,\mu_{y}} & A_{p,1}^{q,\mu_{z}} & \ldots & A_{p,k}^{q,\mu_{z}} & 1 & d_{k,x} & d_{k,y} & d_{k,z}\\
+	A_{j,1}^{q,q} & \ldots & A_{j,k}^{q,q} & A_{j,1}^{q,\mu_{x}} & \ldots & A_{j,k}^{q,\mu_{x}} & A_{j,1}^{q,\mu_{y}} & \ldots & A_{j,k}^{q,\mu_{y}} & A_{j,1}^{q,\mu_{z}} & \ldots & A_{j,k}^{q,\mu_{z}} & 1 & d_{j,x} & d_{j,y} & d_{j,z}\\
 	A_{1,1}^{\mu_{x},q} & \ldots & A_{1,k}^{\mu_{x},q} & A_{1,1}^{\mu_{x},\mu_{x}} & \ldots & A_{1,k}^{\mu_{x},\mu_{x}} & A_{1,1}^{\mu_{x},\mu_{y}} & \ldots & A_{1,k}^{\mu_{x},\mu_{y}} & A_{1,1}^{\mu_{x},\mu_{z}} & \ldots & A_{1,k}^{\mu_{x},\mu_{z}} & 0 & 1 & 0 & 0\\
 	\vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots\\
-	A_{p,1}^{\mu_{x},q} & \ldots & A_{p,k}^{\mu_{x},q} & A_{p,1}^{\mu_{x},\mu_{x}} & \ldots & A_{p,k}^{\mu_{x},\mu_{x}} & A_{p,1}^{\mu_{x},\mu_{y}} & \ldots & A_{p,k}^{\mu_{x},\mu_{y}} & A_{p,1}^{\mu_{x},\mu_{z}} & \ldots & A_{p,k}^{\mu_{x},\mu_{z}} & 0 & 1 & 0 & 0\\
+	A_{j,1}^{\mu_{x},q} & \ldots & A_{j,k}^{\mu_{x},q} & A_{j,1}^{\mu_{x},\mu_{x}} & \ldots & A_{j,k}^{\mu_{x},\mu_{x}} & A_{j,1}^{\mu_{x},\mu_{y}} & \ldots & A_{j,k}^{\mu_{x},\mu_{y}} & A_{j,1}^{\mu_{x},\mu_{z}} & \ldots & A_{j,k}^{\mu_{x},\mu_{z}} & 0 & 1 & 0 & 0\\
 	A_{1,1}^{\mu_{y},q} & \ldots & A_{1,k}^{\mu_{y},q} & A_{1,1}^{\mu_{y},\mu_{x}} & \ldots & A_{1,k}^{\mu_{y},\mu_{x}} & A_{1,1}^{\mu_{y},\mu_{y}} & \ldots & A_{1,k}^{\mu_{y},\mu_{y}} & A_{1,1}^{\mu_{y},\mu_{z}} & \ldots & A_{1,k}^{\mu_{y},\mu_{z}} & 0 & 0 & 1 & 0\\
 	\vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots\\
-	A_{p,1}^{\mu_{y},q} & \ldots & A_{p,k}^{\mu_{y},q} & A_{p,1}^{\mu_{y},\mu_{x}} & \ldots & A_{p,k}^{\mu_{y},\mu_{x}} & A_{p,1}^{\mu_{y},\mu_{y}} & \ldots & A_{p,k}^{\mu_{y},\mu_{y}} & A_{p,1}^{\mu_{y},\mu_{z}} & \ldots & A_{p,k}^{\mu_{y},\mu_{z}} & 0 & 0 & 1 & 0\\
+	A_{j,1}^{\mu_{y},q} & \ldots & A_{j,k}^{\mu_{y},q} & A_{j,1}^{\mu_{y},\mu_{x}} & \ldots & A_{j,k}^{\mu_{y},\mu_{x}} & A_{j,1}^{\mu_{y},\mu_{y}} & \ldots & A_{j,k}^{\mu_{y},\mu_{y}} & A_{j,1}^{\mu_{y},\mu_{z}} & \ldots & A_{j,k}^{\mu_{y},\mu_{z}} & 0 & 0 & 1 & 0\\
 	A_{1,1}^{\mu_{z},q} & \ldots & A_{1,k}^{\mu_{z},q} & A_{1,1}^{\mu_{z},\mu_{x}} & \ldots & A_{1,k}^{\mu_{z},\mu_{x}} & A_{1,1}^{\mu_{z},\mu_{y}} & \ldots & A_{1,k}^{\mu_{z},\mu_{y}} & A_{1,1}^{\mu_{z},\mu_{z}} & \ldots & A_{1,k}^{\mu_{z},\mu_{z}} & 0 & 0 & 0 & 1\\
 	\vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots\\
-	A_{p,1}^{\mu_{z},q} & \ldots & A_{p,k}^{\mu_{z},q} & A_{p,1}^{\mu_{z},\mu_{x}} & \ldots & A_{p,k}^{\mu_{z},\mu_{x}} & A_{p,1}^{\mu_{z},\mu_{y}} & \ldots & A_{p,k}^{\mu_{z},\mu_{y}} & A_{p,1}^{\mu_{z},\mu_{z}} & \ldots & A_{p,k}^{\mu_{z},\mu_{z}} & 0 & 0 & 0 & 1\\
+	A_{j,1}^{\mu_{z},q} & \ldots & A_{j,k}^{\mu_{z},q} & A_{j,1}^{\mu_{z},\mu_{x}} & \ldots & A_{j,k}^{\mu_{z},\mu_{x}} & A_{j,1}^{\mu_{z},\mu_{y}} & \ldots & A_{j,k}^{\mu_{z},\mu_{y}} & A_{j,1}^{\mu_{z},\mu_{z}} & \ldots & A_{j,k}^{\mu_{z},\mu_{z}} & 0 & 0 & 0 & 1\\
 	1 & \ldots & 1 & 0 & \ldots & 0 & 0 & \ldots & 0 & 0 & \ldots & 0 & 0 & 0 & 0 & 0\\
 	d_{1,x} & \ldots & d_{k,x} & 1 & \ldots & 1 & 0 & \ldots & 0 & 0 & \ldots & 0 & 0 & 0 & 0 & 0\\
 	d_{1,y} & \ldots & d_{k,y} & 0 & \ldots & 0 & 1 & \ldots & 1 & 0 & \ldots & 0 & 0 & 0 & 0 & 0\\
@@ -101,16 +101,16 @@ A total matrix equation as (for up to dipoles), with :math:`d_{i}=r_{i}-R_{\math
 	\end{array}\right]\left[\begin{array}{c}
 	q_{1}\\
 	\vdots\\
-	q_{p}\\
+	q_{j}\\
 	\mu_{x,1}\\
 	\vdots\\
-	\mu_{x,p}\\
+	\mu_{x,j}\\
 	\mu_{y,1}\\
 	\vdots\\
-	\mu_{y,p}\\
+	\mu_{y,j}\\
 	\mu_{z,1}\\
 	\vdots\\
-	\mu_{z,p}\\
+	\mu_{z,j}\\
 	\lambda_{q}\\
 	\lambda_{\mu_{x}}\\
 	\lambda_{\mu_{y}}\\
@@ -118,16 +118,16 @@ A total matrix equation as (for up to dipoles), with :math:`d_{i}=r_{i}-R_{\math
 	\end{array}\right]=\left[\begin{array}{c}
 	B_{1}^{q}\\
 	\vdots\\
-	B_{p}^{q}\\
+	B_{j}^{q}\\
 	B_{1}^{\mu_{x}}\\
 	\vdots\\
-	B_{p}^{\mu_{x}}\\
+	B_{j}^{\mu_{x}}\\
 	B_{1}^{\mu_{y}}\\
 	\vdots\\
-	B_{p}^{\mu_{y}}\\
+	B_{j}^{\mu_{y}}\\
 	B_{1}^{\mu_{z}}\\
 	\vdots\\
-	B_{p}^{\mu_{z}}\\
+	B_{j}^{\mu_{z}}\\
 	q_{tot}\\
 	\mu_{x,tot}\\
 	\mu_{y,tot}\\
@@ -139,7 +139,7 @@ Or in more compressed form:
 .. math::
    \left[\begin{array}{cccc}
 	A^{q,q} & A^{q,\mu} & 1 & \left(r_{j}-R_{\mathrm{cm}}\right)\\
-	A^{q,\mu} & A^{\mu,\mu} & 0 & 1\\
+	A^{\mu,q} & A^{\mu,\mu} & 0 & 1\\
 	1 & 0 & 0 & 0\\
 	\left(r_{j}-R_{\mathrm{cm}}\right) & 1 & 0 & 0
 	\end{array}\right]\left[\begin{array}{c}
@@ -161,7 +161,7 @@ For the implementation it can be noted that :math:`\overline{\overline{A}}` is s
 Now the matrix :math:`A` can be constructed by constructing an auxiliary matrix:
 
 .. math::
-   A_{aux,pk,i}=\sum_{i}^{point}\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}
+   A_{aux,pk,i}=\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}
    
 Thus:
 
@@ -184,5 +184,5 @@ and,
 Thus also:
 
 .. math::
-   A_{aux,pk,i}=\sum_{i}^{point}\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\rightarrow\sum_{i}^{point}\frac{\left(-1\right)^{k}}{\left(2k-1\right)!!}T_{ip}^{(k)}
+   A_{aux,pk,i}=\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\rightarrow\frac{\left(-1\right)^{k}}{\left(2k-1\right)!!}T_{ip}^{(k)}
 
