@@ -61,7 +61,7 @@ The general constraint for multipoles is given as:
 .. math::
    g_{n}=\sum_{i}^{n}\sum_{j}^{atoms}m_{j}^{(i)}R^{(n-i)}-m_{tot}^{(n)}
    
-Here :math:`R^{(m)}` is the direct product of the distance between the origin and the multipole :math:`m` times.
+Here :math:`R^{(m)}` is the outer product of the distance between the origin and the multipole :math:`m` times.
 And :math:`R^{(0)}=1`.
 Thus:
 
