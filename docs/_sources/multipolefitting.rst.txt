@@ -22,12 +22,22 @@ Expanding the square:
    
 It is known that in the minima that the derivative with respect to all parameters equals to zero. 
 
-   Now with, :math:`\frac{\partial E_{i}^{2}}{\partial m_{p}^{(k)}}=2\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\sum_{n}^{multipole}\frac{\left(-1\right)^{n}}{n!}T_{ij}^{(n)}m_{j}^{(n)}`, it can be written:
+Now with: 
+
+.. math::
+   \frac{\partial E_{i}^{2}}{\partial m_{p}^{(k)}}=2\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\sum_{n}^{multipole}\frac{\left(-1\right)^{n}}{n!}T_{ij}^{(n)}m_{j}^{(n)} 
+
+It can be written that:
    
 .. math::
    \sum_{k}^{multipole}\frac{\partial z}{\partial m_{p}^{(k)}}=\sum_{k}^{multipole}\sum_{i}^{point}\left(\sum_{j}^{atom}2\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\sum_{n}^{multipole}\frac{\left(-1\right)^{n}}{n!}T_{ij}^{(n)}m_{j}^{(n)}-2V_{i,\mathrm{QM}}\sum_{j}^{atom}\frac{\left(-1\right)^{k}}{k!}T_{ij}^{(k)}\right)
    
-Since the condition was :math:`\sum_{k}^{multipole}\frac{\partial z}{\partial m^{(k)}}=0`, and reducing out the factor 2, it can be written as:
+Since the condition of minima was:
+
+.. math::
+   \sum_{k}^{multipole}\frac{\partial z}{\partial m^{(k)}}=0
+
+And reducing out the factor 2, it can be written as:
 
 .. math::
    \sum_{p}^{atom}\sum_{k}^{multipole}\sum_{j}^{atom}\sum_{n}^{multipole}\sum_{i}^{point}\frac{\left(-1\right)^{k}}{k!}T_{ip}^{(k)}\frac{\left(-1\right)^{n}}{n!}T_{ij}^{(n)}m_{j}^{(n)}=\sum_{j}^{atom}\sum_{k}^{multipole}\sum_{i}^{point}V_{i,\mathrm{QM}}\frac{\left(-1\right)^{k}}{k!}T_{ij}^{(k)}
@@ -82,35 +92,35 @@ A total matrix equation as (for up to dipoles), with :math:`d_{i}=r_{i}-R_{\math
 
 .. math::
    \left[\begin{array}{cccccccccccccccc}
-	A_{1,1}^{q,q} & \ldots & A_{1,k}^{q,q} & A_{1,1}^{q,\mu_{x}} & \ldots & A_{1,k}^{q,\mu_{x}} & A_{1,1}^{q,\mu_{y}} & \ldots & A_{1,k}^{q,\mu_{y}} & A_{1,1}^{q,\mu_{z}} & \ldots & A_{1,k}^{q,\mu_{z}} & 1 & d_{1,x} & d_{1,y} & d_{1,z}\\
+	A_{1,1}^{q,q} & \ldots & A_{1,j}^{q,q} & A_{1,1}^{q,\mu_{x}} & \ldots & A_{1,j}^{q,\mu_{x}} & A_{1,1}^{q,\mu_{y}} & \ldots & A_{1,j}^{q,\mu_{y}} & A_{1,1}^{q,\mu_{z}} & \ldots & A_{1,j}^{q,\mu_{z}} & 1 & d_{1,x} & d_{1,y} & d_{1,z}\\
 	\vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots\\
-	A_{j,1}^{q,q} & \ldots & A_{j,k}^{q,q} & A_{j,1}^{q,\mu_{x}} & \ldots & A_{j,k}^{q,\mu_{x}} & A_{j,1}^{q,\mu_{y}} & \ldots & A_{j,k}^{q,\mu_{y}} & A_{j,1}^{q,\mu_{z}} & \ldots & A_{j,k}^{q,\mu_{z}} & 1 & d_{j,x} & d_{j,y} & d_{j,z}\\
-	A_{1,1}^{\mu_{x},q} & \ldots & A_{1,k}^{\mu_{x},q} & A_{1,1}^{\mu_{x},\mu_{x}} & \ldots & A_{1,k}^{\mu_{x},\mu_{x}} & A_{1,1}^{\mu_{x},\mu_{y}} & \ldots & A_{1,k}^{\mu_{x},\mu_{y}} & A_{1,1}^{\mu_{x},\mu_{z}} & \ldots & A_{1,k}^{\mu_{x},\mu_{z}} & 0 & 1 & 0 & 0\\
+	A_{p,1}^{q,q} & \ldots & A_{p,j}^{q,q} & A_{p,1}^{q,\mu_{x}} & \ldots & A_{p,j}^{q,\mu_{x}} & A_{p,1}^{q,\mu_{y}} & \ldots & A_{p,j}^{q,\mu_{y}} & A_{p,1}^{q,\mu_{z}} & \ldots & A_{p,j}^{q,\mu_{z}} & 1 & d_{p,x} & d_{p,y} & d_{p,z}\\
+	A_{1,1}^{\mu_{x},q} & \ldots & A_{1,j}^{\mu_{x},q} & A_{1,1}^{\mu_{x},\mu_{x}} & \ldots & A_{1,j}^{\mu_{x},\mu_{x}} & A_{1,1}^{\mu_{x},\mu_{y}} & \ldots & A_{1,j}^{\mu_{x},\mu_{y}} & A_{1,1}^{\mu_{x},\mu_{z}} & \ldots & A_{1,j}^{\mu_{x},\mu_{z}} & 0 & 1 & 0 & 0\\
 	\vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots\\
-	A_{j,1}^{\mu_{x},q} & \ldots & A_{j,k}^{\mu_{x},q} & A_{j,1}^{\mu_{x},\mu_{x}} & \ldots & A_{j,k}^{\mu_{x},\mu_{x}} & A_{j,1}^{\mu_{x},\mu_{y}} & \ldots & A_{j,k}^{\mu_{x},\mu_{y}} & A_{j,1}^{\mu_{x},\mu_{z}} & \ldots & A_{j,k}^{\mu_{x},\mu_{z}} & 0 & 1 & 0 & 0\\
-	A_{1,1}^{\mu_{y},q} & \ldots & A_{1,k}^{\mu_{y},q} & A_{1,1}^{\mu_{y},\mu_{x}} & \ldots & A_{1,k}^{\mu_{y},\mu_{x}} & A_{1,1}^{\mu_{y},\mu_{y}} & \ldots & A_{1,k}^{\mu_{y},\mu_{y}} & A_{1,1}^{\mu_{y},\mu_{z}} & \ldots & A_{1,k}^{\mu_{y},\mu_{z}} & 0 & 0 & 1 & 0\\
+	A_{p,1}^{\mu_{x},q} & \ldots & A_{p,j}^{\mu_{x},q} & A_{p,1}^{\mu_{x},\mu_{x}} & \ldots & A_{p,j}^{\mu_{x},\mu_{x}} & A_{p,1}^{\mu_{x},\mu_{y}} & \ldots & A_{p,j}^{\mu_{x},\mu_{y}} & A_{p,1}^{\mu_{x},\mu_{z}} & \ldots & A_{p,j}^{\mu_{x},\mu_{z}} & 0 & 1 & 0 & 0\\
+	A_{1,1}^{\mu_{y},q} & \ldots & A_{1,j}^{\mu_{y},q} & A_{1,1}^{\mu_{y},\mu_{x}} & \ldots & A_{1,j}^{\mu_{y},\mu_{x}} & A_{1,1}^{\mu_{y},\mu_{y}} & \ldots & A_{1,j}^{\mu_{y},\mu_{y}} & A_{1,1}^{\mu_{y},\mu_{z}} & \ldots & A_{1,j}^{\mu_{y},\mu_{z}} & 0 & 0 & 1 & 0\\
 	\vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots\\
-	A_{j,1}^{\mu_{y},q} & \ldots & A_{j,k}^{\mu_{y},q} & A_{j,1}^{\mu_{y},\mu_{x}} & \ldots & A_{j,k}^{\mu_{y},\mu_{x}} & A_{j,1}^{\mu_{y},\mu_{y}} & \ldots & A_{j,k}^{\mu_{y},\mu_{y}} & A_{j,1}^{\mu_{y},\mu_{z}} & \ldots & A_{j,k}^{\mu_{y},\mu_{z}} & 0 & 0 & 1 & 0\\
-	A_{1,1}^{\mu_{z},q} & \ldots & A_{1,k}^{\mu_{z},q} & A_{1,1}^{\mu_{z},\mu_{x}} & \ldots & A_{1,k}^{\mu_{z},\mu_{x}} & A_{1,1}^{\mu_{z},\mu_{y}} & \ldots & A_{1,k}^{\mu_{z},\mu_{y}} & A_{1,1}^{\mu_{z},\mu_{z}} & \ldots & A_{1,k}^{\mu_{z},\mu_{z}} & 0 & 0 & 0 & 1\\
+	A_{p,1}^{\mu_{y},q} & \ldots & A_{p,j}^{\mu_{y},q} & A_{p,1}^{\mu_{y},\mu_{x}} & \ldots & A_{p,j}^{\mu_{y},\mu_{x}} & A_{p,1}^{\mu_{y},\mu_{y}} & \ldots & A_{p,j}^{\mu_{y},\mu_{y}} & A_{p,1}^{\mu_{y},\mu_{z}} & \ldots & A_{p,j}^{\mu_{y},\mu_{z}} & 0 & 0 & 1 & 0\\
+	A_{1,1}^{\mu_{z},q} & \ldots & A_{1,j}^{\mu_{z},q} & A_{1,1}^{\mu_{z},\mu_{x}} & \ldots & A_{1,j}^{\mu_{z},\mu_{x}} & A_{1,1}^{\mu_{z},\mu_{y}} & \ldots & A_{1,j}^{\mu_{z},\mu_{y}} & A_{1,1}^{\mu_{z},\mu_{z}} & \ldots & A_{1,j}^{\mu_{z},\mu_{z}} & 0 & 0 & 0 & 1\\
 	\vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \vdots\\
-	A_{j,1}^{\mu_{z},q} & \ldots & A_{j,k}^{\mu_{z},q} & A_{j,1}^{\mu_{z},\mu_{x}} & \ldots & A_{j,k}^{\mu_{z},\mu_{x}} & A_{j,1}^{\mu_{z},\mu_{y}} & \ldots & A_{j,k}^{\mu_{z},\mu_{y}} & A_{j,1}^{\mu_{z},\mu_{z}} & \ldots & A_{j,k}^{\mu_{z},\mu_{z}} & 0 & 0 & 0 & 1\\
+	A_{p,1}^{\mu_{z},q} & \ldots & A_{p,j}^{\mu_{z},q} & A_{p,1}^{\mu_{z},\mu_{x}} & \ldots & A_{p,j}^{\mu_{z},\mu_{x}} & A_{p,1}^{\mu_{z},\mu_{y}} & \ldots & A_{p,j}^{\mu_{z},\mu_{y}} & A_{p,1}^{\mu_{z},\mu_{z}} & \ldots & A_{p,j}^{\mu_{z},\mu_{z}} & 0 & 0 & 0 & 1\\
 	1 & \ldots & 1 & 0 & \ldots & 0 & 0 & \ldots & 0 & 0 & \ldots & 0 & 0 & 0 & 0 & 0\\
-	d_{1,x} & \ldots & d_{k,x} & 1 & \ldots & 1 & 0 & \ldots & 0 & 0 & \ldots & 0 & 0 & 0 & 0 & 0\\
-	d_{1,y} & \ldots & d_{k,y} & 0 & \ldots & 0 & 1 & \ldots & 1 & 0 & \ldots & 0 & 0 & 0 & 0 & 0\\
-	d_{1,z} & \ldots & d_{k,z} & 0 & \ldots & 0 & 0 & \ldots & 0 & 1 & \ldots & 1 & 0 & 0 & 0 & 0
+	d_{1,x} & \ldots & d_{j,x} & 1 & \ldots & 1 & 0 & \ldots & 0 & 0 & \ldots & 0 & 0 & 0 & 0 & 0\\
+	d_{1,y} & \ldots & d_{j,y} & 0 & \ldots & 0 & 1 & \ldots & 1 & 0 & \ldots & 0 & 0 & 0 & 0 & 0\\
+	d_{1,z} & \ldots & d_{j,z} & 0 & \ldots & 0 & 0 & \ldots & 0 & 1 & \ldots & 1 & 0 & 0 & 0 & 0
 	\end{array}\right]\left[\begin{array}{c}
 	q_{1}\\
 	\vdots\\
-	q_{j}\\
+	q_{p}\\
 	\mu_{x,1}\\
 	\vdots\\
-	\mu_{x,j}\\
+	\mu_{x,p}\\
 	\mu_{y,1}\\
 	\vdots\\
-	\mu_{y,j}\\
+	\mu_{y,p}\\
 	\mu_{z,1}\\
 	\vdots\\
-	\mu_{z,j}\\
+	\mu_{z,p}\\
 	\lambda_{q}\\
 	\lambda_{\mu_{x}}\\
 	\lambda_{\mu_{y}}\\
@@ -118,22 +128,22 @@ A total matrix equation as (for up to dipoles), with :math:`d_{i}=r_{i}-R_{\math
 	\end{array}\right]=\left[\begin{array}{c}
 	B_{1}^{q}\\
 	\vdots\\
-	B_{j}^{q}\\
+	B_{p}^{q}\\
 	B_{1}^{\mu_{x}}\\
 	\vdots\\
-	B_{j}^{\mu_{x}}\\
+	B_{p}^{\mu_{x}}\\
 	B_{1}^{\mu_{y}}\\
 	\vdots\\
-	B_{j}^{\mu_{y}}\\
+	B_{p}^{\mu_{y}}\\
 	B_{1}^{\mu_{z}}\\
 	\vdots\\
-	B_{j}^{\mu_{z}}\\
+	B_{p}^{\mu_{z}}\\
 	q_{tot}\\
 	\mu_{x,tot}\\
 	\mu_{y,tot}\\
 	\mu_{z,tot}
 	\end{array}\right]
-
+	
 Or in more compressed form:
 
 .. math::
